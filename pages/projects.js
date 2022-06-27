@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
-
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import styles from "../styles/Projects.module.css";
@@ -12,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
 import { useEffect, useState } from "react";
 import Filter from "../components/Filter/Filter";
-import delayAdapterEnhancer from "axios-delay";
 
 const Projects = () => {
   const dispatch = useDispatch();

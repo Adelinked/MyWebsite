@@ -103,7 +103,7 @@ export let projectsData = [
       "CI",
     ],
     image: "cart.png",
-    srcUrl: "https://github.com/Adelinked/CartTypeScript",
+    srcUrl: "https://github.com/Adelinked/Shopping-Cart-TS",
     srcUrl2: "https://github.com/Adelinked/Cart",
     depUrl: "https://cart-usestate-redux-typescript.netlify.app/",
     depUrl2: "https://shopping-cart-adelinked.netlify.app/",

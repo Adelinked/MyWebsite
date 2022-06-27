@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+/**** Component not used for the moment ****/
 
+import { useState } from "react";
 import styles from "./ProjectDetails.module.css";
-import { addProject } from "../store/actions/cartAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Nav } from "./Cart/Nav";
 import { useLocalStorageValue } from "@mantine/hooks";
 
 export const ProjectDetails = (props) => {
@@ -49,57 +48,7 @@ export const ProjectDetails = (props) => {
         </p>
         <span className={styles.price}>${price}</span>
         <p>{description}</p>
-        <div className={styles.quantityDiv}>
-          <span style={{ fontSize: "2.2rem" }}>
-            <span
-              style={{ marginRight: "5px", cursor: "pointer" }}
-              onClick={() => {
-                setQuantity((qt) => (qt == 0 ? 0 : qt - 1));
-              }}
-            >
-              -
-            </span>
-            {quantity}
-            <span
-              style={{ marginLeft: "5px", cursor: "pointer" }}
-              onClick={() => {
-                setQuantity((qt) => (qt == 100 ? 100 : qt + 1));
-              }}
-            >
-              +
-            </span>
-          </span>
-
-          <button
-            disabled={disable}
-            style={{ marginLeft: "10px" }}
-            onClick={() => {
-              setDisable(true);
-              dispatch(
-                addProject({
-                  ...props,
-                  img: image,
-                  amount: quantity,
-                })
-              );
-              setTimeout(() => {
-                setDisable(false);
-              }, 1000);
-            }}
-          >
-            Add to cart
-          </button>
-
-          <div
-            style={{
-              color: "var(--color-font)",
-              height: "50px",
-              marginTop: "10px",
-            }}
-          >
-            {disable && <Nav items={cart.cart} />}
-          </div>
-        </div>
+        <div className={styles.quantityDiv}></div>
       </div>
     </div>
   );

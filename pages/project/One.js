@@ -1,20 +1,16 @@
+/**** page not used for the moment ****/
+
 import Head from "next/head";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/NavBar";
-import styles from "../../styles/Projects.module.css";
 import { ProjectDetails } from "../../components/ProjectDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorageValue } from "@mantine/hooks";
 import axios from "axios";
 
-export default function OneProject(
-  {
-    /*productServ*/
-  }
-) {
+export default function OneProject({}) {
   const { query } = useRouter();
   const [projectCli, setProjectCli] = useState();
   const [loading, setLoading] = useState(false);
