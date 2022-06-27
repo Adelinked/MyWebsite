@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap");
+
 /* Custom properties/variables  */
 :root {
   --color-bgd: #131325;
@@ -8,6 +10,9 @@
   --color-font-light: #b8afaf;
   --color-links: #a4a4ad;
   --color-sub: rgb(238, 18, 11);
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Roboto", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .dark-theme {
@@ -26,7 +31,6 @@
   --color-bgd2: #e8e8c4;
   --color-bgd3: rgba(255, 255, 255);
   --color-bgd3-trsp: rgba(255, 255, 255, 0.68);
-
   --color-font: #131325;
   --color-links: #5b5b52;
   --color-font-light: #475050;
@@ -78,7 +82,6 @@ html {
 /* Base styles */
 
 body {
-  font-family: monospace;
   font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.4;
@@ -103,10 +106,16 @@ h2 {
   font-size: 4.2rem;
 }
 
-ul {
-  list-style: none;
+h3 {
+  font-size: 2.6rem;
 }
 
+p {
+  font-size: 1.8rem;
+}
+ul {
+  margin-left: 15px;
+}
 a,
 a:visited {
   text-decoration: none;
@@ -125,7 +134,7 @@ button {
   margin: 0 5px;
   padding: 5px;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--color-font);
   background-color: var(--color-bgd2);
   border: 2px solid var(--color-font);
@@ -155,19 +164,40 @@ image {
   padding: 30px;
   padding-top: 70px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 90vh;
 }
 .aboutTextDiv,
 .aboutImgDiv {
-  padding: 20px;
-  width: 50%;
+  padding: 15px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.aboutHeroText {
+  color: var(--color-font);
+  margin-bottom: 20px;
+}
+.resumeHeroText {
+  color: var(--color-font);
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+}
 
+.aboutSecTitle {
+  color: var(--color-font);
+  text-align: left;
+  width: 100%;
+  color: var(--color-font);
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid var(--color-font-light);
+  margin-bottom: 5px;
+}
 .aboutFeaturedDiv {
   padding: 30px;
   padding-top: 70px;
@@ -184,8 +214,38 @@ image {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
+.aboutParagraphs {
+  text-align: left;
+  width: 100%;
+}
+.aboutLinks,
+.aboutLinks:visited {
+  text-decoration: none;
+  color: var(--color-links);
+  font-weight: 600;
+  padding-bottom: 1px;
+  border-bottom: 2px solid var(--color-sub);
+}
+
+.aboutLinks:hover,
+.aboutLinks:focus {
+  color: var(--color-font);
+  outline: none;
+}
+
+.aboutSubTit {
+  font-size: 1.8rem;
+  color: var(--color-font);
+}
 
 @media (max-width: 992px) {
+  button {
+    font-size: 1.6rem;
+  }
+  select,
+  label {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -199,5 +259,18 @@ image {
   .aboutImgDiv {
     width: 100%;
     padding: 10px;
+  }
+  select,
+  label {
+    font-size: 1.5rem;
+  }
+  button {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 576px) {
+  select,
+  label {
+    font-size: 1.4rem;
   }
 }

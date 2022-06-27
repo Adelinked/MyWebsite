@@ -3,37 +3,130 @@ import Link from "next/link";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
+import { useDispatch } from "react-redux";
+import { setAppLoading } from "../store/actions/appAction";
 
 const About = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <Head>
-        <title>E-commerce Home</title>
+        <title>Adelinked | About me</title>
         <meta name="description" content="Ecomerce app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className="aboutDiv">
-        <div className="aboutImgDiv">
-          <img style={{ width: "100%" }} src="/about.jpg"></img>
-        </div>
-
-        <div className="aboutTextDiv">
-          <h2>Our Story</h2>
+      <article className="aboutDiv">
+        <header className="aboutTextDiv">
+          <h2 className="aboutHeroText">About me</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
+            Hey, I'm Adelinked! A software engineer who started gaining
+            interrest for web developement especially the frontend that's why I
+            spend most of my day, experimenting with HTML, CSS, Javascript and
+            ReactJs. I enjoy coding and the challenge of learning something new
+            everyday.
           </p>
-        </div>
-      </div>
+          <p>
+            {" "}
+            This is my spot on the web for projects I've created and anything
+            else I want to show the world. Check out the{" "}
+            <Link href={"./projects"}>
+              <a className="aboutLinks">projects</a>
+            </Link>{" "}
+            page to see a highlight of the open-source projects I've made.
+          </p>
+        </header>{" "}
+        <section className="aboutTextDiv">
+          <h3 className="aboutSecTitle">Connect</h3>
+          <p className="aboutParagraphs">
+            You can contact me by{" "}
+            <Link href={"mailto:adel.adelinked@gmail.com"}>
+              <a className="aboutLinks">email</a>
+            </Link>{" "}
+            to say hi! I always appreciate meeting new people.{" "}
+            <ul>
+              <li>
+                {" "}
+                <Link href="https://github.com/adelinked">
+                  <a target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                </Link>{" "}
+              </li>
+              <li>
+                {" "}
+                <Link href="https://twitter.com">
+                  <a target="_blank" rel="noreferrer">
+                    Twitter
+                  </a>
+                </Link>{" "}
+              </li>
+              <li>
+                {" "}
+                <Link href="https://www.linkedin.com/in/adel-allam-2325a1180/">
+                  <a target="_blank" rel="noreferrer">
+                    Linkedin
+                  </a>
+                </Link>{" "}
+              </li>
+            </ul>
+          </p>
+        </section>
+        <section className="aboutTextDiv">
+          <h3 className="aboutSecTitle">Random facts</h3>
+          <div className="aboutParagraphs">
+            <ul>
+              <li>
+                I built my first website in 2005 a weather forcast mobile
+                website
+              </li>
+              <li>My favorite Tv Series is Breaking Bad</li>
+              <li>My current favorite type of game is strategy-based</li>
+              <li>My favorite type of music is rock.</li>
+            </ul>
+          </div>
+        </section>
+        <section className="aboutTextDiv">
+          <h3 className="aboutSecTitle">Tools</h3>
+          <p className="aboutParagraphs">
+            <ul>
+              <li>
+                This website is hosted on{" "}
+                <Link href="https://netlify.com">
+                  <a className="aboutLinks" target="_blank" rel="noreferrer">
+                    Netlify
+                  </a>
+                </Link>{" "}
+                and uses the{" "}
+                <Link href="https://nextjs.org">
+                  <a className="aboutLinks" target="_blank" rel="noreferrer">
+                    NextJs
+                  </a>
+                </Link>{" "}
+                framework
+              </li>
+            </ul>
+          </p>
+        </section>
+        <section className="aboutTextDiv">
+          <h3 className="aboutSecTitle">Misc</h3>
+          <p className="aboutParagraphs">
+            <ul>
+              <li>
+                <Link href="./Resume">
+                  <a
+                    onClick={() => {
+                      dispatch(setAppLoading(true));
+                    }}
+                  >
+                    Resume
+                  </a>
+                </Link>{" "}
+              </li>
+            </ul>
+          </p>
+        </section>
+      </article>
 
       <Footer />
     </>

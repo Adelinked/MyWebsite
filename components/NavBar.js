@@ -4,15 +4,12 @@ import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { useLocalStorageValue } from "@mantine/hooks";
 import { useAppContext } from "../context";
-import Cart from "./Cart/Cart";
-import { Nav } from "./Cart/Nav";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllCart } from "../store/actions/cartAction";
 import { UserNav } from "../components/User/UserNav";
 import UserLogin from "../components/User/UserLogin";
 import { useSession } from "next-auth/react";
 import AppLoading from "../components/AppLoading";
-import { setAppLoading } from "../store/actions/appAction";
+import { setAppLoading, setNavBar } from "../store/actions/appAction";
 import { useRouter } from "next/router";
 
 export default () => {
@@ -25,26 +22,18 @@ export default () => {
   const [themeLocal, setThemeLocal] = useLocalStorageValue({
     key: "theme",
   });
-  const [cartLocal, setCartLocal] = useLocalStorageValue({
-    key: "cart",
-  });
+
   const dispatch = useDispatch();
   const { globalState, setGlobalState } = useAppContext();
 
   useEffect(() => {
     setGlobalState((themeLocal && themeLocal.theme) ?? "dark-theme");
-    dispatch(setAllCart((cartLocal && cartLocal.cart) ?? []));
   }, []);
 
   useEffect(() => {
     document.documentElement.className = theme;
     setThemeLocal({ theme: theme });
-    setCartLocal({ cart: cart.cart });
   }, [globalState]);
-
-  useEffect(() => {
-    setCartLocal({ cart: cart.cart });
-  }, [cart]);
 
   const switchTheme = () => {
     setGlobalState((oldTheme) =>
@@ -62,11 +51,14 @@ export default () => {
   const handleScroll = (e) => {
     const currentScrollPos = window.scrollY;
 
-    if (scrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.top = 0;
-    } else {
-      document.getElementById("navbar").style.top = "-12vh";
+    if (!fixNavBar) {
+      if (scrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = 0;
+      } else {
+        document.getElementById("navbar").style.top = "-12vh";
+      }
     }
+
     setScrollpos(currentScrollPos);
   };
   const openVertNav = () => {
@@ -85,7 +77,11 @@ export default () => {
     dispatch(setAppLoading(false));
   }, [query]);
 
-  const { loading } = useSelector((state) => state.app);
+  const { loading, fixNavBar } = useSelector((state) => state.app);
+
+  const pinStyle = {
+    color: fixNavBar ? "var(--color-font)" : "var(--color-font-light)",
+  };
 
   return (
     <>
@@ -116,16 +112,16 @@ export default () => {
               dispatch(setAppLoading(true));
             }}
           >
-            About
+            About me
           </a>
         </Link>
-        <Link href="/products">
+        <Link href="/projects">
           <a
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
           >
-            Products
+            Projects
           </a>
         </Link>
         {session && (
@@ -139,18 +135,23 @@ export default () => {
             </a>
           </Link>
         )}
+
         <div className={styles.cartLogOpen}>
-          <Nav items={cart.cart} />
-          <div className={styles.loginContainer}>
-            <UserNav />
-          </div>
+          <span className={fixNavBar ? styles.navBarPinFix : styles.navBarPin}>
+            <i
+              className="fa fa-thumb-tack"
+              onClick={() => {
+                dispatch(setNavBar(!fixNavBar));
+              }}
+              title={fixNavBar ? "Free navigation bar" : "Fix navigation bar"}
+            ></i>
+          </span>
+          <div className={styles.loginContainer}></div>
 
           <span className={styles.openNav} onClick={openVertNav}>
             <i className="fa fa-bars"></i>
           </span>
         </div>
-
-        <Cart />
       </nav>
       <nav className={styles.vertNavbar} id="vertNavbar">
         <span className={styles.closeNav} onClick={openVertNav}>
@@ -167,9 +168,7 @@ export default () => {
             <i className="fa fa-sun-o"></i>
           )}
         </span>
-        <div className={styles.loginContainer}>
-          <UserNav />
-        </div>
+        <div className={styles.loginContainer}></div>
         <Link href="/">
           <a
             style={{ marginTop: "30px" }}
@@ -189,13 +188,13 @@ export default () => {
             About
           </a>
         </Link>
-        <Link href="/products">
+        <Link href="/projects">
           <a
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
           >
-            Products
+            Projects
           </a>
         </Link>
         {session && (
@@ -210,7 +209,7 @@ export default () => {
           </Link>
         )}
       </nav>
-      <UserLogin />
+
       {loading && <AppLoading />}
     </>
   );

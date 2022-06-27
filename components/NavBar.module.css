@@ -22,11 +22,12 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
   text-align: center;
   height: 100%;
   font-size: 2.2rem;
   font-weight: 700;
-  padding: 0 2.2rem;
+  width: 50%;
 }
 
 .themeSwitch {
@@ -61,7 +62,7 @@
 .closeNav:hover {
   color: rgb(238, 124, 11);
   opacity: 100%;
-  rotate: 90deg;
+  transform: rotate(90deg);
 }
 
 .vertNavbar {
@@ -108,7 +109,7 @@
   width: 100%;
   height: 100%;
   z-index: 5;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: var(--color-bgd3-trsp);
@@ -117,6 +118,23 @@
   justify-content: center;
   align-items: center;
   font-size: 3.5rem;
+}
+
+.navBarPin {
+  font-size: 25px;
+  cursor: pointer;
+  margin: 0 10px;
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+.navBarPinFix {
+  font-size: 30px;
+  cursor: pointer;
+  margin: 0 10px;
+  transform: rotate(45deg);
+  display: inline-block;
+  color: var(--color-font);
 }
 
 @media (max-width: 768px) {
@@ -130,8 +148,19 @@
   .cartLogOpen {
     margin: 0 0 0 52%;
   }
-}
+  .navBarPin {
+    font-size: 22px;
+  }
+  .navBarPinFix {
+    font-size: 25px;
+  }
 
+  .openNav,
+  .closeNav,
+  .themeSwitch {
+    font-size: 3rem;
+  }
+}
 @media (max-width: 400px) {
   .cartLogOpen {
     margin: 0 0 0 40%;

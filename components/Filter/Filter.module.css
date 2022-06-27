@@ -3,27 +3,33 @@
   top: 0;
   left: 0;
 }
+
 .filterForm {
-  padding: 10px;
-  padding-top: 128px;
-  width: 22%;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
   font-size: 1.8rem;
   align-items: center;
-  position: fixed;
-  top: 0;
+  padding: 5px;
+  justify-content: flex-start;
+  border: 1px solid var(--color-font-light);
+  border-radius: 5px;
+}
+.formLabel {
+  position: absolute;
+  top: -25px;
   left: 0;
 }
 
-.filterForm > input,
-.filterForm > select {
+.filterForm input,
+.filterForm select {
   font-size: 1.8rem;
-  width: 100%;
   padding: 5px;
   color: var(--color-bgd);
   background-color: var(--color-font-light);
   cursor: pointer;
+  margin: 0 5px;
+  outline: none;
 }
 
 .filterForm > input:hover {
@@ -31,23 +37,45 @@
   background-color: var(--color-bgd);
 }
 
-.filterForm > label,
-.filterForm > button {
-  margin-top: 10px;
-}
-
-.filterForm > label {
-  text-align: left;
-  width: 100%;
+@media (max-width: 992px) {
+  .filterForm {
+    margin-top: 5px;
+  }
+  .formLabel {
+    position: absolute;
+    top: -18px;
+    left: 0;
+  }
+  .clearFilter {
+    width: 8rem;
+  }
+  .filterForm input,
+  .filterForm select {
+    font-size: 1.7rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .filterForm > * {
-    width: 50%;
+  .filterForm input,
+  .filterForm select {
+    font-size: 1.5rem;
   }
+}
+
+@media (max-width: 576px) {
   .filterForm {
-    padding-top: 5vh;
-    position: relative;
-    width: 100%;
+    margin-top: 15px;
+    flex-direction: column;
   }
+  .filterForm input,
+  .filterForm select {
+    margin-bottom: 5px;
+    font-size: 1.4rem;
+  }
+  .formLabel {
+    top: 0;
+  }
+}
+
+@media (max-width: 400px) {
 }

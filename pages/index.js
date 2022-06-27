@@ -3,120 +3,130 @@ import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
-import Product from "../components/Product";
+import Project from "../components/Project";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
-function ValidateEmail(mail) {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-    return true;
-  }
-  return false;
-}
-const Index = ({ productsServ }) => {
+import { randomize } from "../utils/functions";
+import SkillComp from "../components/SkillComp";
+
+const Index = () => {
+  const [projects, setProjects] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const [email, setEmail] = useState();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    (async () => {
+      setLoading(true);
+      const url = "./api?d=projects";
+      const data = await axios.get(url, { signal: controller.signal });
+
+      setProjects(randomize(data.data));
+      controller = null;
+      setLoading(false);
+    })();
+    return () => controller?.abort();
+  }, []);
+
+  useEffect(() => {
+    let controller = new AbortController();
+    (async () => {
+      try {
+        setLoading(true);
+        const url = "./api?d=skills";
+        const data = await axios.get(url, { signal: controller.signal });
+        setSkills(data.data);
+        setLoading(false);
+        controller = null;
+      } catch (e) {}
+    })();
+    return () => {
+      controller?.abort();
+    };
+  }, []);
+
   return (
     <>
       <Head>
-        <title>E-commerce Home</title>
-        <meta name="description" content="Ecommerce app" />
+        <title>Adelinked | Home</title>
+        <meta name="description" content="Adelinked website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className={styles.indexDiv}>
-        <div className={styles.indexImgDiv}>
-          <img style={{ width: "100%" }} src="/goods.jpg"></img>
-        </div>
+      <article className={styles.container}>
+        <header className={styles.indexHeader}>
+          <div className={styles.indexTextDiv}>
+            <h2 className={styles.indexTitles}>Hey, I am Adelinked</h2>
+            <p className={styles.heroText}>
+              I'm a software engineer who started gaining interrest for web
+              developement that's why I spend most of my day, experimenting with
+              HTML, CSS, Javascript and ReactJs. I enjoy coding and the
+              challenge of learning something new everyday.
+            </p>
+            <button
+              style={{ marginTop: "15px" }}
+              onClick={() => {
+                dispatch(setAppLoading(true));
+                router.push("/about");
+              }}
+            >
+              More about me
+            </button>
+          </div>
+          <div className={styles.indexImgDiv}>
+            <img className={styles.myImage} src="/adelinked.jpg"></img>
+          </div>
+        </header>
+        <div className={styles.indexProjectsDiv}>
+          <div className={styles.indexTextProDiv}>
+            <h2 className={styles.indexTitles}>Some of my projects</h2>
+          </div>
+          {!loading ? (
+            <div className={styles.indexProjectsImgDiv}>
+              {projects.slice(1, 4).map((p) => (
+                <Project key={p.id} {...p} fromIndex={true} />
+              ))}
+            </div>
+          ) : (
+            <div>...loading</div>
+          )}
 
-        <div className={styles.indexTextDiv}>
-          <h2 className={styles.indexTitles}>Get the best of the market</h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
-            accusantium sapiente tempora sed dolore esse deserunt eaque
-            excepturi, delectus error accusamus vel eligendi, omnis beatae.
-            Quisquam, dicta. Eos quod quisquam esse recusandae vitae neque
-            dolore, obcaecati incidunt sequi blanditiis est exercitationem
-            molestiae delectus saepe odio eligendi modi porro eaque in libero
-            minus unde sapiente consectetur architecto. Ullam rerum, nemo iste
-            ex, eaque perspiciatis nisi, eum totam velit saepe sed quos
-            similique amet. Ex, voluptate accusamus nesciunt totam vitae esse
-            iste.
-          </p>
-          <button
-            style={{ marginTop: "10px" }}
-            onClick={() => {
-              dispatch(setAppLoading(false));
-              router.push("/products");
-            }}
-          >
-            Shop now
-          </button>
-        </div>
-      </div>
-      <div className={styles.indexFeaturedDiv}>
-        <div className={styles.indexTextDiv}>
-          <h2 className={styles.indexTitles}>Featured Products</h2>
-        </div>
-        <div className={styles.indexFeaturedImgDiv}>
-          {productsServ.slice(1, 4).map((p) => (
-            <Product key={p.id} {...p} fromIndex={true} />
-          ))}
-        </div>
-        <button
-          onClick={() => {
-            dispatch(setAppLoading(true));
-            router.push("/products");
-          }}
-        >
-          All products
-        </button>
-      </div>
-      <div className={styles.indexDiv}>
-        <div className={styles.subsTextDiv}>
-          <h3>Join our newsletter and get 20% off</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-            sint unde quaerat ratione soluta veniam provident adipisci cumque
-            eveniet tempore?
-          </p>
-        </div>
-        <div className={styles.subscribeForm}>
-          <input
-            value={email}
-            type="email"
-            name="subscribe"
-            placeholder="Enter your email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          ></input>
           <button
             onClick={() => {
-              setEmail(
-                ValidateEmail(email) ? "Email sent..." : "Enter a valid email"
-              );
-              setTimeout(() => {
-                setEmail("");
-              }, 800);
+              dispatch(setAppLoading(true));
+              router.push("/projects");
             }}
           >
-            Subsribe
+            All projects
           </button>
         </div>
-      </div>
-
+        <div className={styles.indexProjectsDiv}>
+          <div className={styles.indexTextProDiv} style={{ padding: "5px" }}>
+            <h2 className={styles.indexTitles}>Skills</h2>
+          </div>
+          <div className={styles.indexSkillsDiv}>
+            {skills.map((i) => (
+              <SkillComp key={i.num} {...i} />
+            ))}
+          </div>
+          <button
+            onClick={() => {
+              dispatch(setAppLoading(true));
+              router.push("/Resume");
+            }}
+            style={{ margin: "20px 0" }}
+          >
+            My resume
+          </button>
+        </div>
+      </article>
       <Footer />
     </>
   );
 };
 
 export default Index;
-
-export async function getServerSideProps(context) {
-  const url = "https://fakestoreapi.com/products?limit=5";
-  const data = await axios.get(url);
-  return { props: { productsServ: data.data } };
-}
