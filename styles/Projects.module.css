@@ -191,6 +191,10 @@
   flex-direction: column;
 }
 
+.displayButContainer {
+  margin-top: 5px;
+}
+
 .displayBut {
   font-size: 2.2rem;
   margin: 5px;
@@ -221,7 +225,12 @@
   padding-right: 20px;
   cursor: pointer;
 }
-
+.prjCmdClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 .prjCmdClose:hover {
   color: var(--color-font);
   transform: rotate(90deg);

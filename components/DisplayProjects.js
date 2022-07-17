@@ -11,7 +11,7 @@ export default () => {
     key: "display",
   });
   return (
-    <div>
+    <div className={styles.displayButContainer}>
       <span
         className={styles.displayBut}
         style={{

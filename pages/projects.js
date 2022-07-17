@@ -97,7 +97,6 @@ const Projects = ({ projectsData }) => {
               <span className={styles.prjCmdSpan}>
                 <span className={styles.prjCmdClose}>
                   <FaTimes
-                    className="fa fa-close"
                     title="close filter box"
                     onClick={() => dispatch(showPrjCmd())}
                   />
@@ -113,7 +112,6 @@ const Projects = ({ projectsData }) => {
             <span className={styles.prjCmdSpan}>
               <span className={styles.prjCmdOpen}>
                 <FaArrowDown
-                  className="fa fa-arrow-down"
                   title="show filters"
                   onClick={() => dispatch(showPrjCmd())}
                 />
