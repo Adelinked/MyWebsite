@@ -18,7 +18,7 @@ const initialState = {
   filtredProjects: [],
   show: false,
   current: "",
-  display: "0",
+  display: null,
   sort: "0",
   filter: { title: "", category: "" },
   showCmd: true,

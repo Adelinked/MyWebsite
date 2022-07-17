@@ -4,21 +4,22 @@ import Navbar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import Project from "../components/Project";
-import axios from "axios";
-import { useState, useEffect } from "react";
+//import axios from "axios";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
-import { randomize } from "../utils/functions";
+//import { randomize } from "../utils/functions";
 import SkillComp from "../components/SkillComp";
-
-const Index = () => {
-  const [projects, setProjects] = useState([]);
-  const [skills, setSkills] = useState([]);
+import Image from "next/image";
+import { projectsData, skillsData } from "../data";
+const Index = (/*{ projectsData, skillsData }*/) => {
+  const [projects, setProjects] = useState(projectsData);
+  const [skills, setSkills] = useState(skillsData);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  /*useEffect(() => {
     const controller = new AbortController();
     (async () => {
       setLoading(true);
@@ -30,9 +31,9 @@ const Index = () => {
       setLoading(false);
     })();
     return () => controller?.abort();
-  }, []);
+  }, []);*/
 
-  useEffect(() => {
+  /* useEffect(() => {
     let controller = new AbortController();
     (async () => {
       try {
@@ -47,7 +48,7 @@ const Index = () => {
     return () => {
       controller?.abort();
     };
-  }, []);
+  }, []);*/
 
   return (
     <>
@@ -61,6 +62,7 @@ const Index = () => {
         <header className={styles.indexHeader}>
           <div className={styles.indexTextDiv}>
             <h2 className={styles.indexTitles}>Hey, I am Adelinked</h2>
+
             <p className={styles.heroText}>
               I'm a software engineer who started gaining interrest for web
               developement that's why I spend most of my day, experimenting with
@@ -78,7 +80,15 @@ const Index = () => {
             </button>
           </div>
           <div className={styles.indexImgDiv}>
-            <img className={styles.myImage} src="/adelinked.jpg"></img>
+            <div className={styles.myImage}>
+              <Image
+                alt="Adelinked photo"
+                src="/adelinked.jpg"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
           </div>
         </header>
         <div className={styles.indexProjectsDiv}>
@@ -130,3 +140,10 @@ const Index = () => {
 };
 
 export default Index;
+
+/*export async function getStaticProps(context) {
+  const projectsData = (await import("../data")).projectsData;
+  const skillsData = (await import("../data")).skillsData;
+  return { props: { projectsData: projectsData, skillsData: skillsData } };
+}
+*/

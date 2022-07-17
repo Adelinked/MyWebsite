@@ -7,6 +7,11 @@
   background-color: var(--color-bgd2);
 }
 
+.footerParagraph {
+  display: flex;
+  justify-content: center;
+}
+
 .iconsDiv {
   display: flex;
   align-items: center;

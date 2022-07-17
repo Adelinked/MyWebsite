@@ -18,36 +18,41 @@
   padding: 5px;
   text-align: center;
   border-radius: 10px;
-
   overflow: hidden;
   background-color: var(--color-bgd2);
 }
-.image {
-  width: 95%;
-  height: 300px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
-}
+
 .imgDiv {
-  position: relative;
-  top: 0;
-  left: 0;
   width: 100%;
+  position: relative;
 }
 .imgDivDet {
+  width: 30%;
   position: relative;
-  top: 0;
-  left: 0;
-  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
 }
-
+.prjImg {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  opacity: 50%;
+}
+.prjImgDet {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  opacity: 50%;
+}
 .withDescription {
   display: flex;
 }
 
 .description {
-  width: 75%;
+  width: 60%;
 }
 
 .projectTitleDiv {
@@ -80,7 +85,7 @@
 .projectIconsDiv {
   width: 100%;
   color: var (--color-font-light);
-  padding: 5px;
+  padding: 0 5px;
   font-weight: 700;
   text-align: center;
   display: flex;
@@ -103,8 +108,8 @@
 }
 .projectButton {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 45%;
   display: none;
   font-size: 4rem;
   cursor: pointer;
@@ -115,8 +120,8 @@
 
 .projectButtonDet {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 45%;
   display: none;
   font-size: 4rem;
   cursor: pointer;
@@ -139,8 +144,12 @@
   justify-content: flex-start;
 }
 
-.projectPad:hover .image {
-  opacity: 50%;
+.projectPad:hover .prjImg {
+  opacity: 100%;
+}
+
+.projectPad:hover .prjImgDet {
+  opacity: 100%;
 }
 
 .projectsPageDiv {
@@ -191,6 +200,7 @@
 .descriptionText {
   text-align: justify;
   padding: 10px;
+  color: var(--color-font-light);
 }
 
 .loading {
@@ -250,6 +260,9 @@
 @media (max-width: 768px) {
   .projectsContainer {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .description {
+    width: 90%;
   }
   .withDescription {
     flex-direction: column;

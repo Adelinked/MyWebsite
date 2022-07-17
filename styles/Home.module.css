@@ -9,21 +9,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  margin-bottom: 5px;
 }
 
 .indexTitles {
   color: var(--color-font);
-}
-
-.myImage {
-  width: 80%;
-  border-radius: 5px;
-}
-.indexDiv {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .indexTextDiv,
@@ -31,12 +22,24 @@
 .indexImgDiv {
   padding: 10px;
   width: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.myImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .indexProjectsDiv {
+  margin-top: 5px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -57,13 +60,17 @@
 
 .skillSpan {
   padding: 5px;
-  margin: 5px;
+
   border-radius: 10px;
   background-color: var(--color-bg2);
   border: 1px solid var(--color-font);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.skillImg {
+  margin-right: 5px;
+  border-radius: 5px;
 }
 
 .indexProjectsImgDiv {
@@ -72,33 +79,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-}
-
-.subsTextDiv {
-  padding: 20px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 350px;
-}
-
-.subsTextDiv h3 {
-  font-size: 2rem;
-}
-
-.subscribeForm {
-  display: flex;
-  justify-content: center;
-  width: 60%;
-}
-
-.subscribeForm input {
-  font-size: 1.8rem;
-  height: 38px;
-  padding: 5px;
-  margin: 3px;
-  width: 70%;
 }
 
 @media (max-width: 992px) {
@@ -116,32 +96,30 @@
 
 @media (max-width: 768px) {
   .container {
-    margin: 0 40px;
+    margin: 0 30px;
   }
   .indexProjectsImgDiv {
     grid-template-columns: repeat(1, 1fr);
   }
-  .subsTextDiv {
-    padding: 10px;
-    width: 90%;
-  }
-  .subscribeForm {
-    width: 100%;
-  }
+
   .indexDiv,
   .indexHeader {
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
   }
   .indexImgDiv {
     order: 1;
-    width: 75%;
-    padding: 5px;
+    width: 100%;
   }
   .indexTextDiv {
     width: 100%;
-    padding: 10px;
     order: 2;
+  }
+  .myImage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   .indexTextProDiv {
     width: 100%;
@@ -152,26 +130,35 @@
     justify-content: flex-start;
     width: 100%;
   }
+  .skillSpan {
+    font-size: 1.3rem;
+  }
 }
-
-@media (max-width: 400px) {
+@media (max-width: 576px) {
   .container {
-    margin: 0 20px;
-  }
-  .subscribeForm {
-    flex-direction: column;
-    align-items: center;
-  }
-  .subscribeForm input {
-    width: 100%;
-  }
-  .subsTextDiv h3 {
-    font-size: 1.8rem;
-  }
-  .indexTitles {
-    font-size: 2.5rem;
+    margin: 0 10px;
   }
   .indexSkillsDiv {
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+  .skillSpan {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    margin: 0 5px;
+  }
+
+  .indexTitles {
+    font-size: 2.5rem;
+  }
+
+  .indexSkillsDiv {
+    padding: 2px;
+  }
+  .indexProjectsDiv {
+    padding: 5px 2px;
   }
 }

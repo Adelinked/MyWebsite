@@ -73,7 +73,7 @@ const About = () => {
               Development, Design Patterns (REST API Design, MVC), Databases
               (Postgres, SQL), Authentication and Security (OAuth2, JWT),
               Linux/UNIX Administration, Version Control (Git), Testing (Unit,
-              Component, Integration, End-to-end)
+              Component, Integration, End-to-end), Core Web Vitals...
             </li>
           </ul>
         </section>

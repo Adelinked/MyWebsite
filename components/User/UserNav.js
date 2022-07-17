@@ -1,4 +1,3 @@
-import "font-awesome/css/font-awesome.min.css";
 import { useState } from "react";
 import styles from "./user.module.css";
 import { useDispatch, useSelector } from "react-redux";

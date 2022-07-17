@@ -10,15 +10,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
 import { useEffect, useState } from "react";
 import Filter from "../components/Filter/Filter";
-
-const Projects = () => {
+import { useLocalStorageValue } from "@mantine/hooks";
+import { setProjectsDisplay } from "../store/actions/projectsAction";
+import { FaArrowDown, FaTimes } from "react-icons/fa";
+const Projects = ({ projectsData }) => {
   const dispatch = useDispatch();
   const { projects, filter, display, sort, showCmd } = useSelector(
     (state) => state.projects
   );
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  /*useEffect(() => {
     let controller = new AbortController();
     (async () => {
       try {
@@ -33,6 +35,10 @@ const Projects = () => {
     return () => {
       controller?.abort();
     };
+  }, []);*/
+
+  useEffect(() => {
+    dispatch(setProjects(projectsData));
   }, []);
 
   let sortedProjects = [...projects];
@@ -64,6 +70,15 @@ const Projects = () => {
     );
   }
 
+  const [displayLocal, setDisplayLocal] = useLocalStorageValue({
+    key: "display",
+  });
+
+  useEffect(() => {
+    if (!display) dispatch(setProjectsDisplay(displayLocal?.display ?? "0"));
+    if (!displayLocal) setDisplayLocal({ display: "0" });
+  }, []);
+
   return (
     <>
       <Head>
@@ -73,7 +88,7 @@ const Projects = () => {
       </Head>
       <Navbar />
       <article className={styles.projectsPageDiv}>
-        <h2 className={styles.projectHeroText}>My Projects</h2>
+        <h2 className={styles.projectHeroText}>My Projects </h2>
 
         <div className={styles.rightDiv}>
           {showCmd ? (
@@ -81,7 +96,7 @@ const Projects = () => {
               {" "}
               <span className={styles.prjCmdSpan}>
                 <span className={styles.prjCmdClose}>
-                  <span
+                  <FaTimes
                     className="fa fa-close"
                     title="close filter box"
                     onClick={() => dispatch(showPrjCmd())}
@@ -97,7 +112,7 @@ const Projects = () => {
           ) : (
             <span className={styles.prjCmdSpan}>
               <span className={styles.prjCmdOpen}>
-                <span
+                <FaArrowDown
                   className="fa fa-arrow-down"
                   title="show filters"
                   onClick={() => dispatch(showPrjCmd())}
@@ -127,8 +142,8 @@ const Projects = () => {
                     : styles.projectsDetailed
                 }
               >
-                {filtredProjects.map((p) => (
-                  <Project key={p.id} {...p} />
+                {filtredProjects.map((p, index) => (
+                  <Project key={p.id} {...p} num={index} />
                 ))}
               </div>
             </>
@@ -145,3 +160,9 @@ const Projects = () => {
 };
 
 export default Projects;
+
+export async function getStaticProps(context) {
+  const projectsData = (await import("../data")).projectsData;
+
+  return { props: { projectsData: projectsData } };
+}

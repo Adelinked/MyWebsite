@@ -1,18 +1,20 @@
-import "font-awesome/css/font-awesome.min.css";
 import styles from "./footer.module.css";
+import { FaEnvelope, FaGithubSquare } from "react-icons/fa";
+
+import Image from "next/image";
 export default function Footer() {
   return (
     <>
       <div className={styles.footerDiv}>
-        <p>
+        <p className={styles.footerParagraph}>
           Designed and coded by Adelinked{" "}
           <a
-            style={{ fontSize: "22px", marginLeft: "15px" }}
+            style={{ fontSize: "22px", marginLeft: "5px" }}
             href="mailto:adel.adelinked@gmail.com"
             title="Send an email"
             target="_blank"
           >
-            <i className="fa fa-envelope"></i>
+            <FaEnvelope />
           </a>
         </p>
         <div className={styles.iconsDiv}>
@@ -24,7 +26,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/nextjs.png" />
+            <Image src="/NextJs.png" alt="nextJs logo" width={60} height={30} />
           </a>
           <a
             style={{ fontSize: "30px" }}
@@ -32,7 +34,7 @@ export default function Footer() {
             title="Git hub"
             target="_blank"
           >
-            <i className="fa fa-github"></i>
+            <FaGithubSquare />
           </a>
           <a
             style={{ marginRight: "5px" }}
@@ -41,7 +43,12 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/netlify.png" />
+            <Image
+              src="/netlify.png"
+              alt="netlify logo"
+              width={48}
+              height={45}
+            />
           </a>
         </div>
       </div>

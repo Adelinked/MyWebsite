@@ -1,11 +1,9 @@
 import styles from "../styles/Projects.module.css";
-import "font-awesome/css/font-awesome.min.css";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrProject } from "../store/actions/projectsAction";
 import { useLocalStorageValue } from "@mantine/hooks";
-import { setAppLoading } from "../store/actions/appAction";
-
+import Image from "next/image";
+import { FaEye, FaGithubSquare, FaYoutube } from "react-icons/fa";
 export default function Project(props) {
   const {
     title,
@@ -16,6 +14,7 @@ export default function Project(props) {
     srcUrl,
     depUrl,
     demoUrl,
+    num,
     fromIndex = false,
   } = props;
   const [currProdLocal, setCurrProdLocal] = useLocalStorageValue({
@@ -33,7 +32,15 @@ export default function Project(props) {
             <h3>{title}</h3>
           </div>
           <div className={styles.imgDiv}>
-            <img className={styles.image} src={image} alt={title}></img>
+            <div className={styles.prjImg}>
+              <Image
+                src={image}
+                alt={title}
+                layout="fill"
+                objectFit="cover"
+                priority={num === 0}
+              />
+            </div>
             {depUrl && (
               <Link href={depUrl}>
                 <a
@@ -48,7 +55,7 @@ export default function Project(props) {
                         : styles.projectButtonDet
                     }
                   >
-                    <i className="fa fa-eye"></i>
+                    <FaEye />
                   </span>
                 </a>
               </Link>
@@ -67,7 +74,7 @@ export default function Project(props) {
               <Link href={srcUrl}>
                 <a title="view source code" target="_blank" rel="noreferrer">
                   <span className={styles.prjSrcIcon}>
-                    <i className="fa fa-github" />
+                    <FaGithubSquare />
                   </span>
                 </a>
               </Link>
@@ -80,7 +87,7 @@ export default function Project(props) {
                   rel="noreferrer"
                 >
                   <span className={styles.prjSrcIcon}>
-                    <i className="fa fa-eye" />
+                    <FaEye />
                   </span>
                 </a>
               </Link>
@@ -89,7 +96,7 @@ export default function Project(props) {
               <Link href={srcUrl}>
                 <a title="view source code" target="_blank" rel="noreferrer">
                   <span className={styles.prjSrcIcon}>
-                    <i className="fa fa-youtube" />
+                    <FaYoutube />
                   </span>
                 </a>
               </Link>
@@ -99,7 +106,9 @@ export default function Project(props) {
       ) : (
         <div className={styles.withDescription}>
           <div className={styles.imgDivDet}>
-            <img className={styles.image} src={image} alt={title} />
+            <div className={styles.prjImgDet}>
+              <Image src={image} alt={title} layout="fill" objectFit="cover" />
+            </div>
             {depUrl && (
               <Link href={depUrl}>
                 <a
@@ -114,7 +123,7 @@ export default function Project(props) {
                         : styles.projectButtonDet
                     }
                   >
-                    <i className="fa fa-eye"></i>
+                    <FaEye />
                   </span>
                 </a>
               </Link>
@@ -132,7 +141,7 @@ export default function Project(props) {
                 <Link href={srcUrl}>
                   <a title="view source code" target="_blank" rel="noreferrer">
                     <span className={styles.prjSrcIcon}>
-                      <i className="fa fa-github" />
+                      <FaGithubSquare />
                     </span>
                   </a>
                 </Link>
@@ -145,7 +154,7 @@ export default function Project(props) {
                     rel="noreferrer"
                   >
                     <span className={styles.prjSrcIcon}>
-                      <i className="fa fa-eye" />
+                      <FaEye />
                     </span>
                   </a>
                 </Link>
@@ -154,7 +163,7 @@ export default function Project(props) {
                 <Link href={srcUrl}>
                   <a title="view source code" target="_blank" rel="noreferrer">
                     <span className={styles.prjSrcIcon}>
-                      <i className="fa fa-youtube" />
+                      <FaYoutube />
                     </span>
                   </a>
                 </Link>
@@ -166,7 +175,10 @@ export default function Project(props) {
             <div className={styles.projectTitleDiv}>
               <h3 style={{ textAlign: "left" }}>{title}</h3>
             </div>
-            <p className={styles.descriptionText}>{description}</p>
+            <p
+              className={styles.descriptionText}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
           </div>
         </div>
       )}

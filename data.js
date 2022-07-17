@@ -4,33 +4,17 @@ export let projectsData = [
     title: "SocialNet",
     description: "Portfolio page",
     categories: ["HTML", "CSS", "JS", "REACT", "NextJs", "NextAuth", "MONGODB"],
-    image: "SocialNet.png",
+    image: "/projectsImages/socialNet.png",
     srcUrl: "https://github.com/Adelinked",
-  },
-  {
-    id: 3,
-    title: "Portfolio HTML page",
-    description: "Portfolio page: A simple html portfolio page.",
-    categories: ["HTML", "CSS"],
-    image: "portfolio_page.png",
-    srcUrl: "https://github.com/Adelinked/portfolio-project",
-    depUrl: "https://adelinked.github.io/portfolio-project/",
-  },
-  {
-    id: 4,
-    title: "Js calculator",
-    description: "Js calculator",
-    categories: ["HTML", "CSS", "JS", "React"],
-    image: "calculator.png",
-    srcUrl: "https://github.com/Adelinked/Js-calculator",
-    depUrl: "https://adelinked.github.io/Js-calculator/",
   },
   {
     id: 1,
     title: "E-commerce",
-    description: "E-commerce E-commerce E-commerce E-commerce",
+    description:
+      "A React application that uses Redux Thunk for state management. The user can add products to the cart then proceeds to checkout (after signin)\
+       where the payments are collected using <a  target='_blank' rel='noreferrer' href='https://stripe.com/'>Stripe</a>.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs", "Redux", "NextAuth"],
-    image: "https://i.postimg.cc/7YVxtsXp/products.png",
+    image: "/projectsImages/products.png",
     srcUrl: "https://github.com/Adelinked/E-commerce",
     depUrl: "https://e-commerce-adelinked.netlify.app/",
     demoUrl: "",
@@ -38,9 +22,10 @@ export let projectsData = [
   {
     id: 5,
     title: "Music-Albums",
-    description: " An application to display albums of a given artist",
+    description:
+      "An application to display albums of a given artist using data provided by <a target='_blank' rel='noreferrer' href='https://www.last.fm/api'>The Last.fm</a> API.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
-    image: "musicApp.png",
+    image: "/projectsImages/musicApp.png",
     srcUrl: "https://github.com/Adelinked/Music-albums",
     depUrl: "https://music-albums-adelinked.netlify.app/",
     demoUrl: "",
@@ -49,9 +34,9 @@ export let projectsData = [
     id: 6,
     title: "Weather forcast",
     description:
-      " An application for weather forcast in your city and other cities",
+      "An application for weather forcast in your city and other cities around the world based on data provided by <a target='_blank' rel='noreferrer' href='https://openweathermap.org/api'>OpenWeather</a>.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
-    image: "weatherForcast.png",
+    image: "/projectsImages/weatherForcast.png",
     srcUrl: "https://github.com/Adelinked/weather-forcast",
     depUrl: "https://weather-forcast-adelinked.netlify.app/",
     demoUrl: "",
@@ -59,9 +44,10 @@ export let projectsData = [
   {
     id: 7,
     title: "Quiz App",
-    description: "Quiz app made using NextJs framework and Redux Thunk",
+    description:
+      "Quiz app made using NextJs framework and Redux Thunk. The data is provided by <a target='_blank' rel='noreferrer' href='https://opentdb.com/api_config.php'>The Trivia Api</a>.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs", "Redux"],
-    image: "quizApp.png",
+    image: "/projectsImages/quizApp.png",
     srcUrl: "https://github.com/Adelinked/Quiz-app-redux",
     depUrl: "https://quiz-app-redux-adelinked.netlify.app",
     demoUrl: "",
@@ -69,12 +55,22 @@ export let projectsData = [
   {
     id: 8,
     title: "Hacker News Search",
-    description: "Hacker news search",
+    description:
+      "This app permits to do hacker news search. It uses Redux Thunk for state management and its  source of data is the <a target='_blank' rel='noreferrer' href='https://hn.algolia.com/api/'>Hacker News Search </a>API.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
-    image: "hackerNews.png",
+    image: "/projectsImages/hackerNews.png",
     srcUrl: "https://github.com/Adelinked/hacker-news-search",
     depUrl: "https://hacker-news-adelinked.netlify.app/",
     demoUrl: "",
+  },
+  {
+    id: 3,
+    title: "Portfolio HTML page",
+    description: "A simple html portfolio page as part of FreeCodeCamp courses",
+    categories: ["HTML", "CSS"],
+    image: "/projectsImages/portfolio_page.png",
+    srcUrl: "https://github.com/Adelinked/portfolio-project",
+    depUrl: "https://adelinked.github.io/portfolio-project/",
   },
   {
     id: 9,
@@ -82,15 +78,16 @@ export let projectsData = [
     description:
       "An application to display photos using unsplash-api as a source of data ",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
-    image: "photosApp.png",
+    image: "/projectsImages/photosApp.png",
     srcUrl: "https://github.com/Adelinked/Photos-app",
     depUrl: "https://photos-app-adelinked.netlify.app/",
     demoUrl: "",
   },
   {
     id: 10,
-    title: "Shopping cart ",
-    description: "Cart using useState hook vs Redux ",
+    title: "Shopping cart - TS ",
+    description:
+      "Cart using with typeScript useState hook vs Redux . It also implements some tests using Jest and React Testing Library. I added a Github action to run those tests before deployement on each push or pull (see the <a target='_blank' rel='noreferrer' href='https://github.com/Adelinked/Shopping-Cart-TS'>source code on Github</a>).",
     categories: [
       "HTML",
       "CSS",
@@ -102,7 +99,7 @@ export let projectsData = [
       "Jest",
       "CI",
     ],
-    image: "cart.png",
+    image: "/projectsImages/cart.png",
     srcUrl: "https://github.com/Adelinked/Shopping-Cart-TS",
     srcUrl2: "https://github.com/Adelinked/Cart",
     depUrl: "https://cart-usestate-redux-typescript.netlify.app/",
@@ -112,12 +109,23 @@ export let projectsData = [
   {
     id: 11,
     title: "Dark mode",
-    description: " Dark mode with react ",
+    description:
+      " Dark mode app using the react useContext and useLocalStorageValue hooks",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
-    image: "darkMode.png",
+    image: "/projectsImages/darkMode.png",
     srcUrl: "https://github.com/Adelinked/Dark-mode",
     depUrl: "https://dark-mode-adelinked.netlify.app/",
     demoUrl: "",
+  },
+  {
+    id: 4,
+    title: "Js calculator",
+    description:
+      "This app was developed as part of <a target='_blank' rel='noreferrer' href='https://www.freecodecamp.org/'>FreeCodeCamp</a> courses using the <a target='_blank' rel='noreferrer' href='https://github.com/facebook/create-react-app'>Create React App</a>.",
+    categories: ["HTML", "CSS", "JS", "React"],
+    image: "/projectsImages/calculator.png",
+    srcUrl: "https://github.com/Adelinked/Js-calculator",
+    depUrl: "https://adelinked.github.io/Js-calculator/",
   },
   {
     id: 12,
@@ -125,7 +133,7 @@ export let projectsData = [
     description:
       "Pomodoro 25+5 clock using React class components made during FreeCodeCamp courses",
     categories: ["HTML", "CSS", "JS", "React"],
-    image: "pomodoro.png",
+    image: "/projectsImages/pomodoro.png",
     srcUrl: "https://github.com/Adelinked/Pomodoro",
     depUrl: "https://adelinked.github.io/Pomodoro/",
     demoUrl: "",
@@ -133,14 +141,14 @@ export let projectsData = [
 ];
 
 export let skillsData = [
-  { num: 1, title: "JavaScript", image: "languages/js.png" },
-  { num: 2, title: "HTML", image: "languages/html.png" },
-  { num: 3, title: "CSS", image: "languages/css.png" },
-  { num: 4, title: "React", image: "languages/react.png" },
-  { num: 5, title: "NextJs", image: "languages/NextJs.png" },
-  { num: 6, title: "Redux", image: "languages/redux.png" },
-  { num: 7, title: "Node", image: "languages/nodejs.png" },
-  { num: 8, title: "Mongodb", image: "languages/mongodb.png" },
-  { num: 9, title: "TypeScript", image: "languages/typescript.png" },
-  { num: 10, title: "Jest", image: "languages/jest.png" },
+  { num: 1, title: "JavaScript", image: "/languages/js.png" },
+  { num: 2, title: "HTML", image: "/languages/html.png" },
+  { num: 3, title: "CSS", image: "/languages/css.png" },
+  { num: 4, title: "React", image: "/languages/react.png" },
+  { num: 5, title: "NextJs", image: "/languages/NextJs.png" },
+  { num: 6, title: "Redux", image: "/languages/redux.png" },
+  { num: 7, title: "Node", image: "/languages/nodejs.png" },
+  { num: 8, title: "Mongodb", image: "/languages/mongodb.png" },
+  { num: 9, title: "TypeScript", image: "/languages/typescript.png" },
+  { num: 10, title: "Jest", image: "/languages/jest.png" },
 ];

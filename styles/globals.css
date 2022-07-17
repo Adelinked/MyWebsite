@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap");*/
 
 /* Custom properties/variables  */
 :root {
@@ -10,9 +10,6 @@
   --color-font-light: #b8afaf;
   --color-links: #a4a4ad;
   --color-sub: rgb(238, 18, 11);
-  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-    "Roboto", Roboto, Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .dark-theme {
@@ -50,8 +47,10 @@
 *::after {
   box-sizing: inherit;
   /* user-select: none;*/
-  transition: all 0.5s ease-out;
-  -webkit-transition: all 0.5s ease-out;
+  /*transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;*/
+  transition: top 0.5s ease-out, color 0.5s ease-out,
+    background-color 0.5s ease-out, transform 0.5s ease-out, right 0.5s ease-out;
 }
 
 html {
@@ -127,6 +126,7 @@ a:hover,
 a:focus {
   color: var(--color-font);
   outline: none;
+  cursor: pointer;
 }
 
 button {
@@ -158,6 +158,10 @@ button:disabled {
 image {
   object-fit: cover;
   display: block;
+}
+
+li {
+  padding: 5px;
 }
 
 .aboutDiv {
@@ -236,6 +240,10 @@ image {
 .aboutSubTit {
   font-size: 1.8rem;
   color: var(--color-font);
+}
+
+li {
+  padding: 5px;
 }
 
 @media (max-width: 992px) {

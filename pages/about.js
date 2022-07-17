@@ -44,33 +44,33 @@ const About = () => {
               <a className="aboutLinks">email</a>
             </Link>{" "}
             to say hi! I always appreciate meeting new people.{" "}
-            <ul>
-              <li>
-                {" "}
-                <Link href="https://github.com/adelinked">
-                  <a target="_blank" rel="noreferrer">
-                    GitHub
-                  </a>
-                </Link>{" "}
-              </li>
-              <li>
-                {" "}
-                <Link href="https://twitter.com">
-                  <a target="_blank" rel="noreferrer">
-                    Twitter
-                  </a>
-                </Link>{" "}
-              </li>
-              <li>
-                {" "}
-                <Link href="https://www.linkedin.com/in/adel-allam-2325a1180/">
-                  <a target="_blank" rel="noreferrer">
-                    Linkedin
-                  </a>
-                </Link>{" "}
-              </li>
-            </ul>
           </p>
+          <ul className="aboutParagraphs">
+            <li className="listItem">
+              {" "}
+              <Link href="https://github.com/adelinked">
+                <a target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              </Link>{" "}
+            </li>
+            <li>
+              {" "}
+              <Link href="https://twitter.com">
+                <a target="_blank" rel="noreferrer">
+                  Twitter
+                </a>
+              </Link>{" "}
+            </li>
+            <li>
+              {" "}
+              <Link href="https://www.linkedin.com/in/adel-allam-2325a1180/">
+                <a target="_blank" rel="noreferrer">
+                  Linkedin
+                </a>
+              </Link>{" "}
+            </li>
+          </ul>
         </section>
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Random facts</h3>
@@ -78,17 +78,21 @@ const About = () => {
             <ul>
               <li>
                 I built my first website in 2005 a weather forcast mobile
-                website
+                website.
               </li>
-              <li>My favorite Tv Series is Breaking Bad</li>
-              <li>My current favorite type of game is strategy-based</li>
-              <li>My favorite type of music is rock.</li>
+              <li>I speak Arabic and French in addition to English.</li>
+              <li>My favorite Tv Series is Breaking Bad.</li>
+              <li>My current favorite type of game is strategy-based.</li>
+              <li>
+                My favorite type of music is rock music and favorite sport is
+                soccer.
+              </li>
             </ul>
           </div>
         </section>
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Tools</h3>
-          <p className="aboutParagraphs">
+          <div className="aboutParagraphs">
             <ul>
               <li>
                 This website is hosted on{" "}
@@ -106,11 +110,11 @@ const About = () => {
                 framework
               </li>
             </ul>
-          </p>
+          </div>
         </section>
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Misc</h3>
-          <p className="aboutParagraphs">
+          <div className="aboutParagraphs">
             <ul>
               <li>
                 <Link href="./Resume">
@@ -124,7 +128,7 @@ const About = () => {
                 </Link>{" "}
               </li>
             </ul>
-          </p>
+          </div>
         </section>
       </article>
 
