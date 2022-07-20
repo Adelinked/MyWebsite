@@ -6,6 +6,7 @@ export let projectsData = [
     categories: ["HTML", "CSS", "JS", "REACT", "NextJs", "NextAuth", "MONGODB"],
     image: "/projectsImages/socialNet.png",
     srcUrl: "https://github.com/Adelinked",
+    depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
     id: 1,

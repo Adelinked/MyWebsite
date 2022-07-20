@@ -53,7 +53,7 @@ const About = () => {
           </ul>
         </header>{" "}
         <section className="aboutTextDiv">
-          <h3 className="aboutSecTitle">Experience</h3>
+          <h3 className="aboutSecTitle">Background</h3>
           <p className="aboutParagraphs">
             With more than 14 years working in the IT field where software
             developement represents the biggest part.
@@ -71,7 +71,7 @@ const About = () => {
             <li>
               <span className="aboutSubTit">Concepts</span> - Web Application
               Development, Design Patterns (REST API Design, MVC), Databases
-              (Postgres, SQL), Authentication and Security (OAuth2, JWT),
+              (MongoDb, SQL), Authentication and Security (OAuth2, JWT),
               Linux/UNIX Administration, Version Control (Git), Testing (Unit,
               Component, Integration, End-to-end), Core Web Vitals...
             </li>
