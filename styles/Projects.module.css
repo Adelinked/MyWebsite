@@ -129,7 +129,8 @@
   border-radius: 25%;
   height: 40px;
 }
-.projectPad:hover {
+.projectPad:hover,
+.projectPad:focus-within {
   color: var(--color-font);
 }
 .projectPad:hover .projectButton {
@@ -149,6 +150,26 @@
 }
 
 .projectPad:hover .prjImgDet {
+  opacity: 100%;
+}
+
+.projectPad:focus-within .projectButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.projectPad:focus-within .projectButtonDet {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.projectPad:focus-within .prjImg {
+  opacity: 100%;
+}
+
+.projectPad:focus-within .prjImgDet {
   opacity: 100%;
 }
 

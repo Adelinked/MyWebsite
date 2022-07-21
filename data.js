@@ -4,7 +4,7 @@ export let projectsData = [
     title: "SocialNet",
     description: "Portfolio page",
     categories: ["HTML", "CSS", "JS", "REACT", "NextJs", "NextAuth", "MONGODB"],
-    image: "/projectsImages/socialNet.png",
+    image: "/projectsImages/socialNet2.png",
     srcUrl: "https://github.com/Adelinked",
     depUrl: "https://adelinked-socialnet.netlify.app/",
   },

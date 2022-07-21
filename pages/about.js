@@ -56,7 +56,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              <Link href="https://twitter.com">
+              <Link href="https://twitter.com/AAdelinked">
                 <a target="_blank" rel="noreferrer">
                   Twitter
                 </a>

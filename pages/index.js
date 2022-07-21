@@ -91,7 +91,7 @@ const Index = (/*{ projectsData, skillsData }*/) => {
             </div>
           </div>
         </header>
-        <div className={styles.indexProjectsDiv}>
+        <section className={styles.indexProjectsDiv}>
           <div className={styles.indexTextProDiv}>
             <h2 className={styles.indexTitles}>Some of my projects</h2>
           </div>
@@ -113,8 +113,8 @@ const Index = (/*{ projectsData, skillsData }*/) => {
           >
             All projects
           </button>
-        </div>
-        <div className={styles.indexProjectsDiv}>
+        </section>
+        <section className={styles.indexProjectsDiv}>
           <div className={styles.indexTextProDiv} style={{ padding: "5px" }}>
             <h2 className={styles.indexTitles}>Skills</h2>
           </div>
@@ -132,7 +132,7 @@ const Index = (/*{ projectsData, skillsData }*/) => {
           >
             My resume
           </button>
-        </div>
+        </section>
       </article>
       <Footer />
     </>
