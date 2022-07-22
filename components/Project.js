@@ -1,7 +1,6 @@
 import styles from "../styles/Projects.module.css";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocalStorageValue } from "@mantine/hooks";
 import Image from "next/image";
 import { FaEye, FaGithubSquare, FaYoutube } from "react-icons/fa";
 export default function Project(props) {
@@ -17,9 +16,7 @@ export default function Project(props) {
     num,
     fromIndex = false,
   } = props;
-  const [currProdLocal, setCurrProdLocal] = useLocalStorageValue({
-    key: "currProd",
-  });
+
   const dispatch = useDispatch();
   const { projects, display } = useSelector((state) => state.projects);
   const { loading } = useSelector((state) => state.app);
@@ -35,7 +32,7 @@ export default function Project(props) {
             <div className={styles.prjImg}>
               <Image
                 src={image}
-                alt={title}
+                alt={`${title} project image`}
                 layout="fill"
                 objectFit="cover"
                 priority={num === 0}
@@ -44,15 +41,15 @@ export default function Project(props) {
             {depUrl && (
               <Link href={depUrl}>
                 <a
-                  title="view the project deployed"
+                  title={`View ${title} deployed`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <span
                     className={
-                      display === "0" || fromIndex
-                        ? styles.projectButton
-                        : styles.projectButtonDet
+                      display === "1" || fromIndex
+                        ? styles.projectButtonDet
+                        : styles.projectButton
                     }
                   >
                     <FaEye />
@@ -72,7 +69,11 @@ export default function Project(props) {
           <div className={styles.projectIconsDiv}>
             {srcUrl && (
               <Link href={srcUrl}>
-                <a title="view source code" target="_blank" rel="noreferrer">
+                <a
+                  title={`View ${title} source code`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <span className={styles.prjSrcIcon}>
                     <FaGithubSquare />
                   </span>
@@ -82,7 +83,7 @@ export default function Project(props) {
             {depUrl && (
               <Link href={depUrl}>
                 <a
-                  title="view the app deployed"
+                  title={`View ${title} deployed`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -94,7 +95,11 @@ export default function Project(props) {
             )}
             {demoUrl && (
               <Link href={srcUrl}>
-                <a title="view source code" target="_blank" rel="noreferrer">
+                <a
+                  title={`View ${title} demo`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <span className={styles.prjSrcIcon}>
                     <FaYoutube />
                   </span>
@@ -112,15 +117,15 @@ export default function Project(props) {
             {depUrl && (
               <Link href={depUrl}>
                 <a
-                  title="view the project deployed"
+                  title={`View ${title} deployed`}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <span
                     className={
-                      display === "0" || fromIndex
-                        ? styles.projectButton
-                        : styles.projectButtonDet
+                      display === "1" || fromIndex
+                        ? styles.projectButtonDet
+                        : styles.projectButton
                     }
                   >
                     <FaEye />
@@ -139,7 +144,11 @@ export default function Project(props) {
             <div className={styles.projectIconsDiv}>
               {srcUrl && (
                 <Link href={srcUrl}>
-                  <a title="view source code" target="_blank" rel="noreferrer">
+                  <a
+                    title={`View ${title} source code`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <span className={styles.prjSrcIcon}>
                       <FaGithubSquare />
                     </span>
@@ -149,7 +158,7 @@ export default function Project(props) {
               {depUrl && (
                 <Link href={depUrl}>
                   <a
-                    title="view the app deployed"
+                    title={`View ${title} deployed`}
                     target="_blank"
                     rel="noreferrer"
                   >

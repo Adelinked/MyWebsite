@@ -1,0 +1,127 @@
+.container {
+  margin: 0 60px;
+}
+.blogSections {
+  display: flex;
+}
+
+.indexHeader {
+  padding: 0 10px;
+  padding-top: 90px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.indexHero {
+  color: var(--color-font);
+  font-size: 3.8rem;
+}
+
+.indexTitles {
+  color: var(--color-font);
+  text-align: left;
+  font-size: 3.2rem;
+}
+
+.indexPostsSec {
+  margin-top: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.indexPostsDiv {
+  padding: 10px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.categoriesTagsSec {
+  padding: 10px;
+
+  width: 30%;
+}
+.categoriesTags {
+  height: 120vh;
+}
+
+@media (max-width: 992px) {
+  .container {
+    margin: 0 60px;
+  }
+  .indexHero {
+    font-size: 3.5rem;
+  }
+  .indexTitles {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0 30px;
+  }
+  .blogSections {
+    flex-direction: column;
+  }
+  .indexPostsDiv {
+    width: 100%;
+  }
+  .categoriesTagsSec {
+    width: 100%;
+  }
+
+  .indexTextDiv {
+    width: 100%;
+    order: 2;
+  }
+
+  .indexTextProDiv {
+    width: 100%;
+    padding: 10px;
+  }
+  .indexTitles {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .skillSpan {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    margin: 0 10px;
+  }
+  .indexSkillsDiv {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
+  .skillSpan {
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    margin: 0 5px;
+  }
+
+  .indexHero {
+    font-size: 3rem;
+  }
+
+  .indexTitles {
+    font-size: 2.5rem;
+  }
+
+  .indexSkillsDiv {
+    padding: 2px;
+  }
+  .indexProjectsDiv {
+    padding: 5px 2px;
+  }
+}

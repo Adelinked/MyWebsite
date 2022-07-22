@@ -117,7 +117,7 @@ const About = () => {
           <div className="aboutParagraphs">
             <ul>
               <li>
-                <Link href="./Resume">
+                <Link href="./resume">
                   <a
                     onClick={() => {
                       dispatch(setAppLoading(true));

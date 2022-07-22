@@ -96,6 +96,7 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="Home page"
           >
             Home
           </a>
@@ -105,6 +106,7 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="About me"
           >
             About me
           </a>
@@ -114,8 +116,19 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="Projects"
           >
             Projects
+          </a>
+        </Link>
+        <Link href="/blog">
+          <a
+            onClick={() => {
+              dispatch(setAppLoading(true));
+            }}
+            title="Blog"
+          >
+            Blog
           </a>
         </Link>
         {session && (
@@ -164,6 +177,7 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="Home page"
           >
             Home
           </a>
@@ -173,6 +187,7 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="About"
           >
             About
           </a>
@@ -182,8 +197,19 @@ export default () => {
             onClick={() => {
               dispatch(setAppLoading(true));
             }}
+            title="Projects"
           >
             Projects
+          </a>
+        </Link>
+        <Link href="/blog">
+          <a
+            onClick={() => {
+              dispatch(setAppLoading(true));
+            }}
+            title="Blog"
+          >
+            Blog
           </a>
         </Link>
         {session && (

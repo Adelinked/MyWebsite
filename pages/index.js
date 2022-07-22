@@ -11,7 +11,7 @@ import { setAppLoading } from "../store/actions/appAction";
 //import { randomize } from "../utils/functions";
 import SkillComp from "../components/SkillComp";
 import Image from "next/image";
-import { projectsData, skillsData } from "../data";
+import { projectsData, skillsData } from "../data/projects";
 const Index = (/*{ projectsData, skillsData }*/) => {
   const [projects, setProjects] = useState(projectsData);
   const [skills, setSkills] = useState(skillsData);
@@ -126,7 +126,7 @@ const Index = (/*{ projectsData, skillsData }*/) => {
           <button
             onClick={() => {
               dispatch(setAppLoading(true));
-              router.push("/Resume");
+              router.push("/resume");
             }}
             style={{ margin: "20px 0" }}
           >

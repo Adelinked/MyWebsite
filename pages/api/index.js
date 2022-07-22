@@ -1,7 +1,7 @@
-import { projectsData, skillsData } from "../../data";
+import { projectsData, skillsData } from "../../data/projects";
 
 export default function handler(req, res) {
-  switch (req.query.d) {
+  switch (req?.query?.d) {
     case "projects":
       res.status(200).json(projectsData);
       break;

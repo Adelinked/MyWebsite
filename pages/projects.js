@@ -13,6 +13,7 @@ import Filter from "../components/Filter/Filter";
 import { useLocalStorageValue } from "@mantine/hooks";
 import { setProjectsDisplay } from "../store/actions/projectsAction";
 import { FaArrowDown, FaTimes } from "react-icons/fa";
+
 const Projects = ({ projectsData }) => {
   const dispatch = useDispatch();
   const { projects, filter, display, sort, showCmd } = useSelector(
@@ -41,7 +42,7 @@ const Projects = ({ projectsData }) => {
     dispatch(setProjects(projectsData));
   }, []);
 
-  let sortedProjects = [...projects];
+  let sortedProjects = projects?.length > 0 ? [...projects] : [...projectsData];
 
   if (sort === "1") {
     /* A - Z */
@@ -159,8 +160,9 @@ const Projects = ({ projectsData }) => {
 
 export default Projects;
 
-export async function getStaticProps(context) {
-  const projectsData = (await import("../data")).projectsData;
+export async function getStaticProps() {
+  const projectsData = (await import("../data/projects")).projectsData;
+  //const projectsData = await axios.get(`http://localhost:3000/api?d=projects`);
 
   return { props: { projectsData: projectsData } };
 }

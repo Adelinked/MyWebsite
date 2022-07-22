@@ -13,6 +13,8 @@
     "@next-auth/mongodb-adapter": "^1.0.3",
     "@stripe/stripe-js": "^1.29.0",
     "axios": "^0.27.2",
+    "date-fns": "^2.29.1",
+    "gray-matter": "^4.0.3",
     "mongodb": "^4.6.0",
     "next": "latest",
     "next-auth": "^4.3.4",
@@ -23,6 +25,8 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
     "sharp": "^0.30.7"
   }
 }

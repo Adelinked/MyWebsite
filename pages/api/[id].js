@@ -1,4 +1,4 @@
-import { projectsData } from "../../data";
+import { projectsData } from "../../data/projects";
 
 export default function handler(req, res) {
   const id = req.query.id;
