@@ -1,5 +1,10 @@
 import styles from "./footer.module.css";
-import { FaEnvelope, FaGithubSquare } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaGithubSquare,
+  FaTwitter,
+  FaLinkedin,
+} from "react-icons/fa";
 
 import Image from "next/image";
 export default function Footer() {
@@ -8,6 +13,22 @@ export default function Footer() {
       <div className={styles.footerDiv}>
         <p className={styles.footerParagraph}>
           Designed and coded by Adelinked{" "}
+          <a
+            style={{ fontSize: "22px", marginLeft: "5px" }}
+            href="https://www.linkedin.com/in/adel-allam-2325a1180/"
+            title="LinkedIn"
+            target="_blank"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            style={{ fontSize: "22px", marginLeft: "5px" }}
+            href="https://twitter.com/AAdelinked"
+            title="Twitter"
+            target="_blank"
+          >
+            <FaTwitter />
+          </a>
           <a
             style={{ fontSize: "22px", marginLeft: "5px" }}
             href="mailto:adel.adelinked@gmail.com"
