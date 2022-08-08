@@ -17,8 +17,8 @@ const Index = ({ projectsData, skillsData }) => {
   return (
     <>
       <Head>
-        <title>Adelinked | Home</title>
-        <meta name="description" content="Adelinked website" />
+        <title>Adelinked website | Home</title>
+        <meta name="description" content="Adelinked website home page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />

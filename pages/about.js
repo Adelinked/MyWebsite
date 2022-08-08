@@ -16,8 +16,8 @@ const About = () => {
   return (
     <>
       <Head>
-        <title>Adelinked | About me</title>
-        <meta name="description" content="Ecomerce app" />
+        <title>Adelinked website | About me</title>
+        <meta name="description" content="Adelinked website about me page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />

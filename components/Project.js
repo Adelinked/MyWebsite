@@ -1,6 +1,6 @@
 import styles from "../styles/Projects.module.css";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 import { FaEye, FaGithubSquare, FaYoutube } from "react-icons/fa";
 export default function Project(props) {
@@ -9,7 +9,6 @@ export default function Project(props) {
     description,
     image,
     categories,
-    id,
     srcUrl,
     depUrl,
     demoUrl,
@@ -17,9 +16,7 @@ export default function Project(props) {
     fromIndex = false,
   } = props;
 
-  const dispatch = useDispatch();
-  const { projects, display } = useSelector((state) => state.projects);
-  const { loading } = useSelector((state) => state.app);
+  const { display } = useSelector((state) => state.projects);
 
   return (
     <div className={styles.projectPad}>
@@ -31,11 +28,11 @@ export default function Project(props) {
           <div className={styles.imgDiv}>
             <div className={styles.prjImg}>
               <Image
+                priority={num === 0}
                 src={image}
                 alt={`${title} project image`}
                 layout="fill"
                 objectFit="cover"
-                priority={num === 0}
               />
             </div>
             {depUrl && (

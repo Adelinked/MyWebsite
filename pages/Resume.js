@@ -12,8 +12,8 @@ const Resume = () => {
   return (
     <>
       <Head>
-        <title>Adelinked | Resume</title>
-        <meta name="description" content="Ecomerce app" />
+        <title>Adelinked website | Resume </title>
+        <meta name="description" content="Adelinked website resume page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
@@ -68,12 +68,12 @@ const Resume = () => {
 
           <ul className="aboutParagraphs">
             <li style={{ marginBottom: "10px" }}>
-              <span className="aboutSubTit">Languages</span> - Node.js,
-              JavaScript (React/Redux), TypeScript, SQL, PHP, Python, HTML5,
-              CSS3, JSON, C, Java
+              <span className="aboutSubTit">Languages: </span>
+              JavaScript (React/Redux), Node.js,TypeScript, SQL, HTML5, CSS3,
+              JSON, C.
             </li>
             <li>
-              <span className="aboutSubTit">Concepts</span> - Web Application
+              <span className="aboutSubTit">Concepts: </span>Web Application
               Development, Design Patterns (REST API Design, MVC), Databases
               (MongoDb, SQL), Authentication and Security (OAuth2, JWT),
               Linux/UNIX Administration, Version Control (Git), Testing (Unit,
