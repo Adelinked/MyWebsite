@@ -46,11 +46,11 @@ const Index = ({ projectsData, skillsData }) => {
           <div className={styles.indexImgDiv}>
             <div className={styles.myImage}>
               <Image
+                priority
                 alt="Adelinked photo"
                 src="/adelinked.jpg"
                 layout="fill"
                 objectFit="contain"
-                priority
               />
             </div>
           </div>

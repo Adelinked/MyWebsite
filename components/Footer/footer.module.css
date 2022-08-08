@@ -3,6 +3,7 @@
   font-weight: 600;
   text-align: center;
   min-width: 350px;
+  min-height: 25vh;
   border-top: 2px var(--color-sub) solid;
   background-color: var(--color-bgd2);
 }

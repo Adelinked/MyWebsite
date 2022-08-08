@@ -2,10 +2,11 @@ export let projectsData = [
   {
     id: 2,
     title: "SocialNet",
-    description: "Portfolio page",
+    description:
+      "This project is developed using the NextJs React framework. The app permits to users to create their profiles after signin, add posts, react to them and comment them. They can also delete or edit those information anytime they want.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs", "NextAuth", "MONGODB"],
     image: "/projectsImages/socialNet2.png",
-    srcUrl: "https://github.com/Adelinked",
+    srcUrl: "https://github.com/Adelinked/SocialNet",
     depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
@@ -87,7 +88,7 @@ export let projectsData = [
     id: 9,
     title: "Photos App",
     description:
-      "An application to display photos using unsplash-api as a source of data ",
+      "An application to display photos using <a target='_blank' rel='noreferrer' href='https://unsplash.com/developers'>unsplash-api </a>as a source of data ",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
     image: "/projectsImages/photosApp.png",
     srcUrl: "https://github.com/Adelinked/Photos-app",

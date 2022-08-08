@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Footer from "../components/Footer";
+
 import Navbar from "../components/NavBar";
 import styles from "../styles/Projects.module.css";
 import Sort from "../components/Sort";
@@ -15,6 +15,9 @@ import { FaArrowDown, FaTimes } from "react-icons/fa";
 import dynamic from "next/dynamic";
 
 const Project = dynamic(() => import("../components/Project"), {
+  ssr: false,
+});
+const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
@@ -133,7 +136,6 @@ const Projects = ({ projectsData }) => {
           </>
         </div>
       </article>
-
       <Footer />
     </>
   );
