@@ -4,51 +4,15 @@ import Navbar from "../components/NavBar";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import Project from "../components/Project";
-//import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
-//import { randomize } from "../utils/functions";
 import SkillComp from "../components/SkillComp";
 import Image from "next/image";
-import { projectsData, skillsData } from "../data/projects";
-const Index = (/*{ projectsData, skillsData }*/) => {
-  const [projects, setProjects] = useState(projectsData);
-  const [skills, setSkills] = useState(skillsData);
+const Index = ({ projectsData, skillsData }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
-
-  /*useEffect(() => {
-    const controller = new AbortController();
-    (async () => {
-      setLoading(true);
-      const url = "./api?d=projects";
-      const data = await axios.get(url, { signal: controller.signal });
-
-      setProjects(randomize(data.data));
-      controller = null;
-      setLoading(false);
-    })();
-    return () => controller?.abort();
-  }, []);*/
-
-  /* useEffect(() => {
-    let controller = new AbortController();
-    (async () => {
-      try {
-        setLoading(true);
-        const url = "./api?d=skills";
-        const data = await axios.get(url, { signal: controller.signal });
-        setSkills(data.data);
-        setLoading(false);
-        controller = null;
-      } catch (e) {}
-    })();
-    return () => {
-      controller?.abort();
-    };
-  }, []);*/
 
   return (
     <>
@@ -97,7 +61,7 @@ const Index = (/*{ projectsData, skillsData }*/) => {
           </div>
           {!loading ? (
             <div className={styles.indexProjectsImgDiv}>
-              {projects.slice(1, 4).map((p) => (
+              {projectsData.slice(1, 4).map((p) => (
                 <Project key={p.id} {...p} fromIndex={true} />
               ))}
             </div>
@@ -119,7 +83,7 @@ const Index = (/*{ projectsData, skillsData }*/) => {
             <h2 className={styles.indexTitles}>Skills</h2>
           </div>
           <div className={styles.indexSkillsDiv}>
-            {skills.map((i) => (
+            {skillsData.map((i) => (
               <SkillComp key={i.num} {...i} />
             ))}
           </div>
@@ -141,9 +105,11 @@ const Index = (/*{ projectsData, skillsData }*/) => {
 
 export default Index;
 
-/*export async function getStaticProps(context) {
-  const projectsData = (await import("../data")).projectsData;
-  const skillsData = (await import("../data")).skillsData;
+export async function getStaticProps(context) {
+  // const random = (await import("../utils/functions")).randomize;
+  //const projectsData = random((await import("../data/projects")).projectsData);
+
+  const projectsData = (await import("../data/projects")).projectsData;
+  const skillsData = (await import("../data/projects")).skillsData;
   return { props: { projectsData: projectsData, skillsData: skillsData } };
 }
-*/

@@ -2,8 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
-
-const About = () => {
+import {
+  MY_EMAIL,
+  MY_GITHUB,
+  MY_LINKED_IN,
+  MY_TWITTER,
+} from "../data/variables";
+const Resume = () => {
   return (
     <>
       <Head>
@@ -20,14 +25,14 @@ const About = () => {
           <ul className="aboutParagraphs">
             <li style={{ marginTop: "20px" }}>
               GitHub -{" "}
-              <Link href="https://github.com/adelinked">
+              <Link href={MY_GITHUB}>
                 <a target="_blank" rel="noreferrer">
                   Adelinked
                 </a>
               </Link>{" "}
             </li>
             <li>
-              <Link href="https://www.linkedin.com/in/adel-allam-2325a1180/">
+              <Link href={MY_LINKED_IN}>
                 <a target="_blank" rel="noreferrer">
                   LinkedIn
                 </a>
@@ -35,7 +40,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              <Link href="https://twitter.com/AAdelinked">
+              <Link href={MY_TWITTER}>
                 <a target="_blank" rel="noreferrer">
                   Twitter
                 </a>
@@ -43,7 +48,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              <Link href="mailto:adel.adelinked@gmail.com">
+              <Link href={MY_EMAIL}>
                 <a target="_blank" rel="noreferrer">
                   Email
                 </a>
@@ -52,7 +57,7 @@ const About = () => {
           </ul>
         </header>{" "}
         <section className="aboutTextDiv">
-          <h3 className="aboutSecTitle">Background</h3>
+          <h3 className="aboutSecTitle">Experience</h3>
           <p className="aboutParagraphs">
             With more than 14 years working in the IT field where software
             developement represents the biggest part.
@@ -80,7 +85,7 @@ const About = () => {
           <h3 className="aboutSecTitle">Projects</h3>
           <p className="aboutParagraphs">
             See{" "}
-            <Link href="https://github.com/Adelinked">
+            <Link href={MY_GITHUB}>
               <a className="aboutLinks" target="_blank" rel="noreferrer">
                 GitHub
               </a>
@@ -101,4 +106,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Resume;

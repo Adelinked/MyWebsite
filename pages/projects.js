@@ -2,41 +2,27 @@ import Head from "next/head";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import styles from "../styles/Projects.module.css";
-import axios from "axios";
-import Project from "../components/Project";
 import Sort from "../components/Sort";
 import DisplayProjects from "../components/DisplayProjects";
 import { useDispatch, useSelector } from "react-redux";
 import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Filter from "../components/Filter/Filter";
 import { useLocalStorageValue } from "@mantine/hooks";
 import { setProjectsDisplay } from "../store/actions/projectsAction";
 import { FaArrowDown, FaTimes } from "react-icons/fa";
+
+import dynamic from "next/dynamic";
+
+const Project = dynamic(() => import("../components/Project"), {
+  ssr: false,
+});
 
 const Projects = ({ projectsData }) => {
   const dispatch = useDispatch();
   const { projects, filter, display, sort, showCmd } = useSelector(
     (state) => state.projects
   );
-  const [loading, setLoading] = useState(false);
-
-  /*useEffect(() => {
-    let controller = new AbortController();
-    (async () => {
-      try {
-        setLoading(true);
-        const url = "./api?d=projects";
-        const data = await axios.get(url, { signal: controller.signal });
-        dispatch(setProjects(data.data));
-        setLoading(false);
-        controller = null;
-      } catch (e) {}
-    })();
-    return () => {
-      controller?.abort();
-    };
-  }, []);*/
 
   useEffect(() => {
     dispatch(setProjects(projectsData));
@@ -120,36 +106,31 @@ const Projects = ({ projectsData }) => {
             </span>
           )}
 
-          {!loading && (
-            <>
-              <div
-                style={{
-                  textAlign: "center",
-                  fontSize: "2.2rem",
-                  color: "var(--color-font)",
-                }}
-              >
-                {filtredProjects.length > 0
-                  ? "Displayed: " + filtredProjects.length
-                  : "No Projects to display"}
-              </div>
+          <>
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: "2.2rem",
+                color: "var(--color-font)",
+              }}
+            >
+              {filtredProjects.length > 0
+                ? "Displayed: " + filtredProjects.length
+                : "No Projects to display"}
+            </div>
 
-              <div
-                className={
-                  display === "0"
-                    ? styles.projectsContainer
-                    : styles.projectsDetailed
-                }
-              >
-                {filtredProjects.map((p, index) => (
-                  <Project key={p.id} {...p} num={index} />
-                ))}
-              </div>
-            </>
-          )}
-          {loading && (
-            <div className={styles.loading}>...loading, please wait</div>
-          )}
+            <div
+              className={
+                display === "0"
+                  ? styles.projectsContainer
+                  : styles.projectsDetailed
+              }
+            >
+              {filtredProjects.map((p, index) => (
+                <Project key={p.id} {...p} num={index} />
+              ))}
+            </div>
+          </>
         </div>
       </article>
 
@@ -162,7 +143,6 @@ export default Projects;
 
 export async function getStaticProps() {
   const projectsData = (await import("../data/projects")).projectsData;
-  //const projectsData = await axios.get(`http://localhost:3000/api?d=projects`);
 
   return { props: { projectsData: projectsData } };
 }

@@ -1,10 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
+import {
+  MY_EMAIL,
+  MY_GITHUB,
+  MY_LINKED_IN,
+  MY_TWITTER,
+} from "../data/variables";
 
 const About = () => {
   const dispatch = useDispatch();
@@ -40,7 +45,7 @@ const About = () => {
           <h3 className="aboutSecTitle">Connect</h3>
           <p className="aboutParagraphs">
             You can contact me by{" "}
-            <Link href={"mailto:adel.adelinked@gmail.com"}>
+            <Link href={`mailto:${MY_EMAIL}`}>
               <a className="aboutLinks">email</a>
             </Link>{" "}
             to say hi! I always appreciate meeting new people.{" "}
@@ -48,7 +53,7 @@ const About = () => {
           <ul className="aboutParagraphs">
             <li className="listItem">
               {" "}
-              <Link href="https://github.com/adelinked">
+              <Link href={MY_GITHUB}>
                 <a target="_blank" rel="noreferrer">
                   GitHub
                 </a>
@@ -56,7 +61,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              <Link href="https://twitter.com/AAdelinked">
+              <Link href={MY_TWITTER}>
                 <a target="_blank" rel="noreferrer">
                   Twitter
                 </a>
@@ -64,7 +69,7 @@ const About = () => {
             </li>
             <li>
               {" "}
-              <Link href="https://www.linkedin.com/in/adel-allam-2325a1180/">
+              <Link href={MY_LINKED_IN}>
                 <a target="_blank" rel="noreferrer">
                   Linkedin
                 </a>

@@ -121,24 +121,15 @@ export default () => {
             Projects
           </a>
         </Link>
-        <Link href="/blog">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Blog"
-          >
-            Blog
-          </a>
-        </Link>
-        {session && (
-          <Link href="/checkout">
+        {process.env.NODE_ENV !== "production" && (
+          <Link href="/blog">
             <a
               onClick={() => {
                 dispatch(setAppLoading(true));
               }}
+              title="Blog"
             >
-              Checkout
+              Blog
             </a>
           </Link>
         )}
@@ -202,24 +193,15 @@ export default () => {
             Projects
           </a>
         </Link>
-        <Link href="/blog">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Blog"
-          >
-            Blog
-          </a>
-        </Link>
-        {session && (
-          <Link href="/checkout">
+        {process.env.NODE_ENV !== "production" && (
+          <Link href="/blog">
             <a
               onClick={() => {
                 dispatch(setAppLoading(true));
               }}
+              title="Blog"
             >
-              Checkout
+              Blog
             </a>
           </Link>
         )}

@@ -7,7 +7,13 @@ import {
 } from "react-icons/fa";
 
 import Image from "next/image";
-export default function Footer() {
+import {
+  MY_EMAIL,
+  MY_GITHUB,
+  MY_LINKED_IN,
+  MY_TWITTER,
+} from "../../data/variables";
+export default () => {
   return (
     <>
       <div className={styles.footerDiv}>
@@ -15,7 +21,7 @@ export default function Footer() {
           Designed and coded by Adelinked{" "}
           <a
             style={{ fontSize: "22px", marginLeft: "5px" }}
-            href="https://www.linkedin.com/in/adel-allam-2325a1180/"
+            href={MY_LINKED_IN}
             title="LinkedIn"
             target="_blank"
           >
@@ -23,7 +29,7 @@ export default function Footer() {
           </a>
           <a
             style={{ fontSize: "22px", marginLeft: "5px" }}
-            href="https://twitter.com/AAdelinked"
+            href={MY_TWITTER}
             title="Twitter"
             target="_blank"
           >
@@ -31,7 +37,7 @@ export default function Footer() {
           </a>
           <a
             style={{ fontSize: "22px", marginLeft: "5px" }}
-            href="mailto:adel.adelinked@gmail.com"
+            href={MY_EMAIL}
             title="Send an email"
             target="_blank"
           >
@@ -51,7 +57,7 @@ export default function Footer() {
           </a>
           <a
             style={{ fontSize: "30px" }}
-            href="https://github.com/Adelinked"
+            href={MY_GITHUB}
             title="Git hub"
             target="_blank"
           >
@@ -75,4 +81,4 @@ export default function Footer() {
       </div>
     </>
   );
-}
+};
