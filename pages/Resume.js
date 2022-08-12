@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import {
   MY_EMAIL,
+  MY_FCC_LINK,
   MY_GITHUB,
   MY_LINKED_IN,
   MY_TWITTER,
@@ -58,10 +59,50 @@ const Resume = () => {
         </header>{" "}
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Experience</h3>
-          <p className="aboutParagraphs">
-            With more than 14 years working in the IT field where software
-            developement represents the biggest part.
-          </p>
+          <ul className="aboutParagraphs">
+            <li style={{ marginBottom: "10px" }}>
+              <span className="aboutSubTit">Web Developer,</span> Freelance
+              <br />
+              12/2021 – present
+              <ul>
+                <li style={{ marginBottom: "10px" }}>
+                  Coded websites using HTML5, CSS3 and modern JavaScript
+                  frameworks.
+                </li>
+                <li style={{ marginBottom: "10px" }}>
+                  Developed testing code for web-based applications.
+                </li>
+                <li style={{ marginBottom: "10px" }}>
+                  Followed best practices for software development and web
+                  security.
+                </li>
+                <li style={{ marginBottom: "10px" }}>
+                  Adhered to SEO best practices while designing sites.
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul className="aboutParagraphs">
+            <li style={{ marginBottom: "10px" }}>
+              <span className="aboutSubTit">Software Developer,</span> Algiers
+              Univercity
+              <br />
+              06/2007 – present
+              <ul>
+                <li style={{ marginBottom: "10px" }}>
+                  Updated old code bases to modern development standards,
+                  improving functionality.
+                </li>
+                <li style={{ marginBottom: "10px" }}>
+                  Developed clear specifications for project plans using
+                  customer requirements.
+                </li>
+                <li style={{ marginBottom: "10px" }}>
+                  Wrote clear, clean code for various projects.
+                </li>
+              </ul>
+            </li>
+          </ul>
         </section>
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Skills</h3>
@@ -96,8 +137,45 @@ const Resume = () => {
         <section className="aboutTextDiv">
           <h3 className="aboutSecTitle">Education</h3>
           <p className="aboutParagraphs">
-            Masters Degree in Computer Science: 2001-2007
+            <span className="aboutSubTit">
+              Master's Degree in Computer Science
+            </span>
+            <br />
+            Algiers University: 2001-2007
           </p>
+        </section>
+        <section className="aboutTextDiv">
+          <h3 className="aboutSecTitle">Certificates</h3>
+          <ul className="aboutParagraphs">
+            <li style={{ marginBottom: "10px" }}>
+              Responsive Web Design (
+              <a target="_blank" rel="noreferrer" href={MY_FCC_LINK}>
+                freeCodeCamp
+              </a>
+              )
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              JavaScript Algorithms and Data Structures (
+              <a target="_blank" rel="noreferrer" href={MY_FCC_LINK}>
+                freeCodeCamp
+              </a>
+              )
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              Front End Development Libraries (
+              <a target="_blank" rel="noreferrer" href={MY_FCC_LINK}>
+                freeCodeCamp
+              </a>
+              )
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              Quality Assurance (
+              <a target="_blank" rel="noreferrer" href={MY_FCC_LINK}>
+                freeCodeCamp
+              </a>
+              )
+            </li>
+          </ul>
         </section>
       </article>
 

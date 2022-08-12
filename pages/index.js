@@ -1,14 +1,17 @@
 import Head from "next/head";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
-import styles from "../styles/Home.module.css";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import Project from "../components/Project";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
+
+import styles from "../styles/Home.module.css";
+import Project from "../components/Project";
 import SkillComp from "../components/SkillComp";
-import Image from "next/image";
+import { MY_PHOTO } from "../data/variables";
+import Meta from "../components/Meta";
 const Index = ({ projectsData, skillsData }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -16,10 +19,10 @@ const Index = ({ projectsData, skillsData }) => {
 
   return (
     <>
+      <Meta />
       <Head>
         <title>Adelinked website | Home</title>
         <meta name="description" content="Adelinked website home page" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <article className={styles.container}>
@@ -48,7 +51,7 @@ const Index = ({ projectsData, skillsData }) => {
               <Image
                 priority
                 alt="Adelinked photo"
-                src="/adelinked.jpg"
+                src={MY_PHOTO}
                 layout="fill"
                 objectFit="contain"
               />

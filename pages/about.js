@@ -89,7 +89,7 @@ const About = () => {
               <li>My favorite Tv Series is Breaking Bad.</li>
               <li>My current favorite type of game is strategy-based.</li>
               <li>
-                My favorite type of music is rock music and favorite sport is
+                My favorite type of music is rock music and my favorite sport is
                 soccer.
               </li>
             </ul>
@@ -118,7 +118,7 @@ const About = () => {
           </div>
         </section>
         <section className="aboutTextDiv">
-          <h3 className="aboutSecTitle">Misc</h3>
+          <h3 className="aboutSecTitle">Miscellaneous</h3>
           <div className="aboutParagraphs">
             <ul>
               <li>

@@ -53,7 +53,12 @@ export default () => {
             target="_blank"
             rel="noreferrer"
           >
-            <Image src="/NextJs.png" alt="nextJs logo" width={60} height={30} />
+            <Image
+              src="/nextJS_black.png"
+              alt="nextJs logo"
+              width={30}
+              height={30}
+            />
           </a>
           <a
             style={{ fontSize: "30px" }}
