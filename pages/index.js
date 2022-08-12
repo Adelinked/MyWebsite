@@ -21,8 +21,8 @@ const Index = ({ projectsData, skillsData }) => {
     <>
       <Meta />
       <Head>
-        <title>Adelinked website | Home</title>
-        <meta name="description" content="Adelinked website home page" />
+        <title>Adelinked website</title>
+        <meta name="description" content="Adelinked website - home page" />
       </Head>
       <Navbar />
       <article className={styles.container}>

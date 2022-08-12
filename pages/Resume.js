@@ -9,13 +9,14 @@ import {
   MY_LINKED_IN,
   MY_TWITTER,
 } from "../data/variables";
+import Meta from "../components/Meta";
 const Resume = () => {
   return (
     <>
+      <Meta />
       <Head>
         <title>Adelinked website | Resume </title>
-        <meta name="description" content="Adelinked website resume page" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Adelinked website - resume page" />
       </Head>
       <Navbar />
       <article className="aboutDiv">

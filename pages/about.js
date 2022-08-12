@@ -10,15 +10,16 @@ import {
   MY_LINKED_IN,
   MY_TWITTER,
 } from "../data/variables";
+import Meta from "../components/Meta";
 
 const About = () => {
   const dispatch = useDispatch();
   return (
     <>
+      <Meta />
       <Head>
         <title>Adelinked website | About me</title>
-        <meta name="description" content="Adelinked website about me page" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Adelinked website - about me page" />
       </Head>
       <Navbar />
       <article className="aboutDiv">

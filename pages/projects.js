@@ -11,7 +11,7 @@ import Filter from "../components/Filter/Filter";
 import { useLocalStorageValue } from "@mantine/hooks";
 import { setProjectsDisplay } from "../store/actions/projectsAction";
 import { FaArrowDown, FaTimes } from "react-icons/fa";
-
+import Meta from "../components/Meta";
 import dynamic from "next/dynamic";
 
 const Project = dynamic(() => import("../components/Project"), {
@@ -71,10 +71,10 @@ const Projects = ({ projectsData }) => {
 
   return (
     <>
+      <Meta />
       <Head>
         <title>Adelinked | Projects</title>
-        <meta name="description" content="Ecomerce app" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Adelinked website - projects page" />
       </Head>
       <Navbar />
       <article className={styles.projectsPageDiv}>
