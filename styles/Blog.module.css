@@ -17,6 +17,8 @@
 .indexHero {
   color: var(--color-font);
   font-size: 3.8rem;
+  width: 100%;
+  text-align: left;
 }
 
 .indexTitles {
@@ -43,24 +45,45 @@
 }
 .categoriesTagsSec {
   padding: 10px;
-
+  padding-top: 90px;
   width: 30%;
 }
 .categoriesTags {
+  padding: 5px;
   height: 30vh;
+  margin: 10px 0;
 }
 .tagsDiv {
   display: flex;
+  flex-wrap: wrap;
 }
 .tagSpan {
   padding: 5px;
-  margin: 0 2px;
+  margin: 2px;
   border-radius: 10px;
-  background-color: var(--color-bg2);
+  background-color: var(--color-bgd2);
   border: 1px solid var(--color-font);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.blogPostTitle {
+  padding: 5px;
+  margin: 5px 0;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.postTitle {
+  width: 100%;
+}
+.postSubTitle {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 992px) {

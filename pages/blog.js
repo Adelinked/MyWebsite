@@ -9,7 +9,7 @@ import { useState } from "react";
 import { getSortedPostsData } from "../lib/posts";
 import Meta from "../components/Meta";
 
-const Blog = ({ blogPosts, allPostsData, categories, tags }) => {
+const Blog = ({ blogPosts, allPostsData, categories, tags, yearsPosts }) => {
   const [loading, setLoading] = useState(false);
 
   return (
@@ -21,36 +21,34 @@ const Blog = ({ blogPosts, allPostsData, categories, tags }) => {
       </Head>
       <Navbar />
       <article className={styles.container}>
-        <header className={styles.indexHeader}>
-          <h1 className={styles.indexHero}>Blog</h1>
-        </header>
         <div className={styles.blogSections}>
           <section className={styles.indexPostsDiv}>
-            <h2 className={styles.indexTitles}>2020</h2>
-
-            {!loading ? (
+            <header className={styles.indexHeader}>
+              <h1 className={styles.indexHero}>Blog</h1>
+            </header>
+            {yearsPosts.map((y) => (
               <>
-                {" "}
-                {allPostsData.map((p) => (
+                <h2 className={styles.indexTitles}>{y.year}</h2>
+                {y.posts.map((p) => (
                   <BlogPostELt key={p.id} {...p} />
                 ))}
               </>
-            ) : (
-              <div>...loading</div>
-            )}
+            ))}
           </section>
           <section className={styles.categoriesTagsSec}>
             <div className={styles.categoriesTags}>
               <h2 className={styles.indexTitles}>Categories</h2>
-              {categories.map((c) => (
-                <p key={c.categoryTitle}>
-                  <Link href={`/categories/${c.categoryTitle}`}>
-                    <a>
-                      {c.categoryTitle} ({c.count})
-                    </a>
-                  </Link>
-                </p>
-              ))}
+              <ul>
+                {categories.map((c) => (
+                  <li key={c.categoryTitle}>
+                    <Link href={`/categories/${c.categoryTitle}`}>
+                      <a>
+                        {c.categoryTitle} ({c.count})
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className={styles.categoriesTags}>
               <h2 className={styles.indexTitles}>Tags</h2>
@@ -75,7 +73,10 @@ const Blog = ({ blogPosts, allPostsData, categories, tags }) => {
 export default Blog;
 
 export async function getStaticProps(context) {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPostsData().map((p) => ({
+    ...p,
+    year: p.date.slice(0, 4),
+  }));
   const categories = Array.from(
     new Set(allPostsData.map((p) => p.category))
   ).map((c) => ({
@@ -91,5 +92,17 @@ export async function getStaticProps(context) {
       }, [])
     )
   );
-  return { props: { allPostsData, categories, tags } };
+
+  const yearsPosts = Array.from(new Set(allPostsData.map((p) => p.year))).map(
+    (y) => ({
+      ["year"]: y,
+      ["posts"]: allPostsData.filter((p) => p.year === y),
+    })
+  );
+
+  console.log(yearsPosts);
+
+  return {
+    props: { allPostsData, categories, tags, yearsPosts },
+  };
 }

@@ -1,7 +1,7 @@
 ---
 title: "When to Use Static Generation v.s. Server-side Rendering"
-date: "2021-01-02"
-category: "Rendering"
+date: "2019-01-02"
+category: "Rendering2"
 tags: ["SSG", "SSR", "CDN"]
 ---
 
