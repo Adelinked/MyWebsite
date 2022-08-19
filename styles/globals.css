@@ -6,6 +6,7 @@
   --color-bgd3-trsp: rgba(0, 0, 0, 0.68);
   --color-font: #f3f3f3;
   --color-font-light: #b8afaf;
+  --color-font-vlight: #999999;
   --color-links: #a4a4ad;
   --color-sub: rgb(238, 18, 11);
 }
@@ -17,6 +18,7 @@
   --color-bgd3-trsp: rgba(0, 0, 0, 0.68);
   --color-font: #f3f3f3;
   --color-font-light: #b8afaf;
+  --color-font-vlight: #999999;
   --color-links: #a4a4ad;
   --color-sub: #ee120b;
   --color-switch: gold;
@@ -29,6 +31,7 @@
   --color-font: #131325;
   --color-links: #5b5b52;
   --color-font-light: #475050;
+  --color-font-vlight: #666666;
   --color-sub: #ee120b;
   --color-switch: #0026ff;
 }

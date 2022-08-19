@@ -99,7 +99,7 @@ export let projectsData = [
     id: 10,
     title: "Shopping cart - TS ",
     description:
-      "Cart using with typeScript useState hook vs Redux . It also implements some tests using Jest and React Testing Library. I added a Github action to run those tests before deployement on each push or pull (see the <a target='_blank' rel='noreferrer' href='https://github.com/Adelinked/Shopping-Cart-TS'>source code on Github</a>).",
+      "Cart with typeScript using useState hook vs Redux . It also implements some tests using Jest and React Testing Library. I added a Github action to run those tests before deployement on each push or pull (see the <a target='_blank' rel='noreferrer' href='https://github.com/Adelinked/Shopping-Cart-TS'>source code on Github</a>).",
     categories: [
       "HTML",
       "CSS",

@@ -5,6 +5,7 @@ import {
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
+import { useAppContext } from "../../context";
 
 import Image from "next/image";
 import {
@@ -14,6 +15,7 @@ import {
   MY_TWITTER,
 } from "../../data/variables";
 export default () => {
+  const { globalState, setGlobalState } = useAppContext();
   return (
     <>
       <div className={styles.footerDiv}>
@@ -54,10 +56,14 @@ export default () => {
             rel="noreferrer"
           >
             <Image
-              src="/nextJS_black.png"
+              src={
+                globalState === "light-theme"
+                  ? `/nextJsBlack.png`
+                  : `/nextJsWhite.png`
+              }
               alt="nextJs logo"
-              width={30}
-              height={30}
+              width={40}
+              height={40}
             />
           </a>
           <a

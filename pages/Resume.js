@@ -62,7 +62,7 @@ const Resume = () => {
           <h3 className="aboutSecTitle">Experience</h3>
           <ul className="aboutParagraphs">
             <li style={{ marginBottom: "10px" }}>
-              <span className="aboutSubTit">Web Developer,</span> Freelance
+              <span className="aboutSubTit">Web Developer,</span> Self employed
               <br />
               12/2021 – present
               <ul>
