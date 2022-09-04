@@ -31,8 +31,8 @@ const Index = ({ projectsData, skillsData }) => {
             <h2 className={styles.indexTitles}>Hey, I am Adelinked</h2>
 
             <p className={styles.heroText}>
-              I'm a software engineer who started gaining interrest for web
-              developement that's why I spend most of my day, experimenting with
+              I'm a software engineer who has renewed interest in web
+              development that's why I spend most of my day, experimenting with
               HTML, CSS, Javascript and ReactJs. I enjoy coding and the
               challenge of learning something new everyday.
             </p>

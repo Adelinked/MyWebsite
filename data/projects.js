@@ -82,7 +82,7 @@ export let projectsData = [
     categories: ["HTML", "CSS"],
     image: "/projectsImages/portfolio_page.png",
     srcUrl: "https://github.com/Adelinked/portfolio-project",
-    depUrl: "https://adelinked.github.io/portfolio-project/",
+    depUrl: "https://adelinked.github.io/portfolio-page/",
   },
   {
     id: 9,

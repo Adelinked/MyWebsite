@@ -1,8 +1,16 @@
 import Link from "next/link";
 import styles from "../styles/Blog.module.css";
-import { formatDate } from "../lib/dates";
+import { formatDate, completeDate } from "../lib/dates";
 
-export default ({ title, id, date, category, categoryPage }) => {
+export default ({
+  title,
+  id,
+  date,
+  category,
+  categoryPage,
+  isCompleteDate,
+  noDate,
+}) => {
   return (
     <>
       <Link href={`/blog/${id}`}>
@@ -11,7 +19,15 @@ export default ({ title, id, date, category, categoryPage }) => {
             <p className={styles.postTitle}>{title}</p>
 
             <div className={styles.postSubTitle}>
-              <time>Published on {formatDate(date)}</time>
+              {!noDate && (
+                <>
+                  {isCompleteDate ? (
+                    <time>Published on {completeDate(date)}</time>
+                  ) : (
+                    <time>Published on {formatDate(date)}</time>
+                  )}
+                </>
+              )}
               {!categoryPage && (
                 <span className={styles.tagSpan}>{category}</span>
               )}
