@@ -67,6 +67,7 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     if (!display) dispatch(setProjectsDisplay(displayLocal?.display ?? "0"));
     if (!displayLocal) setDisplayLocal({ display: "0" });
+
   }, []);
 
   return (

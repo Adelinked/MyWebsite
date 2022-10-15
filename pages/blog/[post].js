@@ -1,12 +1,18 @@
-import Layout from "../../components/layout";
-import styles from "../../styles/Blog.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+
+
 import Date from "../../components/Date";
-import { getCategoryPosts } from "../../lib/categories";
 import BlogPostElt from "../../components/BlogPostElt";
 import { randomize } from "../../utils/functions";
+import { getCategoryPosts } from "../../lib/categories";
+import { getAllPostIds, getPostData } from "../../lib/posts";
+
+import Layout from "../../components/layout";
+import styles from "../../styles/Blog.module.css";
+import { useEffect } from "react";
+
+
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.post);
 
@@ -34,6 +40,33 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData, post, categoryPosts }) {
+
+  function copyCodeToClipboard(button) {
+    let copyText = button.nextElementSibling.firstChild;
+
+    let text = copyText.textContent;
+    const selection = window.getSelection();
+    if (selection.rangeCount == 1 && selection.type == "Range") {
+      if (selection.focusNode === copyText) {
+        const start = selection.anchorOffset; const end = selection.focusOffset;
+        text = start <= end ? text.slice(start, end) : text.slice(end, start)
+      }
+    }
+    navigator.clipboard.writeText(text);
+    button.innerText = "Copied";
+    button.disabled = true;
+    setTimeout(() => {
+      button.innerText = "Copy";
+      button.disabled = false;
+    }, 2000);
+  }
+
+  useEffect(() => {
+    const buttonElements = Array.from(document.getElementsByTagName('button')).filter(e => e.parentNode.localName === "pre");
+    buttonElements.forEach((button) => button.addEventListener("click", () => copyCodeToClipboard(button)));
+
+  }, [])
+
   return (
     <Layout>
       <div className={styles.dateCategory}>
@@ -44,7 +77,7 @@ export default function Post({ postData, post, categoryPosts }) {
       </div>
       <h1 className={styles.indexHero}>{postData.title}</h1>
 
-      <div className={styles.coverImageContainer}>
+      {<div className={styles.coverImageContainer}>
         <Image
           priority
           alt={`${post} cover image`}
@@ -52,9 +85,9 @@ export default function Post({ postData, post, categoryPosts }) {
           layout="fill"
           objectFit="contain"
         />
-      </div>
+      </div>}
 
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      {<div className={styles.postContent} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />}
       <div className={styles.postTags}>
         <h2 className={styles.indexTitles} style={{ marginRight: "10px" }}>
           Tags:

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter, clearFilter } from "../../store/actions/projectsAction";
 import styles from "./Filter.module.css";
@@ -31,6 +32,8 @@ export default () => {
       return acc;
     }, []);
 
+
+
   return (
     <div className={styles.filterContainer}>
       <label className={styles.formLabel}> Filters:</label>
@@ -50,6 +53,7 @@ export default () => {
           id="title"
           value={filter.title}
           onChange={handleChange}
+
         />
 
         {categories && categories.length > 0 && (

@@ -10,6 +10,17 @@ export let projectsData = [
     depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
+    id: 13,
+    title: "IP address tracker ",
+    description:
+      "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React", "NextJs"],
+    image: "/projectsImages/ipTracker.png",
+    srcUrl: "https://fem-ip-address-tracker.netlify.app/",
+    depUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
+  },
+
+  {
     id: 1,
     title: "E-commerce",
     description:
@@ -32,6 +43,16 @@ export let projectsData = [
     demoUrl: "",
   },
   {
+    id: 14,
+    title: "Loopstudios landing page",
+    description:
+      "This is a solution to the Loopstudios landing page challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React", "NextJs"],
+    image: "/projectsImages/loopsStudios.png",
+    srcUrl: "https://github.com/Adelinked/loopstudio-landing-page",
+    depUrl: "https://loopsstudios-landing-page.netlify.app/",
+  },
+  {
     id: 5,
     title: "Music-Albums",
     description:
@@ -43,6 +64,16 @@ export let projectsData = [
     demoUrl: "",
   },
   {
+    id: 15,
+    title: "Interactive card details form",
+    description:
+      "This is a solution to the Interactive card details form challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React"],
+    image: "/projectsImages/interactiveForm.png",
+    srcUrl: "https://github.com/Adelinked/interactive-form",
+    depUrl: "https://adelinked.github.io/interactive-form/",
+  },
+  {
     id: 6,
     title: "Weather forcast",
     description:
@@ -52,6 +83,16 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/weather-forcast",
     depUrl: "https://weather-forcast-adelinked.netlify.app/",
     demoUrl: "",
+  },
+  {
+    id: 16,
+    title: "Interactive card details form",
+    description:
+      "This is a solution to the Interactive card details form challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React"],
+    image: "/projectsImages/interactiveForm.png",
+    srcUrl: "https://github.com/Adelinked/interactive-form",
+    depUrl: "https://adelinked.github.io/interactive-form/",
   },
   {
     id: 7,
@@ -117,6 +158,16 @@ export let projectsData = [
     depUrl: "https://cart-usestate-redux-typescript.netlify.app/",
     depUrl2: "https://shopping-cart-adelinked.netlify.app/",
     demoUrl: "",
+  },
+  {
+    id: 17,
+    title: "Room homepage",
+    description:
+      "This is a solution to the Room homepage challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React", "NextJs"],
+    image: "/projectsImages/roomHomePage.png",
+    srcUrl: "https://github.com/Adelinked/room-homepage",
+    depUrl: "https://room-homepage-adelinked.netlify.app/",
   },
   {
     id: 11,

@@ -65,7 +65,7 @@ const Index = ({ projectsData, skillsData }) => {
           {!loading ? (
             <div className={styles.indexProjectsImgDiv}>
               {projectsData.slice(1, 4).map((p) => (
-                <Project key={p.id} {...p} fromIndex={true} />
+                <Project key={p.id} {...p} fromIndex />
               ))}
             </div>
           ) : (
