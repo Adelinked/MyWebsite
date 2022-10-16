@@ -1,5 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
+import "highlight.js/styles/github.css";
+
 import { Provider } from "react-redux";
 import { useStore } from "../store/store";
 import { AppWrapper } from "../context";

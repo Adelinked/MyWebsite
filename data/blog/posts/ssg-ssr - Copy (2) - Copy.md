@@ -56,6 +56,24 @@ function someCode() {
 }
 ```
 
+```css
+.postContent button {
+  position: absolute;
+  top: -15px;
+  right: 25px;
+  width: 70px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 16px 16px rgba(0, 0, 0, 0.23);
+}
+```
+
+```jsx
+<div className={styles.indexSkillsDiv}>
+  {skillsData.map((i) => (
+    <SkillComp key={i.num} {...i} />
+  ))}
+</div>
+```
+
 You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
 
 On the other hand, Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
@@ -67,3 +85,7 @@ for more infos visit [nextjs](https://nextjs.org).
 1. list item 1
 2. list item 2
 3. list item 3
+
+```
+
+```

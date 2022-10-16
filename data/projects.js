@@ -84,16 +84,7 @@ export let projectsData = [
     depUrl: "https://weather-forcast-adelinked.netlify.app/",
     demoUrl: "",
   },
-  {
-    id: 16,
-    title: "Interactive card details form",
-    description:
-      "This is a solution to the Interactive card details form challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
-    categories: ["HTML", "CSS", "JS", "React"],
-    image: "/projectsImages/interactiveForm.png",
-    srcUrl: "https://github.com/Adelinked/interactive-form",
-    depUrl: "https://adelinked.github.io/interactive-form/",
-  },
+
   {
     id: 7,
     title: "Quiz App",
@@ -160,7 +151,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 17,
+    id: 16,
     title: "Room homepage",
     description:
       "This is a solution to the Room homepage challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
