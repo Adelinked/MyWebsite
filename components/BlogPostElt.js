@@ -13,9 +13,10 @@ export default ({
 }) => {
   return (
     <>
-      <Link href={`/blog/${id}`}>
-        <a>
-          <div className={styles.blogPostTitle}>
+
+      <div className={styles.blogPostTitle}>
+        <Link href={`/blog/${id}`}>
+          <a>
             <p className={styles.postTitle}>{title}</p>
 
             <div className={styles.postSubTitle}>
@@ -29,12 +30,13 @@ export default ({
                 </>
               )}
               {!categoryPage && (
-                <span className={styles.tagSpan}>{category}</span>
+                <span style={{ alignItems: "flex-end" }}/*className={styles.tagSpan}*/>{category}</span>
               )}
             </div>
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
+
     </>
   );
 };

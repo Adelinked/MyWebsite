@@ -104,17 +104,19 @@ export default function Post({ postData, post, categoryPosts }) {
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         }
-        <div className={styles.postTags}>
-          <h2 className={styles.indexTitles} style={{ marginRight: "10px" }}>
+        <div className={styles.postTagsDiv} >
+          <h2 className={styles.indexTitles} style={{ width: "20%" }}>
             Tags:
           </h2>
-          {postData.tags.map((t) => (
-            <span className={styles.tagSpan} key={t}>
-              <Link href={`/blog/tags/${t}`}>
-                <a>{t}</a>
-              </Link>
-            </span>
-          ))}
+          <div className={styles.postTags}>
+            {postData.tags.map((t) => (
+              <span className={styles.tagSpan} key={t}>
+                <Link href={`/blog/tags/${t}`}>
+                  <a>{t}</a>
+                </Link>
+              </span>
+            ))}
+          </div>
         </div>
         <div className={styles.sameCategoryDiv}>
           <h2 className={styles.indexTitles}>Read also:</h2>

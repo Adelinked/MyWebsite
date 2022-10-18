@@ -19,28 +19,7 @@ const Categories = ({ categories }) => {
         />
       </Head>
       <Navbar />
-      <article className={styles.container}>
-        <div className={styles.blogSections}>
-          <section className={styles.indexPostsDiv}>
-            <header className={styles.indexHeader}>
-              <h1 className={styles.indexHero}>Blog Categories</h1>
-            </header>
-            <div className={styles.categoriesTags}>
-              <ul>
-                {categories.map((c) => (
-                  <li key={c.categoryTitle}>
-                    <Link href={`/blog/categories/${c.categoryTitle}`}>
-                      <a>
-                        {c.categoryTitle} ({c.count})
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </div>
-      </article>
+      ${yearsPosts[0].tag}
       <Footer />
     </>
   );
