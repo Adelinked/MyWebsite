@@ -20,3 +20,17 @@ export function ValidateEmail(mail) {
   }
   return false;
 }
+
+
+export function getItemsNumber(windowWidth) {
+
+  if (windowWidth > 768) {
+    return 3;
+  }
+  if (windowWidth > 576) {
+    return 2;
+  }
+  if (windowWidth <= 576) {
+    return 1;
+  }
+}

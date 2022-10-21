@@ -21,7 +21,7 @@ const initialState = {
   display: null,
   sort: "0",
   filter: { title: "", category: "" },
-  showCmd: true,
+  showCmd: false,
 };
 export default function (state = initialState, action) {
   switch (action.type) {

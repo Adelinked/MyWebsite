@@ -85,7 +85,6 @@ export default function Post({ postData, post, categoryPosts }) {
           </Link>
         </div>
         <h1 className={styles.indexHero}>{postData.title}</h1>
-
         {
           <div className={styles.coverImageContainer}>
             <Image
@@ -105,7 +104,7 @@ export default function Post({ postData, post, categoryPosts }) {
           />
         }
         <div className={styles.postTagsDiv} >
-          <h2 className={styles.indexTitles} style={{ width: "20%" }}>
+          <h2 className={styles.indexTitles} style={{ width: "fit-content" }} >
             Tags:
           </h2>
           <div className={styles.postTags}>

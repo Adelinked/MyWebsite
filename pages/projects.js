@@ -1,18 +1,21 @@
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState, useMemo, useRef } from "react";
+import { useLocalStorageValue } from "@mantine/hooks";
+import { FaArrowDown, FaTimes } from "react-icons/fa";
+import throttle from "lodash.throttle";
 
 import Navbar from "../components/NavBar";
-import styles from "../styles/Projects.module.css";
+import Filter from "../components/Filter/Filter";
 import Sort from "../components/Sort";
 import DisplayProjects from "../components/DisplayProjects";
-import { useDispatch, useSelector } from "react-redux";
-import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
-import { useEffect } from "react";
-import Filter from "../components/Filter/Filter";
-import { useLocalStorageValue } from "@mantine/hooks";
-import { setProjectsDisplay } from "../store/actions/projectsAction";
-import { FaArrowDown, FaTimes } from "react-icons/fa";
 import Meta from "../components/Meta";
-import dynamic from "next/dynamic";
+import useOnScreen from "../utils/useOnScreen";
+import { getItemsNumber } from "../utils/functions";
+import styles from "../styles/Projects.module.css";
+import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
+import { setProjectsDisplay } from "../store/actions/projectsAction";
 
 const Project = dynamic(() => import("../components/Project"), {
   ssr: false,
@@ -22,14 +25,67 @@ const Footer = dynamic(() => import("../components/Footer"), {
 });
 
 const Projects = ({ projectsData }) => {
+  const [windowWidth, setWindowWidth] = useState();
+  const [projectsNumLoad, setProjectsNumLoad] = useState();
+  const [showMore, setShowMore] = useState(false);
+  const bottomProjectsRef = useRef();
+  const projectsBottomRefValue = useOnScreen(bottomProjectsRef);
   const dispatch = useDispatch();
+  function loadMore() {
+    const projectsLen = projects.length;
+    dispatch(
+      setProjects([
+        ...projects,
+        ...projectsData.slice(projectsLen, projectsLen + projectsNumLoad),
+      ])
+    );
+  }
+
+  useEffect(() => {
+    if (projects == null || projects.length === projectsData.length) return;
+    if (showMore && projectsBottomRefValue) {
+      loadMore();
+    }
+  }, [projectsBottomRefValue]);
+
+  useEffect(() => {
+    setWindowWidth(window?.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    setProjectsNumLoad(getItemsNumber(windowWidth));
+  }, [windowWidth]);
+
+  useEffect(() => {
+    if (!windowWidth) return;
+    if (projects && projects.length > 0) return;
+    dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
+    if (showMore && projectsBottomRefValue) {
+      loadMore();
+    }
+  }, [projectsNumLoad]);
+
+  const handleResize = () => {
+    setWindowWidth(window?.innerWidth);
+  };
+
+  const throttleResizeHandler = useMemo(() => throttle(handleResize, 300));
+
+  useEffect(() => {
+    window.addEventListener("resize", throttleResizeHandler);
+    return function cleanup() {
+      throttleResizeHandler?.cancel();
+      window.removeEventListener("resize", throttleResizeHandler);
+    };
+  });
+
   const { projects, filter, display, sort, showCmd } = useSelector(
     (state) => state.projects
   );
 
-  useEffect(() => {
+  /*useEffect(() => {
     dispatch(setProjects(projectsData));
-  }, []);
+  }, []);*/
 
   let sortedProjects = projects?.length > 0 ? [...projects] : [...projectsData];
 
@@ -67,7 +123,6 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     if (!display) dispatch(setProjectsDisplay(displayLocal?.display ?? "0"));
     if (!displayLocal) setDisplayLocal({ display: "0" });
-
   }, []);
 
   return (
@@ -89,7 +144,9 @@ const Projects = ({ projectsData }) => {
                 <span className={styles.prjCmdClose}>
                   <FaTimes
                     title="close filter box"
-                    onClick={() => dispatch(showPrjCmd())}
+                    onClick={() => {
+                      dispatch(showPrjCmd());
+                    }}
                   />
                 </span>
               </span>
@@ -136,8 +193,20 @@ const Projects = ({ projectsData }) => {
             </div>
           </>
         </div>
+        <button
+          ref={bottomProjectsRef}
+          style={{ margin: "20px 0" }}
+          onClick={() => {
+            setShowMore((showMore) => !showMore);
+            if (!showMore) loadMore();
+            else dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
+          }}
+        >
+          {!showMore ? "More" : "Less"}
+        </button>
       </article>
-      <Footer />
+
+      <Footer refProp={bottomProjectsRef} />
     </>
   );
 };

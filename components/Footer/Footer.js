@@ -14,11 +14,11 @@ import {
   MY_LINKED_IN,
   MY_TWITTER,
 } from "../../data/variables";
-export default () => {
+export default ({ refProp }) => {
   const { globalState, setGlobalState } = useAppContext();
   return (
     <>
-      <div className={styles.footerDiv}>
+      <div className={styles.footerDiv} >
         <p className={styles.footerParagraph}>
           Designed and coded by Adelinked{" "}
           <a
@@ -90,6 +90,7 @@ export default () => {
           </a>
         </div>
       </div>
+      <div ref={refProp} />
     </>
   );
 };

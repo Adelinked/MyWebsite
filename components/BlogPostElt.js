@@ -13,12 +13,10 @@ export default ({
 }) => {
   return (
     <>
-
       <div className={styles.blogPostTitle}>
         <Link href={`/blog/${id}`}>
           <a>
             <p className={styles.postTitle}>{title}</p>
-
             <div className={styles.postSubTitle}>
               {!noDate && (
                 <>
@@ -29,9 +27,8 @@ export default ({
                   )}
                 </>
               )}
-              {!categoryPage && (
-                <span style={{ alignItems: "flex-end" }}/*className={styles.tagSpan}*/>{category}</span>
-              )}
+              <span style={{ alignItems: "flex-end" }}>{category}</span>
+
             </div>
           </a>
         </Link>

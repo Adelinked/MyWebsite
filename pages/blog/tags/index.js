@@ -28,7 +28,7 @@ const Blog = ({ categories, tags, yearsPosts }) => {
             <div className={styles.tagsDiv}>
               {tags.map((t) => (
                 <span className={styles.tagSpan} key={t}>
-                  <Link href={`/tags/${t}`}>
+                  <Link href={`/blog/tags/${t}`}>
                     <a>{t}</a>
                   </Link>
                 </span>
