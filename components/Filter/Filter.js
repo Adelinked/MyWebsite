@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilter, clearFilter } from "../../store/actions/projectsAction";
 import styles from "./Filter.module.css";
 export default () => {
-  const { filter, filtredProjects, projects } = useSelector(
+  const { filter, initProjectsData, projects } = useSelector(
     (state) => state.projects
   );
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default () => {
     );
   };
 
-  const categories = projects
+  const categories = initProjectsData
     .reduce((acc, curr) => {
       acc.push(...curr.categories);
       return acc;
@@ -67,11 +67,12 @@ export default () => {
                 value={filter.category}
               >
                 <option value="">All</option>
-                {categories.map((c) => (
+                <>{categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
                   </option>
                 ))}
+                </>
               </select>
             </label>
           </>

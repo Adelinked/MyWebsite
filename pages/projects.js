@@ -14,9 +14,13 @@ import Meta from "../components/Meta";
 import useOnScreen from "../utils/useOnScreen";
 import { getItemsNumber } from "../utils/functions";
 import styles from "../styles/Projects.module.css";
-import { setProjects, showPrjCmd } from "../store/actions/projectsAction";
-import { setProjectsDisplay } from "../store/actions/projectsAction";
-
+import {
+  setInitProjects,
+  setProjects,
+  showPrjCmd,
+  showMorePrj,
+  setProjectsDisplay
+} from "../store/actions/projectsAction";
 const Project = dynamic(() => import("../components/Project"), {
   ssr: false,
 });
@@ -24,13 +28,23 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
+import {
+  FaGithubSquare,
+} from "react-icons/fa";
+import {
+  MY_GITHUB,
+} from "../data/variables";
+
 const Projects = ({ projectsData }) => {
+  const [filtredProjects, setFiltredProjects] = useState();
   const [windowWidth, setWindowWidth] = useState();
-  const [projectsNumLoad, setProjectsNumLoad] = useState();
-  const [showMore, setShowMore] = useState(false);
+  const [projectsNumLoad, setProjectsNumLoad] = useState(3);
   const bottomProjectsRef = useRef();
   const projectsBottomRefValue = useOnScreen(bottomProjectsRef);
   const dispatch = useDispatch();
+  const { projects, filter, display, sort, showCmd, showMore } =
+    useSelector((state) => state.projects);
+
   function loadMore() {
     const projectsLen = projects.length;
     dispatch(
@@ -50,21 +64,25 @@ const Projects = ({ projectsData }) => {
 
   useEffect(() => {
     setWindowWidth(window?.innerWidth);
+    dispatch(setInitProjects(projectsData));
+    dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
   }, []);
 
-  useEffect(() => {
-    setProjectsNumLoad(getItemsNumber(windowWidth));
-  }, [windowWidth]);
+
 
   useEffect(() => {
     if (!windowWidth) return;
     if (projects && projects.length > 0) return;
+    console.log(projectsData.slice(0, projectsNumLoad), projectsNumLoad)
     dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
     if (showMore && projectsBottomRefValue) {
       loadMore();
     }
   }, [projectsNumLoad]);
 
+  useEffect(() => {
+    setProjectsNumLoad(getItemsNumber(windowWidth));
+  }, [windowWidth]);
   const handleResize = () => {
     setWindowWidth(window?.innerWidth);
   };
@@ -79,42 +97,42 @@ const Projects = ({ projectsData }) => {
     };
   });
 
-  const { projects, filter, display, sort, showCmd } = useSelector(
-    (state) => state.projects
-  );
+  function filterSortProjects() {
+    let sortedProjects =
+      projects?.length > 0 ? [...projects] : [...projectsData];
 
-  /*useEffect(() => {
-    dispatch(setProjects(projectsData));
-  }, []);*/
+    if (sort === "1") {
+      /* A - Z */
+      sortedProjects = sortedProjects.sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+    }
+    if (sort === "2") {
+      /* Z - A */
+      sortedProjects = sortedProjects.sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      });
+    }
 
-  let sortedProjects = projects?.length > 0 ? [...projects] : [...projectsData];
+    let filtredProjects = [...sortedProjects];
 
-  if (sort === "1") {
-    /* A - Z */
-    sortedProjects = sortedProjects.sort((a, b) => {
-      return a.title.localeCompare(b.title);
-    });
+    const { title, category } = filter;
+    if (title) {
+      filtredProjects = filtredProjects.filter((i) =>
+        i.title.toLowerCase().includes(title.toLowerCase())
+      );
+    }
+    if (category && category.length > 0) {
+      filtredProjects = filtredProjects.filter((i) =>
+        i.categories.includes(category)
+      );
+    }
+    return filtredProjects;
   }
-  if (sort === "2") {
-    /* Z - A */
-    sortedProjects = sortedProjects.sort((a, b) => {
-      return b.title.localeCompare(a.title);
-    });
-  }
 
-  let filtredProjects = [...sortedProjects];
-
-  const { title, category } = filter;
-  if (title) {
-    filtredProjects = filtredProjects.filter((i) =>
-      i.title.toLowerCase().includes(title.toLowerCase())
-    );
-  }
-  if (category && category.length > 0) {
-    filtredProjects = filtredProjects.filter((i) =>
-      i.categories.includes(category)
-    );
-  }
+  useEffect(() => {
+    setFiltredProjects(filterSortProjects());
+  }, [projects, filter, sort]);
 
   const [displayLocal, setDisplayLocal] = useLocalStorageValue({
     key: "display",
@@ -175,8 +193,8 @@ const Projects = ({ projectsData }) => {
                 color: "var(--color-font)",
               }}
             >
-              {filtredProjects.length > 0
-                ? "Displayed: " + filtredProjects.length
+              {filtredProjects?.length > 0
+                ? "Displayed: " + filtredProjects?.length
                 : "No Projects to display"}
             </div>
 
@@ -187,26 +205,41 @@ const Projects = ({ projectsData }) => {
                   : styles.projectsDetailed
               }
             >
-              {filtredProjects.map((p, index) => (
-                <Project key={p.id} {...p} num={index} />
+              {filtredProjects?.map((p, index) => (
+                <Project key={p.id} {...p} />
               ))}
             </div>
           </>
         </div>
-        <button
-          ref={bottomProjectsRef}
-          style={{ margin: "20px 0" }}
-          onClick={() => {
-            setShowMore((showMore) => !showMore);
-            if (!showMore) loadMore();
-            else dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
-          }}
-        >
-          {!showMore ? "More" : "Less"}
-        </button>
+        {
+          <button
+            onClick={() => {
+              dispatch(showMorePrj());
+              if (!showMore) loadMore();
+              else
+                dispatch(setProjects(projectsData.slice(0, 3)));
+            }}
+            className={styles.lessMoreButton}
+          >
+            {!showMore ? "More" : "Less"}
+            {filtredProjects?.length === projectsData.length && <a
+              style={{ fontSize: "30px" }}
+              className={styles.githubMore}
+              href={MY_GITHUB}
+              title="Git hub"
+              target="_blank"
+            >
+              <FaGithubSquare />
+            </a>}
+          </button>
+        }
       </article>
-
-      <Footer refProp={bottomProjectsRef} />
+      <div style={{ height: "170px" }} />
+      <div
+        style={{ height: "5px", marginTop: "10px" }}
+        ref={bottomProjectsRef}
+      ></div>
+      <Footer />
     </>
   );
 };

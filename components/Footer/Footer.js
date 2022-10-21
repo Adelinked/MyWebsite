@@ -90,7 +90,7 @@ export default ({ refProp }) => {
           </a>
         </div>
       </div>
-      <div ref={refProp} />
+
     </>
   );
 };

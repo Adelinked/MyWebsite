@@ -1,6 +1,7 @@
 import {
   LOADING_PROJECTS,
   FETCH_PROJECTS,
+  SET_INIT_PROJECTS,
   SET_PROJECTS,
   REMOVE_PROJECT,
   CLEAR_PROJECTS,
@@ -10,10 +11,12 @@ import {
   SET_FILTER,
   CLEAR_FILTER,
   SHOW_CMD,
+  SHOW_MORE,
 } from "../types";
 
 const initialState = {
   loading: false,
+  initProjectsData: [],
   projects: [],
   filtredProjects: [],
   show: false,
@@ -22,6 +25,7 @@ const initialState = {
   sort: "0",
   filter: { title: "", category: "" },
   showCmd: false,
+  showMore: false
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -36,11 +40,17 @@ export default function (state = initialState, action) {
         loading: false,
         projects: action.payload,
       };
+    case SET_INIT_PROJECTS:
+      return {
+        ...state,
+        initProjectsData: action.payload,
+      };
     case SET_PROJECTS:
       return {
         ...state,
         projects: action.payload,
       };
+
     case SORT_PROJECTS:
       return {
         ...state,
@@ -94,6 +104,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         showCmd: !state.showCmd,
+      };
+
+    case SHOW_MORE:
+      return {
+        ...state,
+        showMore: !state.showMore,
       };
 
     default:

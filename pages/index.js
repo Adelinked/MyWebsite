@@ -7,11 +7,14 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
 
+
 import styles from "../styles/Home.module.css";
 import Project from "../components/Project";
 import SkillComp from "../components/SkillComp";
 import { MY_PHOTO } from "../data/variables";
+import { randomize } from "../utils/functions";
 import Meta from "../components/Meta";
+
 const Index = ({ projectsData, skillsData }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -64,7 +67,7 @@ const Index = ({ projectsData, skillsData }) => {
           </div>
           {!loading ? (
             <div className={styles.indexProjectsImgDiv}>
-              {projectsData.slice(1, 4).map((p) => (
+              {randomize(projectsData).slice(1, 4).map((p) => (
                 <Project key={p.id} {...p} fromIndex />
               ))}
             </div>

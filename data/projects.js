@@ -1,6 +1,6 @@
 export let projectsData = [
   {
-    id: 2,
+    id: 1,
     title: "SocialNet",
     description:
       "This project is developed using the NextJs React framework. The app permits to users to create their profiles after signin, add posts, react to them and comment them. They can also delete or edit those information anytime they want.",
@@ -10,7 +10,7 @@ export let projectsData = [
     depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
-    id: 13,
+    id: 2,
     title: "IP address tracker ",
     description:
       "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
@@ -21,7 +21,7 @@ export let projectsData = [
   },
 
   {
-    id: 1,
+    id: 3,
     title: "E-commerce",
     description:
       "A React application that uses Redux Thunk for state management. The user can add products to the cart then proceeds to checkout (after signin)\
@@ -43,7 +43,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 14,
+    id: 4,
     title: "Loopstudios landing page",
     description:
       "This is a solution to the Loopstudios landing page challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
@@ -64,7 +64,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 15,
+    id: 6,
     title: "Interactive card details form",
     description:
       "This is a solution to the Interactive card details form challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
@@ -74,7 +74,7 @@ export let projectsData = [
     depUrl: "https://adelinked.github.io/interactive-form/",
   },
   {
-    id: 6,
+    id: 7,
     title: "Weather forcast",
     description:
       "An application for weather forcast in your city and other cities around the world based on data provided by <a target='_blank' rel='noreferrer' href='https://openweathermap.org/api'>OpenWeather</a>.",
@@ -86,7 +86,7 @@ export let projectsData = [
   },
 
   {
-    id: 7,
+    id: 8,
     title: "Quiz App",
     description:
       "Quiz app made using NextJs framework and Redux Thunk. The data is provided by <a target='_blank' rel='noreferrer' href='https://opentdb.com/api_config.php'>The Trivia Api</a>.",
@@ -97,7 +97,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 8,
+    id: 9,
     title: "Hacker News Search",
     description:
       "This app permits to do hacker news search. It uses Redux Thunk for state management and its  source of data is the <a target='_blank' rel='noreferrer' href='https://hn.algolia.com/api/'>Hacker News Search </a>API.",
@@ -108,7 +108,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 3,
+    id: 10,
     title: "Portfolio HTML page",
     description: "A simple html portfolio page as part of FreeCodeCamp courses",
     categories: ["HTML", "CSS"],
@@ -117,7 +117,7 @@ export let projectsData = [
     depUrl: "https://adelinked.github.io/portfolio-page/",
   },
   {
-    id: 9,
+    id: 11,
     title: "Photos App",
     description:
       "An application to display photos using <a target='_blank' rel='noreferrer' href='https://unsplash.com/developers'>unsplash-api </a>as a source of data ",
@@ -128,7 +128,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 10,
+    id: 12,
     title: "Shopping cart - TS ",
     description:
       "Cart with typeScript using useState hook vs Redux . It also implements some tests using Jest and React Testing Library. I added a Github action to run those tests before deployement on each push or pull (see the <a target='_blank' rel='noreferrer' href='https://github.com/Adelinked/Shopping-Cart-TS'>source code on Github</a>).",
@@ -151,7 +151,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 16,
+    id: 13,
     title: "Room homepage",
     description:
       "This is a solution to the Room homepage challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
@@ -161,7 +161,7 @@ export let projectsData = [
     depUrl: "https://room-homepage-adelinked.netlify.app/",
   },
   {
-    id: 11,
+    id: 14,
     title: "Dark mode",
     description:
       " Dark mode app using the react useContext and useLocalStorageValue hooks",
@@ -172,7 +172,7 @@ export let projectsData = [
     demoUrl: "",
   },
   {
-    id: 4,
+    id: 15,
     title: "Js calculator",
     description:
       "This app was developed as part of <a target='_blank' rel='noreferrer' href='https://www.freecodecamp.org/'>FreeCodeCamp</a> courses using the <a target='_blank' rel='noreferrer' href='https://github.com/facebook/create-react-app'>Create React App</a>.",
@@ -182,7 +182,7 @@ export let projectsData = [
     depUrl: "https://adelinked.github.io/Js-calculator/",
   },
   {
-    id: 12,
+    id: 16,
     title: "25 + 5 Clock",
     description:
       "Pomodoro 25+5 clock using React class components made during FreeCodeCamp courses",

@@ -21,6 +21,7 @@ export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
 export const SET_CART = "SET_CART";
 
 export const FETCH_PROJECTS = "FETCH_PROJECTS";
+export const SET_INIT_PROJECTS = "SET_INIT_PROJECTS";
 export const SET_PROJECTS = "SET_PROJECTS";
 export const LOADING_PROJECTS = "LOADING_PROJECTS";
 export const REMOVE_PROJECT = "REMOVE_PROJECT";
@@ -31,6 +32,7 @@ export const SET_PROJECTS_DISPLAY = "SET_PROJECTS_DISPLAY";
 export const SET_FILTER = "SET_FILTER";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SHOW_CMD = "SHOW_CMD";
+export const SHOW_MORE = "SHOW_MORE";
 
 export const SHOW_USER_LOGIN = "SHOW_USER_LOGIN";
 
