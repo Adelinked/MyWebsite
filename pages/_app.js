@@ -1,4 +1,3 @@
-import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import "highlight.js/styles/github.css";
 
@@ -12,11 +11,9 @@ export default function App({ Component, pageProps }) {
   /*useEffect(() => { tawkWidjet(); }, [])*/
   return (
     <Provider store={store}>
-      <SessionProvider session={pageProps.session}>
-        <AppWrapper value={pageProps.value}>
-          <Component {...pageProps} />
-        </AppWrapper>
-      </SessionProvider>
+      <AppWrapper value={pageProps.value}>
+        <Component {...pageProps} />
+      </AppWrapper>
     </Provider>
   );
 }

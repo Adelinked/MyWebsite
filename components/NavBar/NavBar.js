@@ -4,14 +4,12 @@ import styles from "./NavBar.module.css";
 import { useLocalStorageValue } from "@mantine/hooks";
 import { useAppContext } from "../../context";
 import { useDispatch, useSelector } from "react-redux";
-import { useSession } from "next-auth/react";
 import AppLoading from "../../components/AppLoading";
 import { setAppLoading, setNavBar } from "../../store/actions/appAction";
 import { useRouter } from "next/router";
 import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 import { ImPushpin } from "react-icons/im";
 export default () => {
-  const { data: session } = useSession();
 
   const cart = useSelector((state) => state.cart);
   const [logged, setLogged] = useState(false);

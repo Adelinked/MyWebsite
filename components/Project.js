@@ -30,9 +30,10 @@ export default function Project(props) {
 
 
   useEffect(() => {
+    if (fromIndex) { setLoading(false); return; }
     const pad = document.getElementById(id);
 
-    if (fromIndex || id < 4 || display === "1") { pad.style.opacity = "100%"; setLoading(false); return; }
+    if (id < 4 || display === "1") { pad.style.opacity = "100%"; setLoading(false); return; }
 
     if (!pad) return;
     pad.classList.toggle("rotatePad");
@@ -48,11 +49,11 @@ export default function Project(props) {
   const { display } = useSelector((state) => state.projects);
 
   return (
-    <div className={styles.projectPad} id={id}>
+    <div className={styles.projectPad} id={id} style={{ opacity: fromIndex ? "100%" : undefined }}>
 
       {display === "0" || fromIndex /* without details*/ ? (
         <>
-          <div className={styles.projectTitleDiv}>
+          <div className={styles.projectTitleDiv} >
             <h3>{title}</h3>
           </div>
           <div className={styles.imgDiv}>
