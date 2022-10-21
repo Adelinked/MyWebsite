@@ -12,6 +12,7 @@ export const setInitProjects = (projects) => async (dispatch) => {
 };
 
 export const setProjects = (projects) => async (dispatch) => {
+
   dispatch({ type: "SET_PROJECTS", payload: projects });
 };
 
@@ -41,6 +42,10 @@ export const showPrjCmd = () => async (dispatch) => {
 
 export const showMorePrj = () => async (dispatch) => {
   dispatch({ type: "SHOW_MORE", payload: [] });
+};
+
+export const setProjectsNumLoad = (projectsNumLoad) => async (dispatch) => {
+  dispatch({ type: "SORT_PROJECTS", payload: projectsNumLoad });
 };
 
 export const fetchProjects = (p) => async (dispatch) => {

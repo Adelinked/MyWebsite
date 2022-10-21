@@ -3,6 +3,9 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ['localhost', "adelinked.netlify.app"],
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
       require("./scripts/generate-sitemap");

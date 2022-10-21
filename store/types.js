@@ -33,6 +33,7 @@ export const SET_FILTER = "SET_FILTER";
 export const CLEAR_FILTER = "CLEAR_FILTER";
 export const SHOW_CMD = "SHOW_CMD";
 export const SHOW_MORE = "SHOW_MORE";
+export const PROJECTS_NUM_LOAD = "PROJECTS_NUM_LOAD";
 
 export const SHOW_USER_LOGIN = "SHOW_USER_LOGIN";
 

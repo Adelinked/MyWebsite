@@ -19,7 +19,8 @@ import {
   setProjects,
   showPrjCmd,
   showMorePrj,
-  setProjectsDisplay
+  setProjectsDisplay,
+  setProjectsNumLoad
 } from "../store/actions/projectsAction";
 const Project = dynamic(() => import("../components/Project"), {
   ssr: false,
@@ -38,11 +39,10 @@ import {
 const Projects = ({ projectsData }) => {
   const [filtredProjects, setFiltredProjects] = useState();
   const [windowWidth, setWindowWidth] = useState();
-  const [projectsNumLoad, setProjectsNumLoad] = useState(3);
   const bottomProjectsRef = useRef();
   const projectsBottomRefValue = useOnScreen(bottomProjectsRef);
   const dispatch = useDispatch();
-  const { projects, filter, display, sort, showCmd, showMore } =
+  const { projects, filter, display, sort, showCmd, showMore, projectsNumLoad } =
     useSelector((state) => state.projects);
 
   function loadMore() {
@@ -65,6 +65,7 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     setWindowWidth(window?.innerWidth);
     dispatch(setInitProjects(projectsData));
+    if (projects && projects.length > 0) return;
     dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
   }, []);
 
@@ -81,7 +82,7 @@ const Projects = ({ projectsData }) => {
   }, [projectsNumLoad]);
 
   useEffect(() => {
-    setProjectsNumLoad(getItemsNumber(windowWidth));
+    dispatch(setProjectsNumLoad(getItemsNumber(windowWidth)));
   }, [windowWidth]);
   const handleResize = () => {
     setWindowWidth(window?.innerWidth);

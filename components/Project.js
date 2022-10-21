@@ -23,7 +23,7 @@ export default function Project(props) {
   useEffect(() => {
     const id = setTimeout(() => {
       setLoading(loading => !loading);
-    }, 100);
+    }, 250);
     return () => {
       clearTimeout(id);
     }

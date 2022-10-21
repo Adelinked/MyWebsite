@@ -12,6 +12,7 @@ import {
   CLEAR_FILTER,
   SHOW_CMD,
   SHOW_MORE,
+  PROJECTS_NUM_LOAD,
 } from "../types";
 
 const initialState = {
@@ -25,7 +26,9 @@ const initialState = {
   sort: "0",
   filter: { title: "", category: "" },
   showCmd: false,
-  showMore: false
+  showMore: false,
+  projectsNumLoad: 3,
+
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -110,6 +113,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         showMore: !state.showMore,
+      };
+    case PROJECTS_NUM_LOAD:
+      return {
+        ...state,
+        projectsNumLoad: action.payload,
       };
 
     default:
