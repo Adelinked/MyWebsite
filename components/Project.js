@@ -18,12 +18,11 @@ export default function Project(props) {
     id
   } = props;
   const [loading, setLoading] = useState(true);
-
-
   useEffect(() => {
     const id = setTimeout(() => {
-      setLoading(loading => !loading);
-    }, 250);
+      setLoading(false);
+    }, 300);
+
     return () => {
       clearTimeout(id);
     }
