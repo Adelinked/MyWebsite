@@ -8,9 +8,9 @@ import Navbar from "../../components/NavBar";
 import { ProjectDetails } from "../../components/ProjectDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorageValue } from "@mantine/hooks";
-import axios from "axios";
+//import axios from "axios";
 
-export default function OneProject({}) {
+export default function OneProject({ }) {
   const { query } = useRouter();
   const [projectCli, setProjectCli] = useState();
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ export default function OneProject({}) {
   const getProject = async () => {
     setLoading(true);
     const url = `/api/${query.id}`;
-    const data = await axios.get(url);
+    //const data = await axios.get(url);
     setProjectCli(data.data[0]);
     setLoading(false);
   };
