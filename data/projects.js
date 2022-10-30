@@ -192,6 +192,17 @@ export let projectsData = [
     depUrl: "https://adelinked.github.io/Pomodoro/",
     demoUrl: "",
   },
+  {
+    id: 17,
+    title: "Countdow Timer",
+    description:
+      "This is a solution to the Launchdown timer challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["TS", "Tailwindcss", "NextJs", "React"],
+    image: "/projectsImages/countDownTimer.png",
+    srcUrl: "https://github.com/Adelinked/Launch-Countdown-Timer",
+    depUrl: "https://adelinked-countdown-timer.netlify.app/",
+    demoUrl: "",
+  },
 ];
 
 export let skillsData = [
