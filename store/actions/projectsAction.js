@@ -44,8 +44,8 @@ export const showMorePrj = () => async (dispatch) => {
   dispatch({ type: "SHOW_MORE", payload: [] });
 };
 
-export const setProjectsNumLoad = (projectsNumLoad) => async (dispatch) => {
-  dispatch({ type: "SORT_PROJECTS", payload: projectsNumLoad });
+export const setProjectsNumLoad = (projectsNumberLoad) => async (dispatch) => {
+  dispatch({ type: "PROJECTS_NUM_LOAD", payload: projectsNumberLoad });
 };
 
 export const fetchProjects = (p) => async (dispatch) => {

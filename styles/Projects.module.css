@@ -21,7 +21,8 @@
   overflow: hidden;
   background-color: var(--color-bgd2);
   opacity: 10%;
-  transition: transform 0.1 ease-out;
+  scale: 1%;
+  transition: scale 0.9s ease-out, transform 0.3s ease-out;
 }
 .imgDiv {
   width: 100%;

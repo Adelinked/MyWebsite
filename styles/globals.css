@@ -166,7 +166,8 @@ li {
 }
 
 .rotatePad {
-  transform: rotate(360deg);
+  transform: rotate(-360deg);
+  scale: 1%;
 }
 .aboutDiv {
   padding: 30px;

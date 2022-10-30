@@ -74,7 +74,6 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     if (!windowWidth) return;
     if (projects && projects.length > 0) return;
-    console.log(projectsData.slice(0, projectsNumLoad), projectsNumLoad)
     dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
     if (showMore && projectsBottomRefValue) {
       loadMore();
@@ -82,8 +81,10 @@ const Projects = ({ projectsData }) => {
   }, [projectsNumLoad]);
 
   useEffect(() => {
-    dispatch(setProjectsNumLoad(getItemsNumber(windowWidth)));
+    dispatch(setProjectsNumLoad(getItemsNumber(windowWidth) ?? 3));
+    console.log('new numload', projectsNumLoad, windowWidth)
   }, [windowWidth]);
+
   const handleResize = () => {
     setWindowWidth(window?.innerWidth);
   };

@@ -17,6 +17,7 @@ export default function Project(props) {
     fromIndex = false,
     id
   } = props;
+
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const id = setTimeout(() => {
@@ -28,20 +29,29 @@ export default function Project(props) {
     }
   }, []);
 
-
   useEffect(() => {
-    if (fromIndex) { setLoading(false); return; }
+
+    if (fromIndex) {
+      setLoading(false);
+      return;
+    }
+
     const pad = document.getElementById(id);
-
-    if (id < 4 || display === "1") { pad.style.opacity = "100%"; setLoading(false); return; }
-
     if (!pad) return;
+    if (display === "1") {
+      pad.style.opacity = "100%";
+      pad.style.scale = "100%";
+      setLoading(false);
+      return;
+    }
+
     pad.classList.toggle("rotatePad");
 
     if (!loading) {
-
       pad.style.opacity = "100%";
+      pad.style.scale = "100%";
     }
+
 
   }, [loading]);
 
@@ -49,7 +59,7 @@ export default function Project(props) {
   const { display } = useSelector((state) => state.projects);
 
   return (
-    <div className={styles.projectPad} id={id} style={{ opacity: fromIndex ? "100%" : undefined }}>
+    <div className={styles.projectPad} id={id} style={{ opacity: fromIndex ? "100%" : "10%", scale: fromIndex ? "100%" : "1%" }}>
 
       {display === "0" || fromIndex /* without details*/ ? (
         <>
