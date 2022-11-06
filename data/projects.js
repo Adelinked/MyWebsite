@@ -16,8 +16,8 @@ export let projectsData = [
       "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
     categories: ["HTML", "CSS", "JS", "React", "NextJs"],
     image: "/projectsImages/ipTracker.png",
-    srcUrl: "https://fem-ip-address-tracker.netlify.app/",
-    depUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
+    srcUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
+    depUrl: "https://fem-ip-address-tracker.netlify.app/",
   },
 
   {
@@ -210,7 +210,12 @@ export let skillsData = [
   { num: 2, title: "HTML", image: "/languages/html.png" },
   { num: 3, title: "CSS", image: "/languages/css.png" },
   { num: 4, title: "React", image: "/languages/react.png" },
-  { num: 5, title: "NextJs", image: "/languages/NextJs.png" },
+  {
+    num: 5,
+    title: "NextJs",
+    image: "/languages/NextJsWhite.png",
+    image2: "/languages/NextJsBlack.png",
+  },
   { num: 6, title: "Redux", image: "/languages/redux.png" },
   { num: 7, title: "Node", image: "/languages/nodejs.png" },
   { num: 8, title: "Mongodb", image: "/languages/mongodb.png" },

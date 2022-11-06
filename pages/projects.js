@@ -223,7 +223,7 @@ const Projects = ({ projectsData }) => {
             }}
             className={styles.lessMoreButton}
           >
-            {!showMore ? "More" : "Less"}
+            {!showMore ? "View More" : "View Less"}
             {filtredProjects?.length === projectsData.length && <a
               style={{ fontSize: "30px" }}
               className={styles.githubMore}
