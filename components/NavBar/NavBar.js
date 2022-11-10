@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { useLocalStorageValue } from "@mantine/hooks";
@@ -12,7 +12,6 @@ import { ImPushpin } from "react-icons/im";
 export default () => {
 
   const cart = useSelector((state) => state.cart);
-  const [logged, setLogged] = useState(false);
   const [show, setShow] = useState(true);
   const [scrollpos, setScrollpos] = useState();
   const [themeLocal, setThemeLocal] = useLocalStorageValue({
@@ -44,26 +43,32 @@ export default () => {
       document.removeEventListener("scroll", handleScroll);
     };
   });
+  const navbarRef = useRef(null);
+  const verticalNavbarRef = useRef(null);
+
   const handleScroll = (e) => {
     const currentScrollPos = window.scrollY;
+    const navbar = navbarRef.current;
 
     if (!fixNavBar) {
       if (scrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = 0;
+        navbar.style.top = 0;
       } else {
-        document.getElementById("navbar").style.top = "-12vh";
+        navbar.style.top = "-12vh";
       }
     }
 
     setScrollpos(currentScrollPos);
   };
   const openVertNav = () => {
+    const navbar = navbarRef.current;
+    const verticalNavBar = verticalNavbarRef.current;
     if (show) {
-      document.getElementById("vertNavbar").style.right = "0";
-      document.getElementById("navbar").style.top = "-12vh";
+      verticalNavBar.style.right = "0";
+      navbar.style.top = "-12vh";
     } else {
-      document.getElementById("vertNavbar").style.right = "100%";
-      document.getElementById("navbar").style.top = "0";
+      verticalNavBar.style.right = "100%";
+      navbar.style.top = "0";
     }
 
     setShow((show) => !show);
@@ -81,7 +86,7 @@ export default () => {
 
   return (
     <>
-      <nav className={styles.navbar} id="navbar">
+      <nav className={styles.navbar} id="navbar" ref={navbarRef}>
         <span
           className={styles.themeSwitch}
           title={`Switch to ${titleTheme}`}
@@ -148,7 +153,7 @@ export default () => {
           </span>
         </div>
       </nav>
-      <nav className={styles.vertNavbar} id="vertNavbar">
+      <nav className={styles.vertNavbar} id="vertNavbar" ref={verticalNavbarRef}>
         <span className={styles.closeNav} onClick={openVertNav}>
           <FaTimes />
         </span>

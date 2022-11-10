@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { FaEye, FaGithubSquare, FaYoutube } from "react-icons/fa";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 export default function Project(props) {
+
+  const padRef = useRef(null);
   const {
     title,
     description,
@@ -30,13 +31,11 @@ export default function Project(props) {
   }, []);
 
   useEffect(() => {
-
-    if (fromIndex) {
-      setLoading(false);
-      return;
-    }
-
-    const pad = document.getElementById(id);
+    /* if (fromIndex) {
+       setLoading(false);
+       return;
+     }*/
+    const pad = padRef.current;
     if (!pad) return;
     if (display === "1") {
       pad.style.opacity = "100%";
@@ -44,22 +43,18 @@ export default function Project(props) {
       setLoading(false);
       return;
     }
-
     pad.classList.toggle("rotatePad");
-
     if (!loading) {
       pad.style.opacity = "100%";
       pad.style.scale = "100%";
     }
-
-
   }, [loading]);
 
 
   const { display } = useSelector((state) => state.projects);
 
   return (
-    <div className={styles.projectPad} id={id} style={{ opacity: fromIndex ? "100%" : "10%", scale: fromIndex ? "100%" : "1%" }}>
+    <div className={styles.projectPad} id={id} ref={padRef} >
 
       {display === "0" || fromIndex /* without details*/ ? (
         <>

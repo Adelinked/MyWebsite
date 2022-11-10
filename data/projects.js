@@ -14,7 +14,7 @@ export let projectsData = [
     title: "IP address tracker ",
     description:
       "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
-    categories: ["HTML", "CSS", "JS", "React", "NextJs"],
+    categories: ["HTML", "CSS", "JS", "React", "NextJs", "Leaflet"],
     image: "/projectsImages/ipTracker.png",
     srcUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
     depUrl: "https://fem-ip-address-tracker.netlify.app/",

@@ -3,22 +3,37 @@ import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
-
 
 import styles from "../styles/Home.module.css";
 import Project from "../components/Project";
 import SkillComp from "../components/SkillComp";
 import { MY_PHOTO } from "../data/variables";
-import { randomize } from "../utils/functions";
+import useOnScreen from "../utils/useOnScreen";
 import Meta from "../components/Meta";
 
 const Index = ({ projectsData, skillsData }) => {
   const [loading, setLoading] = useState(false);
+  const [projectsDataDisplay, setprojectsDataDisplay] = useState();
   const router = useRouter();
   const dispatch = useDispatch();
+  const projectsRef = useRef();
+  const projectsRefValue = useOnScreen(projectsRef);
+
+  useEffect(() => {
+    if (projectsDataDisplay) return;
+
+    if (projectsRefValue) {
+      (async () => {
+        const randomize = (await import("../utils/functions")).randomize;
+        setprojectsDataDisplay(randomize(projectsData));
+
+      })()
+    }
+
+  }, [projectsRefValue]);
 
   return (
     <>
@@ -67,7 +82,7 @@ const Index = ({ projectsData, skillsData }) => {
           </div>
           {!loading ? (
             <div className={styles.indexProjectsImgDiv}>
-              {randomize(projectsData).slice(1, 4).map((p) => (
+              {projectsDataDisplay?.slice(1, 4).map((p) => (
                 <Project key={p.id} {...p} fromIndex />
               ))}
             </div>
@@ -80,11 +95,12 @@ const Index = ({ projectsData, skillsData }) => {
               dispatch(setAppLoading(true));
               router.push("/projects");
             }}
+            ref={projectsRef}
           >
             All projects
           </button>
         </section>
-        <section className={styles.indexProjectsDiv}>
+        <section className={styles.indexProjectsDiv} >
           <div className={styles.indexTextProDiv} style={{ padding: "5px" }}>
             <h2 className={styles.indexTitles}>Skills</h2>
           </div>
@@ -112,10 +128,8 @@ const Index = ({ projectsData, skillsData }) => {
 export default Index;
 
 export async function getStaticProps(context) {
-  // const random = (await import("../utils/functions")).randomize;
-  //const projectsData = random((await import("../data/projects")).projectsData);
-
-  const projectsData = (await import("../data/projects")).projectsData;
-  const skillsData = (await import("../data/projects")).skillsData;
+  const data = (await import("../data/projects"));
+  const projectsData = data.projectsData;
+  const skillsData = data.skillsData;
   return { props: { projectsData: projectsData, skillsData: skillsData } };
 }
