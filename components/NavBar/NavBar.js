@@ -153,63 +153,65 @@ export default () => {
           </span>
         </div>
       </nav>
-      <nav className={styles.vertNavbar} id="vertNavbar" ref={verticalNavbarRef}>
-        <span className={styles.closeNav} onClick={openVertNav}>
-          <FaTimes />
-        </span>
-        <span
-          className={styles.themeSwitch}
-          title={`Switch to ${titleTheme}`}
-          onClick={switchTheme}
-        >
-          {theme === "light-theme" ? <FaMoon /> : <FaSun />}
-        </span>
-        <div className={styles.loginContainer}></div>
-        <Link href="/">
-          <a
-            style={{ marginTop: "30px" }}
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Home page"
+      <nav className={styles.vertNavContainer} ref={verticalNavbarRef}>
+        <div className={styles.vertNavbar} id="vertNavbar" >
+          <span className={styles.closeNav} onClick={openVertNav}>
+            <FaTimes />
+          </span>
+          <span
+            className={styles.themeSwitch}
+            title={`Switch to ${titleTheme}`}
+            onClick={switchTheme}
           >
-            Home
-          </a>
-        </Link>
-        <Link href="/about">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="About"
-          >
-            About
-          </a>
-        </Link>
-        <Link href="/projects">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Projects"
-          >
-            Projects
-          </a>
-        </Link>
-        {process.env.NODE_ENV !== "production" && (
-          <Link href="/blog">
+            {theme === "light-theme" ? <FaMoon /> : <FaSun />}
+          </span>
+          <div className={styles.loginContainer}></div>
+          <Link href="/">
+            <a
+              style={{ marginTop: "30px" }}
+              onClick={() => {
+                dispatch(setAppLoading(true));
+              }}
+              title="Home page"
+            >
+              Home
+            </a>
+          </Link>
+          <Link href="/about">
             <a
               onClick={() => {
                 dispatch(setAppLoading(true));
               }}
-              title="Blog"
+              title="About"
             >
-              Blog
+              About
             </a>
           </Link>
-        )}
+          <Link href="/projects">
+            <a
+              onClick={() => {
+                dispatch(setAppLoading(true));
+              }}
+              title="Projects"
+            >
+              Projects
+            </a>
+          </Link>
+          {process.env.NODE_ENV !== "production" && (
+            <Link href="/blog">
+              <a
+                onClick={() => {
+                  dispatch(setAppLoading(true));
+                }}
+                title="Blog"
+              >
+                Blog
+              </a>
+            </Link>
+          )}
+        </div>
+        <div className={styles.vertNavbarFree} onClick={openVertNav}></div>
       </nav>
-
       {loading && <AppLoading />}
     </>
   );
