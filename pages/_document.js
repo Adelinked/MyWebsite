@@ -9,6 +9,8 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto+Mono&display=swap"
             rel="stylesheet"
           />
+          <script defer data-domain="adelinked.netlify.app" src="https://plausible.io/js/script.js"></script>
+
         </Head>
         <body>
           <Main />
