@@ -49,7 +49,7 @@ export default () => {
   const handleScroll = (e) => {
     const currentScrollPos = window.scrollY;
     const navbar = navbarRef.current;
-
+    if (!navbar) return;
     if (!fixNavBar) {
       if (scrollpos > currentScrollPos) {
         navbar.style.top = 0;

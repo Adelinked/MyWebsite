@@ -9,6 +9,7 @@
   --color-font-vlight: #999999;
   --color-links: #a4a4ad;
   --color-sub: rgb(238, 18, 11);
+  --game-color: rgba(0, 0, 0, 0.7);
 }
 
 .dark-theme {
@@ -22,6 +23,7 @@
   --color-links: #a4a4ad;
   --color-sub: #ee120b;
   --color-switch: gold;
+  --game-color: rgba(0, 0, 0, 0.7);
 }
 .light-theme {
   --color-bgd: #f3f3f3;
@@ -34,6 +36,7 @@
   --color-font-vlight: #666666;
   --color-sub: #ee120b;
   --color-switch: #0026ff;
+  --game-color: rgba(155, 155, 155, 0.7);
 }
 
 /* Base reset */
