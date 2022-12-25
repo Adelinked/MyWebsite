@@ -82,7 +82,6 @@ const Projects = ({ projectsData }) => {
 
   useEffect(() => {
     dispatch(setProjectsNumLoad(getItemsNumber(windowWidth) ?? 3));
-    console.log('new numload', projectsNumLoad, windowWidth)
   }, [windowWidth]);
 
   const handleResize = () => {

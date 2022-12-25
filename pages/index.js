@@ -15,7 +15,6 @@ import SkillComp from "../components/SkillComp";
 import { MY_PHOTO } from "../data/variables";
 import useOnScreen from "../utils/useOnScreen";
 import Meta from "../components/Meta";
-
 const Game = dynamic(() => import("../components/Game"), {
   ssr: true,
 });
@@ -139,6 +138,7 @@ const Index = ({ projectsData, skillsData }) => {
           >
             My resume
           </button>
+
         </section>
         <div className={styles.indexProjectsDiv} ref={gameRef}>
           {gameDisplay ? <Game /> : null}

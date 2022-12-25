@@ -115,7 +115,6 @@ export default function (state = initialState, action) {
         showMore: !state.showMore,
       };
     case PROJECTS_NUM_LOAD:
-      console.log('reducer', action.payload)
       return {
         ...state,
         projectsNumLoad: action.payload,
