@@ -51,10 +51,6 @@ const Index = ({ projectsData, skillsData }) => {
     }
   }, [gameRefValue]);
 
-
-
-
-
   return (
     <>
       <Meta />

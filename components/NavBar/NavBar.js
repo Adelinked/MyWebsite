@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { useLocalStorageValue } from "@mantine/hooks";
@@ -9,11 +9,15 @@ import { setAppLoading, setNavBar } from "../../store/actions/appAction";
 import { useRouter } from "next/router";
 import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 import { ImPushpin } from "react-icons/im";
-export default () => {
+import throttle from "lodash.throttle";
 
-  const cart = useSelector((state) => state.cart);
+const NavBar = () => {
+  const navbarRef = useRef(null);
+  const verticalNavbarRef = useRef(null);
+  const vertNavbarFreeRef = useRef(null);
+  const scrollpos = useRef(0);
+
   const [show, setShow] = useState(true);
-  const [scrollpos, setScrollpos] = useState();
   const [themeLocal, setThemeLocal] = useLocalStorageValue({
     key: "theme",
   });
@@ -37,65 +41,58 @@ export default () => {
   };
   let theme = globalState;
   const titleTheme = theme === "dark-theme" ? "light-theme" : "dark-theme";
-  useEffect(() => {
-    document.addEventListener("scroll", handleScroll);
-    return function cleanup() {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  });
-  const navbarRef = useRef(null);
-  const verticalNavbarRef = useRef(null);
-  const vertNavbarFreeRef = useRef(null);
-
-  const handleScroll = (e) => {
+  const { loading, fixNavBar } = useSelector((state) => state.app);
+  const handleScroll = () => {
     const currentScrollPos = window.scrollY;
     const navbar = navbarRef.current;
-    if (!navbar) return;
-    if (!fixNavBar) {
-      if (scrollpos > currentScrollPos) {
-        navbar.style.top = 0;
-      } else {
-        navbar.style.top = "-12vh";
-      }
+    if (navbar == null || scrollpos == null) return;
+    if (scrollpos.current > currentScrollPos) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-120px";
     }
-
-    setScrollpos(currentScrollPos);
+    scrollpos.current = currentScrollPos;
   };
+
+  const throttledScrollHandler = useMemo(
+    () => throttle(handleScroll, 300),
+    [scrollpos]
+  );
+
+  useEffect(() => {
+    document.addEventListener("scroll", throttledScrollHandler);
+    return function cleanup() {
+      throttledScrollHandler?.cancel();
+      document.removeEventListener("scroll", throttledScrollHandler);
+    };
+  });
+
   const openVertNav = () => {
     const navbar = navbarRef.current;
     const verticalNavBar = verticalNavbarRef.current;
     const vertNavbarFree = vertNavbarFreeRef.current;
-
     if (show) {
       verticalNavBar.style.right = "0";
-      navbar.style.top = "-12vh";
+      if (!fixNavBar)
+        navbar.style.top = "-12vh";
       navbar.addEventListener('transitionend', function handler() {
         navbar.removeEventListener('transitionend', handler);
         setTimeout(() => {
-          vertNavbarFree.style.opacity = "0.6";
-        }, 350);
+          vertNavbarFree.style.opacity = "0.75";
+        }, 300);
       });
 
     } else {
       verticalNavBar.style.right = "100%";
       navbar.style.top = "0";
       vertNavbarFree.style.opacity = "0";
-
     }
-
     setShow((show) => !show);
   };
   const { query } = useRouter();
   useEffect(() => {
     dispatch(setAppLoading(false));
   }, [query]);
-
-  const { loading, fixNavBar } = useSelector((state) => state.app);
-
-  const pinStyle = {
-    color: fixNavBar ? "var(--color-font)" : "var(--color-font-light)",
-  };
-
   return (
     <>
       <nav className={styles.navbar} id="navbar" ref={navbarRef}>
@@ -228,3 +225,6 @@ export default () => {
     </>
   );
 };
+
+
+export default NavBar;
