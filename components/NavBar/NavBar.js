@@ -45,6 +45,7 @@ export default () => {
   });
   const navbarRef = useRef(null);
   const verticalNavbarRef = useRef(null);
+  const vertNavbarFreeRef = useRef(null);
 
   const handleScroll = (e) => {
     const currentScrollPos = window.scrollY;
@@ -63,12 +64,23 @@ export default () => {
   const openVertNav = () => {
     const navbar = navbarRef.current;
     const verticalNavBar = verticalNavbarRef.current;
+    const vertNavbarFree = vertNavbarFreeRef.current;
+
     if (show) {
       verticalNavBar.style.right = "0";
       navbar.style.top = "-12vh";
+      navbar.addEventListener('transitionend', function handler() {
+        navbar.removeEventListener('transitionend', handler);
+        setTimeout(() => {
+          vertNavbarFree.style.opacity = "0.6";
+        }, 350);
+      });
+
     } else {
       verticalNavBar.style.right = "100%";
       navbar.style.top = "0";
+      vertNavbarFree.style.opacity = "0";
+
     }
 
     setShow((show) => !show);
@@ -210,7 +222,7 @@ export default () => {
             </Link>
           )}
         </div>
-        <div className={styles.vertNavbarFree} onClick={openVertNav}></div>
+        <div className={styles.vertNavbarFree} onClick={openVertNav} ref={vertNavbarFreeRef} ></div>
       </nav>
       {loading && <AppLoading />}
     </>

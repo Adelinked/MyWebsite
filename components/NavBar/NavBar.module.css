@@ -99,7 +99,7 @@
 .vertNavbarFree {
   background-color: var(--color-bgd3);
   width: 40%;
-  opacity: 0.7;
+  opacity: 0;
 }
 
 .vertNavbar > a {
