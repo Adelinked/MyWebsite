@@ -37,7 +37,6 @@ const Game = () => {
           className={styles.game}
           fetchpriority={true}
           loading="lazy"
-          scrolling="no"
           title="rock paper scissors lizard spock game"
           src="https://adelinked-rock-paper-scissors.netlify.app/"
         />
