@@ -92,10 +92,10 @@
 }
 .loadingImage {
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 0;
   width: 100%;
-  height: 25%;
+  height: 30%;
   opacity: 0.95;
 }
 .game {
