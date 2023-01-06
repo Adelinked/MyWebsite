@@ -81,7 +81,7 @@
 }
 
 .gameContainer {
-  height: 188vh;
+  height: 100vh;
   width: 375px;
   box-shadow: inset 0px 5px 1px var(--game-color);
   overflow: hidden;

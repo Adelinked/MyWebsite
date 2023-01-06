@@ -1,26 +1,5 @@
 export let projectsData = [
   {
-    id: 1,
-    title: "SocialNet",
-    description:
-      "This project is developed using the NextJs React framework. The app permits to users to create their profiles after signin, add posts, react to them and comment them. They can also delete or edit those information anytime they want.",
-    categories: ["HTML", "CSS", "JS", "React", "NextJs", "NextAuth", "MONGODB"],
-    image: "/projectsImages/socialNet2.png",
-    srcUrl: "https://github.com/Adelinked/SocialNet",
-    depUrl: "https://adelinked-socialnet.netlify.app/",
-  },
-  {
-    id: 2,
-    title: "IP address tracker ",
-    description:
-      "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
-    categories: ["HTML", "CSS", "JS", "React", "NextJs", "Leaflet"],
-    image: "/projectsImages/ipTracker.png",
-    srcUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
-    depUrl: "https://fem-ip-address-tracker.netlify.app/",
-  },
-
-  {
     id: 3,
     title: "E-commerce",
     description:
@@ -41,6 +20,37 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/E-commerce",
     depUrl: "https://e-commerce-adelinked.netlify.app/",
     demoUrl: "",
+  },
+  {
+    id: 18,
+    title: "Space Tourism",
+    description:
+      "This is a solution to the Space Tourism challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["TS", "Tailwindcss", "NextJs", "React"],
+    image: "/projectsImages/spaceTourism.png",
+    srcUrl: "https://github.com/Adelinked/space-tourism",
+    depUrl: "https://adelinked-space-tourism.netlify.app/",
+  },
+  {
+    id: 2,
+    title: "IP address tracker ",
+    description:
+      "This is a solution to the IP address tracker challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["HTML", "CSS", "JS", "React", "NextJs", "Leaflet"],
+    image: "/projectsImages/ipTracker.png",
+    srcUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
+    depUrl: "https://fem-ip-address-tracker.netlify.app/",
+  },
+
+  {
+    id: 1,
+    title: "SocialNet",
+    description:
+      "This project is developed using the NextJs React framework. The app permits to users to create their profiles after signin, add posts, react to them and comment them. They can also delete or edit those information anytime they want.",
+    categories: ["HTML", "CSS", "JS", "React", "NextJs", "NextAuth", "MONGODB"],
+    image: "/projectsImages/socialNet2.png",
+    srcUrl: "https://github.com/Adelinked/SocialNet",
+    depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
     id: 4,

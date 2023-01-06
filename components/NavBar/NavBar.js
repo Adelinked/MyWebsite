@@ -79,7 +79,7 @@ const NavBar = () => {
         navbar.removeEventListener('transitionend', handler);
         setTimeout(() => {
           vertNavbarFree.style.opacity = "0.75";
-        }, 300);
+        }, 200);
       });
 
     } else {
