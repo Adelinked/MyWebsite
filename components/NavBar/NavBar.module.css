@@ -78,6 +78,7 @@
   top: 0;
   right: 100%;
   z-index: 1;
+  overflow: auto;
 }
 
 .vertNavbar {

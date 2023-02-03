@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 import { ImPushpin } from "react-icons/im";
 import throttle from "lodash.throttle";
+import { TableBody } from "@mui/material";
 
 const NavBar = () => {
   const navbarRef = useRef(null);
@@ -45,6 +46,7 @@ const NavBar = () => {
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
     const navbar = navbarRef.current;
+    if (fixNavBar) return;
     if (navbar == null || scrollpos == null) return;
     if (scrollpos.current > currentScrollPos) {
       navbar.style.top = "0";
@@ -56,7 +58,7 @@ const NavBar = () => {
 
   const throttledScrollHandler = useMemo(
     () => throttle(handleScroll, 300),
-    [scrollpos]
+    [scrollpos, fixNavBar]
   );
 
   useEffect(() => {
@@ -73,16 +75,15 @@ const NavBar = () => {
     const vertNavbarFree = vertNavbarFreeRef.current;
     if (show) {
       verticalNavBar.style.right = "0";
-      if (!fixNavBar)
-        navbar.style.top = "-12vh";
-      navbar.addEventListener('transitionend', function handler() {
-        navbar.removeEventListener('transitionend', handler);
+      navbar.addEventListener("transitionend", function handler() {
+        navbar.removeEventListener("transitionend", handler);
         setTimeout(() => {
           vertNavbarFree.style.opacity = "0.75";
         }, 200);
       });
-
+      document.body.style.overflowY = "hidden";
     } else {
+      document.body.style.overflowY = "auto";
       verticalNavBar.style.right = "100%";
       navbar.style.top = "0";
       vertNavbarFree.style.opacity = "0";
@@ -163,7 +164,7 @@ const NavBar = () => {
         </div>
       </nav>
       <nav className={styles.vertNavContainer} ref={verticalNavbarRef}>
-        <div className={styles.vertNavbar} id="vertNavbar" >
+        <div className={styles.vertNavbar} id="vertNavbar">
           <span className={styles.closeNav} onClick={openVertNav}>
             <FaTimes />
           </span>
@@ -219,12 +220,15 @@ const NavBar = () => {
             </Link>
           )}
         </div>
-        <div className={styles.vertNavbarFree} onClick={openVertNav} ref={vertNavbarFreeRef} ></div>
+        <div
+          className={styles.vertNavbarFree}
+          onClick={openVertNav}
+          ref={vertNavbarFreeRef}
+        ></div>
       </nav>
       {loading && <AppLoading />}
     </>
   );
 };
-
 
 export default NavBar;
