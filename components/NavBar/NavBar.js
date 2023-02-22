@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
-import { useLocalStorageValue } from "@mantine/hooks";
 import { useAppContext } from "../../context";
 import { useDispatch, useSelector } from "react-redux";
 import AppLoading from "../../components/AppLoading";
@@ -10,38 +9,29 @@ import { useRouter } from "next/router";
 import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 import { ImPushpin } from "react-icons/im";
 import throttle from "lodash.throttle";
-import { TableBody } from "@mui/material";
 
 const NavBar = () => {
   const navbarRef = useRef(null);
   const verticalNavbarRef = useRef(null);
   const vertNavbarFreeRef = useRef(null);
   const scrollpos = useRef(0);
-
   const [show, setShow] = useState(true);
-  const [themeLocal, setThemeLocal] = useLocalStorageValue({
-    key: "theme",
-  });
-
   const dispatch = useDispatch();
   const { globalState, setGlobalState } = useAppContext();
 
-  useEffect(() => {
-    setGlobalState((themeLocal && themeLocal.theme) ?? "dark-theme");
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.className = theme;
-    setThemeLocal({ theme: theme });
-  }, [globalState]);
-
   const switchTheme = () => {
     setGlobalState((oldTheme) =>
-      oldTheme === "dark-theme" ? "light-theme" : "dark-theme"
+      oldTheme === "dark"
+        ? "light"
+        : "dark"
     );
+
+    const newTheme = globalState === "dark" ? "light" : "dark"
+    document.documentElement.className = newTheme;
+    localStorage.setItem("theme", newTheme);
   };
   let theme = globalState;
-  const titleTheme = theme === "dark-theme" ? "light-theme" : "dark-theme";
+  const titleTheme = theme === "dark" ? "light" : "dark";
   const { loading, fixNavBar } = useSelector((state) => state.app);
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
@@ -102,7 +92,7 @@ const NavBar = () => {
           title={`Switch to ${titleTheme}`}
           onClick={switchTheme}
         >
-          {theme === "light-theme" ? <FaMoon /> : <FaSun />}
+          {theme === "light" ? <FaMoon /> : <FaSun />}
         </span>
         <Link href="/">
           <a
