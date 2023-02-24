@@ -4,7 +4,6 @@ import { useAppContext } from "../context";
 
 
 const SkillComp = ({ title, image, image2 }) => {
-  //<img style={{ marginRight: "2px", borderRadius: "5px" }} src={image} />
   const { globalState, setGlobalState } = useAppContext();
 
   return (
@@ -13,13 +12,13 @@ const SkillComp = ({ title, image, image2 }) => {
         <Image
           alt={title}
           src={
-            image2 ? (globalState === "light-theme" ? image2 : image) : image
+            image2 ? (globalState === "light" ? image2 : image) : image
           }
           width={20}
           height={20}
         />
       </span>
-      {title}
+      <span>{title}</span>
     </span>
   );
 };

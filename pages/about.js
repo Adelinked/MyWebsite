@@ -36,7 +36,7 @@ const About = () => {
             {" "}
             This is my spot on the web for projects I've created and anything
             else I want to show the world. Check out the{" "}
-            <Link href={"./projects"}>
+            <Link href={"/projects"}>
               <a className="aboutLinks">projects</a>
             </Link>{" "}
             page to see a highlight of the open-source projects I've made.
@@ -123,7 +123,7 @@ const About = () => {
           <div className="aboutParagraphs">
             <ul>
               <li>
-                <Link href="./resume">
+                <Link href="/resume">
                   <a
                     onClick={() => {
                       dispatch(setAppLoading(true));

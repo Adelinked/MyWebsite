@@ -62,6 +62,17 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/loopstudio-landing-page",
     depUrl: "https://loopsstudios-landing-page.netlify.app/",
   },
+
+  {
+    id: 19,
+    title: "Countries REST API",
+    description:
+      "This is a solution to the REST Countries API with color theme switcher challenge on <a  target='_blank' rel='noreferrer' href='https://www.frontendmentor.io/'>Frontend Mentor</a>. Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+    categories: ["TS", "Tailwindcss", "NextJs", "React"],
+    image: "/projectsImages/countries.png",
+    srcUrl: "https://github.com/Adelinked/countries-app",
+    depUrl: "https://adelinked-countries.netlify.app",
+  },
   {
     id: 5,
     title: "Music-Albums",
@@ -231,4 +242,8 @@ export let skillsData = [
   { num: 8, title: "Mongodb", image: "/languages/mongodb.png" },
   { num: 9, title: "TypeScript", image: "/languages/typescript.png" },
   { num: 10, title: "Jest", image: "/languages/jest.png" },
+  { num: 11, title: "Tailwindcss", image: "/languages/tailwind.png" },
+  { num: 12, title: "MySQL", image: "/languages/MySQL.png" },
+
+
 ];

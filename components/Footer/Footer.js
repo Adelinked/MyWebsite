@@ -57,7 +57,7 @@ export default ({ refProp }) => {
           >
             <Image
               src={
-                globalState === "light-theme"
+                globalState === "light"
                   ? `/nextJsBlack.png`
                   : `/nextJsWhite.png`
               }

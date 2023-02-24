@@ -19,20 +19,21 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const { globalState, setGlobalState } = useAppContext();
 
-  const switchTheme = () => {
-    setGlobalState((oldTheme) =>
-      oldTheme === "dark"
-        ? "light"
-        : "dark"
-    );
+  useEffect(() => {
+    document.body.style.overflowY = "auto";
+  }, []);
 
-    const newTheme = globalState === "dark" ? "light" : "dark"
+  const switchTheme = () => {
+    setGlobalState((oldTheme) => (oldTheme === "dark" ? "light" : "dark"));
+
+    const newTheme = globalState === "dark" ? "light" : "dark";
     document.documentElement.className = newTheme;
     localStorage.setItem("theme", newTheme);
   };
   let theme = globalState;
   const titleTheme = theme === "dark" ? "light" : "dark";
   const { loading, fixNavBar } = useSelector((state) => state.app);
+
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
     const navbar = navbarRef.current;
@@ -80,7 +81,13 @@ const NavBar = () => {
     }
     setShow((show) => !show);
   };
-  const { query } = useRouter();
+  const { query, pathname } = useRouter();
+
+  const links =
+    process.env.NODE_ENV == "development"
+      ? ["home", "about", "projects", "blog"]
+      : ["home", "about", "projects"];
+
   useEffect(() => {
     dispatch(setAppLoading(false));
   }, [query]);
@@ -94,48 +101,27 @@ const NavBar = () => {
         >
           {theme === "light" ? <FaMoon /> : <FaSun />}
         </span>
-        <Link href="/">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Home page"
-          >
-            Home
-          </a>
-        </Link>
-        <Link href="/about">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="About me"
-          >
-            About me
-          </a>
-        </Link>
-        <Link href="/projects">
-          <a
-            onClick={() => {
-              dispatch(setAppLoading(true));
-            }}
-            title="Projects"
-          >
-            Projects
-          </a>
-        </Link>
-        {process.env.NODE_ENV !== "production" && (
-          <Link href="/blog">
-            <a
-              onClick={() => {
-                dispatch(setAppLoading(true));
-              }}
-              title="Blog"
-            >
-              Blog
-            </a>
-          </Link>
-        )}
+        <>
+          {links.map((i) => (
+            <Link href={`${i == "home" ? "/" : `/${i}`}`} key={i}>
+              <a
+                className={`${(
+                  i == "home"
+                    ? pathname === "/"
+                    : pathname.startsWith("/" + i)
+                )
+                  ? " activeNavBarLink"
+                  : " navBarLink"
+                  }`}
+                onClick={() => {
+                  dispatch(setAppLoading(true));
+                }}
+              >
+                {i}
+              </a>
+            </Link>
+          ))}
+        </>
 
         <div className={styles.cartLogOpen}>
           <span className={fixNavBar ? styles.navBarPinFix : styles.navBarPin}>
@@ -163,52 +149,30 @@ const NavBar = () => {
             title={`Switch to ${titleTheme}`}
             onClick={switchTheme}
           >
-            {theme === "light-theme" ? <FaMoon /> : <FaSun />}
+            {theme === "light" ? <FaMoon /> : <FaSun />}
           </span>
           <div className={styles.loginContainer}></div>
-          <Link href="/">
-            <a
-              style={{ marginTop: "30px" }}
-              onClick={() => {
-                dispatch(setAppLoading(true));
-              }}
-              title="Home page"
-            >
-              Home
-            </a>
-          </Link>
-          <Link href="/about">
-            <a
-              onClick={() => {
-                dispatch(setAppLoading(true));
-              }}
-              title="About"
-            >
-              About
-            </a>
-          </Link>
-          <Link href="/projects">
-            <a
-              onClick={() => {
-                dispatch(setAppLoading(true));
-              }}
-              title="Projects"
-            >
-              Projects
-            </a>
-          </Link>
-          {process.env.NODE_ENV !== "production" && (
-            <Link href="/blog">
-              <a
-                onClick={() => {
-                  dispatch(setAppLoading(true));
-                }}
-                title="Blog"
-              >
-                Blog
-              </a>
-            </Link>
-          )}
+          <>
+            {links.map((i) => (
+              <Link href={`${i == "home" ? "/" : `/${i}`}`} key={i}>
+                <a
+                  className={`${(
+                    i == "home"
+                      ? pathname === "/"
+                      : pathname.startsWith("/" + i)
+                  )
+                    ? " activeVertNavBarLink"
+                    : " "
+                    }`}
+                  onClick={() => {
+                    dispatch(setAppLoading(true));
+                  }}
+                >
+                  {i}
+                </a>
+              </Link>
+            ))}
+          </>
         </div>
         <div
           className={styles.vertNavbarFree}

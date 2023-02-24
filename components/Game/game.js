@@ -35,7 +35,7 @@ const Game = () => {
         <iframe
           ref={iframeRef}
           className={styles.game}
-          fetchpriority={true}
+          fetchpriority="true"
           loading="lazy"
           title="rock paper scissors lizard spock game"
           src="https://adelinked-rock-paper-scissors.netlify.app/"

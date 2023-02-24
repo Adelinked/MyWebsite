@@ -32,22 +32,13 @@ const Index = ({ projectsData, skillsData }) => {
 
   useEffect(() => {
     if (projectsDataDisplay) return;
-
-    if (projectsRefValue) {
-      (async () => {
-        const randomize = (await import("../utils/functions")).randomize;
-        setprojectsDataDisplay(randomize(projectsData));
-      })();
-    }
+    setprojectsDataDisplay(projectsData);
   }, [projectsRefValue]);
 
   useEffect(() => {
     if (gameDisplay) return;
-
     if (gameRefValue) {
-
       setGameDisplay(true);
-
     }
   }, [gameRefValue]);
 
@@ -98,7 +89,7 @@ const Index = ({ projectsData, skillsData }) => {
           </div>
           {!loading ? (
             <div className={styles.indexProjectsImgDiv}>
-              {projectsDataDisplay?.slice(1, 4).map((p) => (
+              {projectsDataDisplay?.map((p) => (
                 <Project key={p.id} {...p} fromIndex />
               ))}
             </div>
@@ -149,7 +140,7 @@ export default Index;
 
 export async function getStaticProps(context) {
   const data = await import("../data/projects");
-  const projectsData = data.projectsData;
+  const projectsData = data.projectsData.slice(0, 3);
   const skillsData = data.skillsData;
   return { props: { projectsData: projectsData, skillsData: skillsData } };
 }

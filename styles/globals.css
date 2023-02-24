@@ -49,18 +49,17 @@
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
-  /* user-select: none;*/
-  /*transition: all 0.5s ease-out;
-  -webkit-transition: all 0.5s ease-out;*/
+  box-sizing: border-box;
   transition: top 0.5s ease-out, color 0.5s ease-out,
     background-color 0.5s ease-out, transform 0.5s ease-out, right 0.5s ease-out;
+  scrollbar-width: thin;
 }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
+
   height: 100%;
 }
 
@@ -252,6 +251,49 @@ li {
 
 li {
   padding: 5px;
+}
+.activeNavBarLink {
+  color: var(--color-font) !important;
+}
+.activeNavBarLink::before {
+  content: "";
+  margin-left: 25%;
+  width: 50%;
+  height: 3px;
+  background: var(--color-font);
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  opacity: 1;
+  visibility: visible;
+}
+.navBarLink::before {
+  content: "";
+  width: 0%;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  opacity: 0;
+  visibility: hidden;
+  transition: width 150ms ease-in;
+  color: red;
+}
+.navBarLink:hover::before {
+  content: "";
+  margin-left: 25%;
+  width: 50%;
+  height: 3px;
+  background: var(--color-font);
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.activeVertNavBarLink {
+  color: var(--color-font) !important;
 }
 
 @media (max-width: 992px) {

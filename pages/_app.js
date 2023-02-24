@@ -27,10 +27,11 @@ function ClientSideTheme() {
 
   useEffect(() => {
     let storedTheme = localStorage.getItem("theme");
-    document.documentElement.className = storedTheme || "dark";
     if (!globalState) {
       setGlobalState(storedTheme);
     }
+    document.documentElement.className = storedTheme || "dark";
+
   }, []);
 
   return null;

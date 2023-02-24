@@ -248,7 +248,9 @@ const Projects = ({ projectsData }) => {
 export default Projects;
 
 export async function getStaticProps() {
-  const projectsData = (await import("../data/projects")).projectsData;
+  const data = (await import("../data/projects")).projectsData;
+
+  const projectsData = [...data.slice(3, 6), ...data.slice(0, 3), ...data.slice(7)];
 
   return { props: { projectsData: projectsData } };
 }
