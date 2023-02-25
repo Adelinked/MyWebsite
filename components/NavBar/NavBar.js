@@ -116,6 +116,7 @@ const NavBar = () => {
                 onClick={() => {
                   dispatch(setAppLoading(true));
                 }}
+                title={i + " page"}
               >
                 {i}
               </a>
@@ -167,6 +168,8 @@ const NavBar = () => {
                   onClick={() => {
                     dispatch(setAppLoading(true));
                   }}
+
+                  title={i + " page"}
                 >
                   {i}
                 </a>

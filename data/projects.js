@@ -234,8 +234,8 @@ export let skillsData = [
   {
     num: 5,
     title: "NextJs",
-    image: "/languages/NextJsWhite.png",
-    image2: "/languages/NextJsBlack.png",
+    image: "/languages/nextJsWhite.png",
+    image2: "/languages/nextJsBlack.png",
   },
   { num: 6, title: "Redux", image: "/languages/redux.png" },
   { num: 7, title: "Node", image: "/languages/nodejs.png" },

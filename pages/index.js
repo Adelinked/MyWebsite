@@ -20,20 +20,34 @@ const Game = dynamic(() => import("../components/Game"), {
 });
 
 const Index = ({ projectsData, skillsData }) => {
-  const [loading, setLoading] = useState(false);
-  const [projectsDataDisplay, setprojectsDataDisplay] = useState();
+  const [projectsDataDisplay, setprojectsDataDisplay] = useState(null);
+  const [skillsDataDisplay, setSkillsDataDisplay] = useState(null);
+
   const [gameDisplay, setGameDisplay] = useState();
   const router = useRouter();
   const dispatch = useDispatch();
-  const projectsRef = useRef();
+  const projectsRef = useRef(null);
   const projectsRefValue = useOnScreen(projectsRef);
+  const skillsRef = useRef(null);
+  const skillsRefValue = useOnScreen(skillsRef);
+
   const gameRef = useRef();
   const gameRefValue = useOnScreen(gameRef);
 
   useEffect(() => {
     if (projectsDataDisplay) return;
-    setprojectsDataDisplay(projectsData);
+    if (projectsRefValue)
+      setprojectsDataDisplay(projectsData);
+
   }, [projectsRefValue]);
+
+
+  useEffect(() => {
+    if (skillsDataDisplay) return;
+    if (skillsRefValue)
+      setSkillsDataDisplay(skillsData);
+  }, [skillsRefValue]);
+
 
   useEffect(() => {
     if (gameDisplay) return;
@@ -83,19 +97,17 @@ const Index = ({ projectsData, skillsData }) => {
             </div>
           </div>
         </header>
-        <section className={styles.indexProjectsDiv}>
+        <section className={styles.indexProjectsDiv} >
           <div className={styles.indexTextProDiv}>
             <h2 className={styles.indexTitles}>Some of my projects</h2>
           </div>
-          {!loading ? (
-            <div className={styles.indexProjectsImgDiv}>
-              {projectsDataDisplay?.map((p) => (
-                <Project key={p.id} {...p} fromIndex />
-              ))}
-            </div>
-          ) : (
-            <div>...loading</div>
-          )}
+
+          <div className={styles.indexProjectsImgDiv}>
+            {projectsDataDisplay?.map((p) => (
+              <Project key={p.id} {...p} fromIndex />
+            ))}
+          </div>
+
 
           <button
             onClick={() => {
@@ -107,12 +119,12 @@ const Index = ({ projectsData, skillsData }) => {
             All projects
           </button>
         </section>
-        <section className={styles.indexProjectsDiv}>
+        <section className={styles.indexProjectsDiv} >
           <div className={styles.indexTextProDiv} style={{ padding: "5px" }}>
             <h2 className={styles.indexTitles}>Skills</h2>
           </div>
           <div className={styles.indexSkillsDiv}>
-            {skillsData.map((i) => (
+            {skillsDataDisplay?.map((i) => (
               <SkillComp key={i.num} {...i} />
             ))}
           </div>
@@ -122,6 +134,7 @@ const Index = ({ projectsData, skillsData }) => {
               router.push("/resume");
             }}
             style={{ margin: "20px 0" }}
+            ref={skillsRef}
           >
             My resume
           </button>
