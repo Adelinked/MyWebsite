@@ -6,7 +6,7 @@ import {
   REMOVE_PROJECT,
   CLEAR_PROJECTS,
   SET_CURR_PROJECT,
-  SORT_PROJECTS,
+  SET_SORT,
   SET_PROJECTS_DISPLAY,
   SET_FILTER,
   CLEAR_FILTER,
@@ -19,7 +19,6 @@ const initialState = {
   loading: false,
   initProjectsData: [],
   projects: [],
-  filtredProjects: [],
   show: false,
   current: "",
   display: null,
@@ -54,7 +53,7 @@ export default function (state = initialState, action) {
         projects: action.payload,
       };
 
-    case SORT_PROJECTS:
+    case SET_SORT:
       return {
         ...state,
         sort: action.payload,
@@ -106,7 +105,7 @@ export default function (state = initialState, action) {
     case SHOW_CMD:
       return {
         ...state,
-        showCmd: !state.showCmd,
+        showCmd: action.payload,
       };
 
     case SHOW_MORE:

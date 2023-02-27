@@ -24,8 +24,8 @@ export const clearFilter = () => async (dispatch) => {
   dispatch({ type: "CLEAR_FILTER" });
 };
 
-export const sortProjects = (sort) => async (dispatch) => {
-  dispatch({ type: "SORT_PROJECTS", payload: sort });
+export const setSort = (sort) => async (dispatch) => {
+  dispatch({ type: "SET_SORT", payload: sort });
 };
 
 export const setProjectsDisplay = (display) => async (dispatch) => {
@@ -36,8 +36,8 @@ export const loadingProjects = () => async (dispatch) => {
   dispatch({ type: "LOADING_PROJECTS", payload: [] });
 };
 
-export const showPrjCmd = () => async (dispatch) => {
-  dispatch({ type: "SHOW_CMD", payload: [] });
+export const showPrjCmd = (showCmd) => async (dispatch) => {
+  dispatch({ type: "SHOW_CMD", payload: showCmd });
 };
 
 export const showMorePrj = () => async (dispatch) => {

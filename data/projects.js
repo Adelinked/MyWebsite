@@ -244,6 +244,4 @@ export let skillsData = [
   { num: 10, title: "Jest", image: "/languages/jest.png" },
   { num: 11, title: "Tailwindcss", image: "/languages/tailwind.png" },
   { num: 12, title: "MySQL", image: "/languages/MySQL.png" },
-
-
 ];

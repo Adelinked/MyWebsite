@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilter, clearFilter } from "../../store/actions/projectsAction";
+import { setFilter, clearFilter, setProjects } from "../../store/actions/projectsAction";
 import styles from "./Filter.module.css";
+import { sortProjects, filterProjects } from "../../utils/functions";
+
 export default () => {
-  const { filter, initProjectsData, projects } = useSelector(
+  const { filter, initProjectsData, projects, sort, projectsNumLoad } = useSelector(
     (state) => state.projects
   );
   const dispatch = useDispatch();
@@ -12,12 +14,13 @@ export default () => {
     const value = target.value;
 
     const name = target.name;
-    dispatch(
-      setFilter({
-        ...filter,
-        [name]: value,
-      })
-    );
+    dispatch(setFilter({ ...filter, [name]: value, }));
+
+    const newFilter = { [name]: value };
+    let rendred = filterProjects(projects, newFilter);
+    rendred = rendred.length >= projectsNumLoad ? rendred : filterProjects(initProjectsData, newFilter).slice(0, projectsNumLoad);
+    rendred = sortProjects(rendred, sort);
+    dispatch(setProjects(rendred));
   };
 
   const categories = initProjectsData
@@ -66,7 +69,7 @@ export default () => {
                 id="category"
                 value={filter.category}
               >
-                <option value="">All</option>
+                <option value="all">All</option>
                 <>{categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
@@ -81,6 +84,7 @@ export default () => {
           className={styles.clearFilter}
           onClick={() => {
             dispatch(clearFilter());
+            dispatch(setProjects(sortProjects(initProjectsData.slice(0, projectsNumLoad)), sort))
           }}
         >
           Clear

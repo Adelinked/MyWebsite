@@ -28,7 +28,9 @@ const NavBar = () => {
 
     const newTheme = globalState === "dark" ? "light" : "dark";
     document.documentElement.className = newTheme;
-    localStorage.setItem("theme", newTheme);
+    const mylocalStorage = JSON.parse(localStorage.getItem("Adelinked"))
+
+    localStorage.setItem("Adelinked", JSON.stringify({ ...mylocalStorage, theme: newTheme }));
   };
   let theme = globalState;
   const titleTheme = theme === "dark" ? "light" : "dark";
@@ -91,6 +93,13 @@ const NavBar = () => {
   useEffect(() => {
     dispatch(setAppLoading(false));
   }, [query]);
+
+  const handleFixNav = () => {
+    dispatch(setNavBar(!fixNavBar));
+    const mylocalStorage = JSON.parse(localStorage.getItem("Adelinked"))
+
+    localStorage.setItem("Adelinked", JSON.stringify({ ...mylocalStorage, fixNavBar: !fixNavBar }));
+  }
   return (
     <>
       <nav className={styles.navbar} id="navbar" ref={navbarRef}>
@@ -127,9 +136,7 @@ const NavBar = () => {
         <div className={styles.cartLogOpen}>
           <span className={fixNavBar ? styles.navBarPinFix : styles.navBarPin}>
             <ImPushpin
-              onClick={() => {
-                dispatch(setNavBar(!fixNavBar));
-              }}
+              onClick={handleFixNav}
               title={fixNavBar ? "Free navigation bar" : "Fix navigation bar"}
             />
           </span>

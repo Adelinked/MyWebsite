@@ -12,7 +12,7 @@ import Sort from "../components/Sort";
 import DisplayProjects from "../components/DisplayProjects";
 import Meta from "../components/Meta";
 import useOnScreen from "../utils/useOnScreen";
-import { getItemsNumber } from "../utils/functions";
+import { getItemsNumber, sortProjects, filterProjects } from "../utils/functions";
 import styles from "../styles/Projects.module.css";
 import {
   setInitProjects,
@@ -29,31 +29,19 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
-import {
-  FaGithubSquare,
-} from "react-icons/fa";
-import {
-  MY_GITHUB,
-} from "../data/variables";
+import { FaGithubSquare } from "react-icons/fa";
+import { MY_GITHUB } from "../data/variables";
 
 const Projects = ({ projectsData }) => {
-  const [filtredProjects, setFiltredProjects] = useState();
   const [windowWidth, setWindowWidth] = useState();
+
   const bottomProjectsRef = useRef();
   const projectsBottomRefValue = useOnScreen(bottomProjectsRef);
+
   const dispatch = useDispatch();
   const { projects, filter, display, sort, showCmd, showMore, projectsNumLoad } =
     useSelector((state) => state.projects);
 
-  function loadMore() {
-    const projectsLen = projects.length;
-    dispatch(
-      setProjects([
-        ...projects,
-        ...projectsData.slice(projectsLen, projectsLen + projectsNumLoad),
-      ])
-    );
-  }
 
   useEffect(() => {
     if (projects == null || projects.length === projectsData.length) return;
@@ -65,20 +53,8 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     setWindowWidth(window?.innerWidth);
     dispatch(setInitProjects(projectsData));
-    if (projects && projects.length > 0) return;
-    dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
+    loadInitProjects();
   }, []);
-
-
-
-  useEffect(() => {
-    if (!windowWidth) return;
-    if (projects && projects.length > 0) return;
-    dispatch(setProjects(projectsData.slice(0, projectsNumLoad)));
-    if (showMore && projectsBottomRefValue) {
-      loadMore();
-    }
-  }, [projectsNumLoad]);
 
   useEffect(() => {
     dispatch(setProjectsNumLoad(getItemsNumber(windowWidth) ?? 3));
@@ -96,54 +72,41 @@ const Projects = ({ projectsData }) => {
       throttleResizeHandler?.cancel();
       window.removeEventListener("resize", throttleResizeHandler);
     };
+
+
   });
 
-  function filterSortProjects() {
-    let sortedProjects =
-      projects?.length > 0 ? [...projects] : [...projectsData];
-
-    if (sort === "1") {
-      /* A - Z */
-      sortedProjects = sortedProjects.sort((a, b) => {
-        return a.title.localeCompare(b.title);
-      });
-    }
-    if (sort === "2") {
-      /* Z - A */
-      sortedProjects = sortedProjects.sort((a, b) => {
-        return b.title.localeCompare(a.title);
-      });
-    }
-
-    let filtredProjects = [...sortedProjects];
-
-    const { title, category } = filter;
-    if (title) {
-      filtredProjects = filtredProjects.filter((i) =>
-        i.title.toLowerCase().includes(title.toLowerCase())
-      );
-    }
-    if (category && category.length > 0) {
-      filtredProjects = filtredProjects.filter((i) =>
-        i.categories.includes(category)
-      );
-    }
-    return filtredProjects;
+  function loadMore() {
+    let newData;
+    const previous = filterProjects(projects, filter);
+    newData = [
+      ...previous,
+      ...filterProjects(projectsData.filter(i => !previous.includes(i)), filter).slice(0, projectsNumLoad),
+    ]
+    newData = sortProjects(newData, sort);
+    dispatch(setProjects(newData));
   }
 
-  useEffect(() => {
-    setFiltredProjects(filterSortProjects());
-  }, [projects, filter, sort]);
+  const handleShowButton = () => {
+    dispatch(showMorePrj());
+    if (!showMore) loadMore();
+    else
+      loadInitProjects();
+  }
 
-  const [displayLocal, setDisplayLocal] = useLocalStorageValue({
-    key: "display",
-  });
+  const handleShowCmd = () => {
 
-  useEffect(() => {
-    if (!display) dispatch(setProjectsDisplay(displayLocal?.display ?? "0"));
-    if (!displayLocal) setDisplayLocal({ display: "0" });
-  }, []);
+    dispatch(showPrjCmd(!showCmd))
+    const mylocalStorage = JSON.parse(localStorage.getItem("Adelinked"))
 
+    localStorage.setItem("Adelinked", JSON.stringify({ ...mylocalStorage, showCmd: !showCmd }));
+  }
+
+  const loadInitProjects = () => {
+    let initprojects = filterProjects(projectsData, filter);
+    initprojects = sortProjects(initprojects, sort).slice(0, projectsNumLoad ?? 3);
+    dispatch(setProjects(initprojects));
+  }
   return (
     <>
       <Meta />
@@ -163,9 +126,7 @@ const Projects = ({ projectsData }) => {
                 <span className={styles.prjCmdClose}>
                   <FaTimes
                     title="close filter box"
-                    onClick={() => {
-                      dispatch(showPrjCmd());
-                    }}
+                    onClick={handleShowCmd}
                   />
                 </span>
               </span>
@@ -180,7 +141,7 @@ const Projects = ({ projectsData }) => {
               <span className={styles.prjCmdOpen}>
                 <FaArrowDown
                   title="show filters"
-                  onClick={() => dispatch(showPrjCmd())}
+                  onClick={handleShowCmd}
                 />
               </span>
             </span>
@@ -194,8 +155,8 @@ const Projects = ({ projectsData }) => {
                 color: "var(--color-font)",
               }}
             >
-              {filtredProjects?.length > 0
-                ? "Displayed: " + filtredProjects?.length
+              {projects?.length > 0
+                ? "Displayed: " + projects?.length
                 : "No Projects to display"}
             </div>
 
@@ -206,33 +167,34 @@ const Projects = ({ projectsData }) => {
                   : styles.projectsDetailed
               }
             >
-              {filtredProjects?.map((p, index) => (
+              {projects?.map((p) => (
                 <Project key={p.id} {...p} />
               ))}
             </div>
           </>
         </div>
         {
-          <button
-            onClick={() => {
-              dispatch(showMorePrj());
-              if (!showMore) loadMore();
-              else
-                dispatch(setProjects(projectsData.slice(0, 3)));
-            }}
-            className={styles.lessMoreButton}
-          >
-            {!showMore ? "View More" : "View Less"}
-            {filtredProjects?.length === projectsData.length && <a
-              style={{ fontSize: "30px" }}
-              className={styles.githubMore}
-              href={MY_GITHUB}
-              title="Git hub"
-              target="_blank"
-            >
-              <FaGithubSquare />
-            </a>}
-          </button>
+          <div className={styles.showAndGithub}>
+
+            {(projects.length <= projectsNumLoad && projects.length == filterProjects(projectsData, filter).length) ? null :
+              <button
+                onClick={handleShowButton}
+                className={styles.lessMoreButton}
+              >
+                {!showMore && (projects.length < filterProjects(projectsData, filter).length) ? "View More" : "View Less"}
+              </button>
+            }
+            {projects.length === filterProjects(projectsData, filter).length &&
+              <a
+                style={{ fontSize: "30px" }}
+                className={styles.githubMore}
+                href={MY_GITHUB}
+                title="Git hub"
+                target="_blank"
+              >
+                <FaGithubSquare />
+              </a>}
+          </div>
         }
       </article>
       <div style={{ height: "170px" }} />
@@ -251,6 +213,5 @@ export async function getStaticProps() {
   const data = (await import("../data/projects")).projectsData;
 
   const projectsData = [...data.slice(3, 6), ...data.slice(0, 3), ...data.slice(7)];
-
   return { props: { projectsData: projectsData } };
 }
