@@ -43,6 +43,17 @@ export let projectsData = [
   },
 
   {
+    id: 10,
+    title: "Portfolio Challenge",
+    description:
+      "A portfolio site made using NextJs and TailwinCSS as part of a challenge on <a  target='_blank' rel='noreferrer' href='https://devchallenges.io/'>devchallenges.io</a>.",
+    categories: ["NextJs", "Tailwindcss"],
+    image: "/projectsImages/portfolio-challenge.png",
+    srcUrl: "https://github.com/Adelinked/portfolio-challenge",
+    depUrl: "https://adelinked-portfolio-challenge.netlify.app/",
+  },
+
+  {
     id: 1,
     title: "SocialNet",
     description:
@@ -128,7 +139,7 @@ export let projectsData = [
     depUrl: "https://hacker-news-adelinked.netlify.app/",
     demoUrl: "",
   },
-  {
+  /*{
     id: 10,
     title: "Portfolio HTML page",
     description: "A simple html portfolio page as part of FreeCodeCamp courses",
@@ -136,7 +147,7 @@ export let projectsData = [
     image: "/projectsImages/portfolio_page.png",
     srcUrl: "https://github.com/Adelinked/portfolio-project",
     depUrl: "https://adelinked.github.io/portfolio-page/",
-  },
+  },*/
   {
     id: 11,
     title: "Photos App",

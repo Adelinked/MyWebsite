@@ -2,7 +2,6 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useMemo, useRef } from "react";
-import { useLocalStorageValue } from "@mantine/hooks";
 import { FaArrowDown, FaTimes } from "react-icons/fa";
 import throttle from "lodash.throttle";
 
@@ -12,7 +11,11 @@ import Sort from "../components/Sort";
 import DisplayProjects from "../components/DisplayProjects";
 import Meta from "../components/Meta";
 import useOnScreen from "../utils/useOnScreen";
-import { getItemsNumber, sortProjects, filterProjects } from "../utils/functions";
+import {
+  getItemsNumber,
+  sortProjects,
+  filterProjects,
+} from "../utils/functions";
 import styles from "../styles/Projects.module.css";
 import {
   setInitProjects,
@@ -20,7 +23,7 @@ import {
   showPrjCmd,
   showMorePrj,
   setProjectsDisplay,
-  setProjectsNumLoad
+  setProjectsNumLoad,
 } from "../store/actions/projectsAction";
 const Project = dynamic(() => import("../components/Project"), {
   ssr: false,
@@ -39,9 +42,15 @@ const Projects = ({ projectsData }) => {
   const projectsBottomRefValue = useOnScreen(bottomProjectsRef);
 
   const dispatch = useDispatch();
-  const { projects, filter, display, sort, showCmd, showMore, projectsNumLoad } =
-    useSelector((state) => state.projects);
-
+  const {
+    projects,
+    filter,
+    display,
+    sort,
+    showCmd,
+    showMore,
+    projectsNumLoad,
+  } = useSelector((state) => state.projects);
 
   useEffect(() => {
     if (projects == null || projects.length === projectsData.length) return;
@@ -72,8 +81,6 @@ const Projects = ({ projectsData }) => {
       throttleResizeHandler?.cancel();
       window.removeEventListener("resize", throttleResizeHandler);
     };
-
-
   });
 
   function loadMore() {
@@ -81,8 +88,11 @@ const Projects = ({ projectsData }) => {
     const previous = filterProjects(projects, filter);
     newData = [
       ...previous,
-      ...filterProjects(projectsData.filter(i => !previous.includes(i)), filter).slice(0, projectsNumLoad),
-    ]
+      ...filterProjects(
+        projectsData.filter((i) => !previous.includes(i)),
+        filter
+      ).slice(0, projectsNumLoad),
+    ];
     newData = sortProjects(newData, sort);
     dispatch(setProjects(newData));
   }
@@ -90,23 +100,27 @@ const Projects = ({ projectsData }) => {
   const handleShowButton = () => {
     dispatch(showMorePrj());
     if (!showMore) loadMore();
-    else
-      loadInitProjects();
-  }
+    else loadInitProjects();
+  };
 
   const handleShowCmd = () => {
+    dispatch(showPrjCmd(!showCmd));
+    const mylocalStorage = JSON.parse(localStorage.getItem("Adelinked"));
 
-    dispatch(showPrjCmd(!showCmd))
-    const mylocalStorage = JSON.parse(localStorage.getItem("Adelinked"))
-
-    localStorage.setItem("Adelinked", JSON.stringify({ ...mylocalStorage, showCmd: !showCmd }));
-  }
+    localStorage.setItem(
+      "Adelinked",
+      JSON.stringify({ ...mylocalStorage, showCmd: !showCmd })
+    );
+  };
 
   const loadInitProjects = () => {
     let initprojects = filterProjects(projectsData, filter);
-    initprojects = sortProjects(initprojects, sort).slice(0, projectsNumLoad ?? 3);
+    initprojects = sortProjects(initprojects, sort).slice(
+      0,
+      projectsNumLoad ?? 3
+    );
     dispatch(setProjects(initprojects));
-  }
+  };
   return (
     <>
       <Meta />
@@ -124,10 +138,7 @@ const Projects = ({ projectsData }) => {
               {" "}
               <span className={styles.prjCmdSpan}>
                 <span className={styles.prjCmdClose}>
-                  <FaTimes
-                    title="close filter box"
-                    onClick={handleShowCmd}
-                  />
+                  <FaTimes title="close filter box" onClick={handleShowCmd} />
                 </span>
               </span>
               <div className={styles.sortDiv} id="cmdDiv">
@@ -139,10 +150,7 @@ const Projects = ({ projectsData }) => {
           ) : (
             <span className={styles.prjCmdSpan}>
               <span className={styles.prjCmdOpen}>
-                <FaArrowDown
-                  title="show filters"
-                  onClick={handleShowCmd}
-                />
+                <FaArrowDown title="show filters" onClick={handleShowCmd} />
               </span>
             </span>
           )}
@@ -175,16 +183,21 @@ const Projects = ({ projectsData }) => {
         </div>
         {
           <div className={styles.showAndGithub}>
-
-            {(projects.length <= projectsNumLoad && projects.length == filterProjects(projectsData, filter).length) ? null :
+            {projects.length <= projectsNumLoad &&
+            projects.length ==
+              filterProjects(projectsData, filter).length ? null : (
               <button
                 onClick={handleShowButton}
                 className={styles.lessMoreButton}
               >
-                {!showMore && (projects.length < filterProjects(projectsData, filter).length) ? "View More" : "View Less"}
+                {!showMore &&
+                projects.length < filterProjects(projectsData, filter).length
+                  ? "View More"
+                  : "View Less"}
               </button>
-            }
-            {projects.length === filterProjects(projectsData, filter).length &&
+            )}
+            {projects.length ===
+              filterProjects(projectsData, filter).length && (
               <a
                 style={{ fontSize: "30px" }}
                 className={styles.githubMore}
@@ -193,7 +206,8 @@ const Projects = ({ projectsData }) => {
                 target="_blank"
               >
                 <FaGithubSquare />
-              </a>}
+              </a>
+            )}
           </div>
         }
       </article>
@@ -212,6 +226,10 @@ export default Projects;
 export async function getStaticProps() {
   const data = (await import("../data/projects")).projectsData;
 
-  const projectsData = [...data.slice(3, 6), ...data.slice(0, 3), ...data.slice(7)];
+  const projectsData = data; /*[
+    ...data.slice(3, 6),
+    ...data.slice(0, 3),
+    ...data.slice(7),
+  ];*/
   return { props: { projectsData: projectsData } };
 }
