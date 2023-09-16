@@ -1,8 +1,6 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
@@ -36,18 +34,13 @@ const Index = ({ projectsData, skillsData }) => {
 
   useEffect(() => {
     if (projectsDataDisplay) return;
-    if (projectsRefValue)
-      setprojectsDataDisplay(projectsData);
-
+    if (projectsRefValue) setprojectsDataDisplay(projectsData);
   }, [projectsRefValue]);
-
 
   useEffect(() => {
     if (skillsDataDisplay) return;
-    if (skillsRefValue)
-      setSkillsDataDisplay(skillsData);
+    if (skillsRefValue) setSkillsDataDisplay(skillsData);
   }, [skillsRefValue]);
-
 
   useEffect(() => {
     if (gameDisplay) return;
@@ -63,7 +56,7 @@ const Index = ({ projectsData, skillsData }) => {
         <title>Adelinked website</title>
         <meta name="description" content="Adelinked website - home page" />
       </Head>
-      <Navbar />
+
       <article className={styles.container}>
         <header className={styles.indexHeader}>
           <div className={styles.indexTextDiv}>
@@ -97,7 +90,7 @@ const Index = ({ projectsData, skillsData }) => {
             </div>
           </div>
         </header>
-        <section className={styles.indexProjectsDiv} >
+        <section className={styles.indexProjectsDiv}>
           <div className={styles.indexTextProDiv}>
             <h2 className={styles.indexTitles}>Some of my projects</h2>
           </div>
@@ -107,7 +100,6 @@ const Index = ({ projectsData, skillsData }) => {
               <Project key={p.id} {...p} fromIndex />
             ))}
           </div>
-
 
           <button
             onClick={() => {
@@ -119,7 +111,7 @@ const Index = ({ projectsData, skillsData }) => {
             All projects
           </button>
         </section>
-        <section className={styles.indexProjectsDiv} >
+        <section className={styles.indexProjectsDiv}>
           <div className={styles.indexTextProDiv} style={{ padding: "5px" }}>
             <h2 className={styles.indexTitles}>Skills</h2>
           </div>
@@ -138,13 +130,11 @@ const Index = ({ projectsData, skillsData }) => {
           >
             My resume
           </button>
-
         </section>
         <div className={styles.indexProjectsDiv} ref={gameRef}>
           {gameDisplay ? <Game /> : null}
         </div>
       </article>
-      <Footer />
     </>
   );
 };

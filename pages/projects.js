@@ -5,7 +5,6 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import { FaArrowDown, FaTimes } from "react-icons/fa";
 import throttle from "lodash.throttle";
 
-import Navbar from "../components/NavBar";
 import Filter from "../components/Filter/Filter";
 import Sort from "../components/Sort";
 import DisplayProjects from "../components/DisplayProjects";
@@ -26,9 +25,6 @@ import {
   setProjectsNumLoad,
 } from "../store/actions/projectsAction";
 const Project = dynamic(() => import("../components/Project"), {
-  ssr: false,
-});
-const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
 });
 
@@ -128,7 +124,7 @@ const Projects = ({ projectsData }) => {
         <title>Adelinked | Projects</title>
         <meta name="description" content="Adelinked website - projects page" />
       </Head>
-      <Navbar />
+
       <article className={styles.projectsPageDiv}>
         <h2 className={styles.projectHeroText}>My Projects </h2>
 
@@ -216,7 +212,6 @@ const Projects = ({ projectsData }) => {
         style={{ height: "5px", marginTop: "10px" }}
         ref={bottomProjectsRef}
       ></div>
-      <Footer />
     </>
   );
 };

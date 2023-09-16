@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
 import { useDispatch } from "react-redux";
 import { setAppLoading } from "../store/actions/appAction";
 import {
@@ -21,7 +19,6 @@ const About = () => {
         <title>Adelinked website | About me</title>
         <meta name="description" content="Adelinked website - about me page" />
       </Head>
-      <Navbar />
       <article className="aboutDiv">
         <header className="aboutTextDiv">
           <h2 className="aboutHeroText">About me</h2>
@@ -137,8 +134,6 @@ const About = () => {
           </div>
         </section>
       </article>
-
-      <Footer />
     </>
   );
 };

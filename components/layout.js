@@ -2,8 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "./layout.module.css";
 import Link from "next/link";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
 const name = "Adelinked";
 export const siteTitle = "Next.js Sample Website";
 
@@ -26,7 +24,6 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
-        <NavBar />
 
         <main>{children}</main>
         <div className={styles.backToHome}>
@@ -44,7 +41,6 @@ export default function Layout({ children, home }) {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

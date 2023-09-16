@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../../../components/Footer";
-import Navbar from "../../../components/NavBar";
 import styles from "../../../styles/Blog.module.css";
 
 import { useState } from "react";
@@ -18,7 +16,7 @@ const Blog = ({ categories, tags, yearsPosts }) => {
         <title>Adelinked | Blog tags</title>
         <meta name="description" content="Adelinked website - blog tags" />
       </Head>
-      <Navbar />
+
       <article className={styles.container}>
         <section>
           <header className={styles.indexHeader}>
@@ -37,7 +35,6 @@ const Blog = ({ categories, tags, yearsPosts }) => {
           </div>
         </section>
       </article>
-      <Footer />
     </>
   );
 };

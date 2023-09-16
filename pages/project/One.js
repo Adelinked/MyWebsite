@@ -3,14 +3,12 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/NavBar";
 import { ProjectDetails } from "../../components/ProjectDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocalStorageValue } from "@mantine/hooks";
 //import axios from "axios";
 
-export default function OneProject({ }) {
+export default function OneProject({}) {
   const { query } = useRouter();
   const [projectCli, setProjectCli] = useState();
   const [loading, setLoading] = useState(false);
@@ -40,15 +38,12 @@ export default function OneProject({ }) {
         <meta name="description" content="Adelinked website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar />
       {!loading && (
         <div>
           <ProjectDetails {...projectCli} />
         </div>
       )}
       {loading && <div>...loading</div>}
-
-      <Footer />
     </>
   );
 }

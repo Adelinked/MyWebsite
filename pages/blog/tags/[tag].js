@@ -3,10 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { getTagPosts, getTagsPaths } from "../../../lib/tags";
 import styles from "../../../styles/Blog.module.css";
-import Navbar from "../../../components/NavBar";
 import Meta from "../../../components/Meta";
 import BlogPostELt from "../../../components/BlogPostElt";
-import Footer from "../../../components/Footer";
 export default function Tag({ yearsPosts, categories, tags }) {
   const router = useRouter();
 
@@ -20,7 +18,6 @@ export default function Tag({ yearsPosts, categories, tags }) {
           content={`Adelinked Blog categorie=${yearsPosts[0].tag}`}
         />
       </Head>
-      <Navbar />
       <article className={styles.container}>
         <div className={styles.blogSections}>
           <section className={styles.indexPostsDiv}>
@@ -66,7 +63,6 @@ export default function Tag({ yearsPosts, categories, tags }) {
           </section>
         </div>
       </article>
-      <Footer />
     </>
   );
 }
@@ -83,12 +79,12 @@ export function getStaticProps({ params }) {
       ["tag"]: params.tag,
     })
   );
-  const categories = Array.from(
-    new Set(tagPosts.map((p) => p.category))
-  ).map((c) => ({
-    ["categoryTitle"]: c,
-    ["count"]: tagPosts.filter((p) => p.category === c).length,
-  }));
+  const categories = Array.from(new Set(tagPosts.map((p) => p.category))).map(
+    (c) => ({
+      ["categoryTitle"]: c,
+      ["count"]: tagPosts.filter((p) => p.category === c).length,
+    })
+  );
 
   const tags = Array.from(
     new Set(
@@ -98,8 +94,6 @@ export function getStaticProps({ params }) {
       }, [])
     )
   );
-
-
 
   return { props: { yearsPosts, categories, tags } };
 }

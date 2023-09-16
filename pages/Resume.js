@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
 import {
   MY_EMAIL,
   MY_FCC_LINK,
@@ -18,7 +16,6 @@ const Resume = () => {
         <title>Adelinked website | Resume </title>
         <meta name="description" content="Adelinked website - resume page" />
       </Head>
-      <Navbar />
       <article className="aboutDiv">
         <header className="aboutTextDiv">
           <h2 className="aboutHeroText">Resume</h2>
@@ -179,8 +176,6 @@ const Resume = () => {
           </ul>
         </section>
       </article>
-
-      <Footer />
     </>
   );
 };

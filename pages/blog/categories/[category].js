@@ -1,12 +1,10 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Link from "next/link"
+import Link from "next/link";
 import { getCategoryPosts, getCategoriesPaths } from "../../../lib/categories";
-import Navbar from "../../../components/NavBar";
 import Meta from "../../../components/Meta";
 import styles from "../../../styles/Blog.module.css";
 import BlogPostELt from "../../../components/BlogPostElt";
-import Footer from "../../../components/Footer";
 
 export default function Category({ yearsPosts, categories, tags }) {
   const router = useRouter();
@@ -21,7 +19,6 @@ export default function Category({ yearsPosts, categories, tags }) {
           content={`Adelinked Blog categorie=${yearsPosts[0].category}`}
         />
       </Head>
-      <Navbar />
       <article className={styles.container}>
         <div className={styles.blogSections}>
           <section className={styles.indexPostsDiv}>
@@ -67,7 +64,6 @@ export default function Category({ yearsPosts, categories, tags }) {
           </section>
         </div>
       </article>
-      <Footer />
     </>
   );
 }

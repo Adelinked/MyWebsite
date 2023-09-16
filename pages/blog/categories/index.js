@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../../../components/Footer";
-import Navbar from "../../../components/NavBar";
 import styles from "../../../styles/Blog.module.css";
 
 import { getSortedPostsData } from "../../../lib/posts";
@@ -18,7 +16,6 @@ const Categories = ({ categories }) => {
           content="Adelinked website - blog categories"
         />
       </Head>
-      <Navbar />
       <article className={styles.container}>
         <div className={styles.blogSections}>
           <section className={styles.indexPostsDiv}>
@@ -41,7 +38,6 @@ const Categories = ({ categories }) => {
           </section>
         </div>
       </article>
-      <Footer />
     </>
   );
 };

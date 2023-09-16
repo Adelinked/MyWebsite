@@ -268,27 +268,20 @@ li {
 }
 .navBarLink::before {
   content: "";
-  width: 0%;
+  margin-left: 25%;
+  width: 0;
   height: 3px;
   position: absolute;
+  bottom: 0;
   left: 0;
-  bottom: 1px;
-  opacity: 0;
-  visibility: hidden;
-  transition: width 150ms ease-in;
-  color: red;
+  background-color: var(--color-font);
+  transition: width 250ms ease-in;
 }
-.navBarLink:hover::before {
-  content: "";
+
+.navBarLink:hover::before,
+.navBarLink:focus::before {
   margin-left: 25%;
   width: 50%;
-  height: 3px;
-  background: var(--color-font);
-  position: absolute;
-  left: 0;
-  bottom: 0px;
-  opacity: 1;
-  visibility: visible;
 }
 
 .activeVertNavBarLink {

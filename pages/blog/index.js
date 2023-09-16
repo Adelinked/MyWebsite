@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/NavBar";
 import styles from "../../styles/Blog.module.css";
 
 import BlogPostELt from "../../components/BlogPostElt";
@@ -19,7 +17,6 @@ const Blog = ({ categories, tags, yearsPosts }) => {
         <title>Adelinked | Blog</title>
         <meta name="description" content="Adelinked website - blog" />
       </Head>
-      <Navbar />
       <article className={styles.container}>
         <div className={styles.blogSections}>
           <section className={styles.indexPostsDiv}>
@@ -65,7 +62,6 @@ const Blog = ({ categories, tags, yearsPosts }) => {
           </section>
         </div>
       </article>
-      <Footer />
     </>
   );
 };
