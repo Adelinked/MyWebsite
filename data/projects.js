@@ -41,7 +41,6 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/IP-Address-Tracker-with-NextJS",
     depUrl: "https://fem-ip-address-tracker.netlify.app/",
   },
-
   {
     id: 10,
     title: "Portfolio Challenge",
@@ -161,6 +160,17 @@ export let projectsData = [
   },
   {
     id: 12,
+    title: "Edie Homepage",
+    description:
+      "Edie homepage made using React,Vite and TailwinCSS as part of a challenge on <a  target='_blank' rel='noreferrer' href='https://devchallenges.io/'>devchallenges.io</a>.",
+    categories: ["React", "TypeScript", "Tailwindcss", "Vite"],
+    image: "/projectsImages/edie-homepage.png",
+    srcUrl: "https://github.com/Adelinked/edie-homepage",
+    depUrl: "https://adelinked.github.io/edie-homepage/",
+    demoUrl: "",
+  },
+  /*{
+    id: 12,
     title: "Shopping cart - TS ",
     description:
       "Cart with typeScript using useState hook vs Redux . It also implements some tests using Jest and React Testing Library. I added a Github action to run those tests before deployement on each push or pull (see the <a target='_blank' rel='noreferrer' href='https://github.com/Adelinked/Shopping-Cart-TS'>source code on Github</a>).",
@@ -181,7 +191,7 @@ export let projectsData = [
     depUrl: "https://cart-usestate-redux-typescript.netlify.app/",
     depUrl2: "https://shopping-cart-adelinked.netlify.app/",
     demoUrl: "",
-  },
+  },*/
   {
     id: 13,
     title: "Room homepage",
