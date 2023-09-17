@@ -201,7 +201,7 @@ export let projectsData = [
     image: "/projectsImages/roomHomePage.png",
     srcUrl: "https://github.com/Adelinked/room-homepage",
     depUrl: "https://room-homepage-adelinked.netlify.app/",
-  },
+  } /*
   {
     id: 14,
     title: "Dark mode",
@@ -222,7 +222,7 @@ export let projectsData = [
     image: "/projectsImages/calculator.png",
     srcUrl: "https://github.com/Adelinked/Js-calculator",
     depUrl: "https://adelinked.github.io/Js-calculator/",
-  },
+  }*/,
   {
     id: 16,
     title: "25 + 5 Clock",
