@@ -5,7 +5,6 @@ import Image from "next/image";
 import { FaEye, FaGithubSquare, FaYoutube } from "react-icons/fa";
 import { useState, useEffect, useRef } from "react";
 export default function Project(props) {
-
   const padRef = useRef(null);
   const {
     title,
@@ -16,7 +15,7 @@ export default function Project(props) {
     depUrl,
     demoUrl,
     fromIndex = false,
-    id
+    id,
   } = props;
 
   const [loading, setLoading] = useState(true);
@@ -27,7 +26,7 @@ export default function Project(props) {
 
     return () => {
       clearTimeout(id);
-    }
+    };
   }, []);
 
   useEffect(() => {
@@ -50,15 +49,13 @@ export default function Project(props) {
     }
   }, [loading]);
 
-
   const { display } = useSelector((state) => state.projects);
 
   return (
-    <div className={styles.projectPad} id={id} ref={padRef} >
-
+    <div className={styles.projectPad} id={id} ref={padRef}>
       {display === "0" || fromIndex /* without details*/ ? (
         <>
-          <div className={styles.projectTitleDiv} >
+          <div className={styles.projectTitleDiv}>
             <h3>{title}</h3>
           </div>
           <div className={styles.imgDiv}>
@@ -113,7 +110,7 @@ export default function Project(props) {
                 </a>
               </Link>
             )}
-            {depUrl && (
+            {/*depUrl && (
               <Link href={depUrl}>
                 <a
                   title={`View ${title} deployed`}
@@ -125,7 +122,7 @@ export default function Project(props) {
                   </span>
                 </a>
               </Link>
-            )}
+            )*/}
             {demoUrl && (
               <Link href={srcUrl}>
                 <a
@@ -150,7 +147,7 @@ export default function Project(props) {
                 alt={title}
                 layout="fill"
                 objectFit="cover"
-                priority={id === '1'}
+                priority={id === "1"}
               />
             </div>
             {depUrl && (
@@ -209,11 +206,7 @@ export default function Project(props) {
               )}
               {demoUrl && (
                 <Link href={srcUrl}>
-                  <a
-                    title="view source code"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a title="view source code" target="_blank" rel="noreferrer">
                     <span className={styles.prjSrcIcon}>
                       <FaYoutube />
                     </span>
@@ -234,8 +227,6 @@ export default function Project(props) {
           </div>
         </div>
       )}
-
-
     </div>
   );
 }

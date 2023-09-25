@@ -63,6 +63,17 @@ export let projectsData = [
     depUrl: "https://adelinked-socialnet.netlify.app/",
   },
   {
+    id: 7,
+    title: "Weather forcast app",
+    description:
+      "An application for weather forcast in your city and other cities around the world based on data provided by <a target='_blank' rel='noreferrer' href='https://openweathermap.org/api'>OpenWeather</a>.",
+    categories: ["NextJs", "Tailwindcss"],
+    image: "/projectsImages/weatherForcastApp.png",
+    srcUrl: "https://github.com/Adelinked/weather-app",
+    depUrl: "https://adelinked-weather-forcast.netlify.app/",
+    demoUrl: "",
+  },
+  {
     id: 4,
     title: "Loopstudios landing page",
     description:
@@ -104,7 +115,8 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/interactive-form",
     depUrl: "https://adelinked.github.io/interactive-form/",
   },
-  {
+
+  /*{
     id: 7,
     title: "Weather forcast",
     description:
@@ -114,9 +126,7 @@ export let projectsData = [
     srcUrl: "https://github.com/Adelinked/weather-forcast",
     depUrl: "https://weather-forcast-adelinked.netlify.app/",
     demoUrl: "",
-  },
-
-  {
+  }*/ {
     id: 8,
     title: "Quiz App",
     description:
