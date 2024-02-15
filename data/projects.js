@@ -95,6 +95,16 @@ export let projectsData = [
     depUrl: "https://adelinked-countries.netlify.app",
   },
   {
+    id: 20,
+    title: "Recipes Blog",
+    description:
+      "This is a recipes blog developed using PHP and MySQL. The app permits to users to create their profiles after signin, add posts, react to them and comment them. They can also delete or edit those information anytime they want.",
+    categories: ["PHP", "MySQL"],
+    image: "/projectsImages/tastymingle.png",
+    srcUrl: "",
+    depUrl: "https://tastymingle.com/",
+  },
+  {
     id: 5,
     title: "Music-Albums",
     description:
